@@ -46,13 +46,18 @@ final class GameState: ObservableObject {
     @Published var difficulty: Difficulty = .medium
     @Published var songID: String = "track3"
     @Published var songTitle: String = "Hallelujah"
-    @Published var songChartName: String = "chart"
+    @Published var songChartFiles: ChartFiles = ChartFiles(same: "chart")
+    @Published var tapCoins: Int = 0
+    @Published var unlockedSongIDs: Set<String> = ["hallelujah"]
+    @Published var lastCoinsEarned: Int = 0
     
     private let missLimit = 100
     private let revengeThreshold = 30
     private let revengeDuration: Double = 8.0
     private var revengeMultiplier: Int = 2
     private let personalBestKeyPrefix = "personalBest_"
+    private let tapCoinsKey = "tapCoins"
+    private let unlockedSongsKey = "unlockedSongs"
 
     func registerHit(_ judgement: Judgement) {
         if isFailed { return }
@@ -126,7 +131,7 @@ final class GameState: ObservableObject {
     func setSong(_ song: SongMetadata) {
         songID = song.id
         songTitle = song.title
-        songChartName = song.chartName
+        songChartFiles = song.chartFiles
         loadPersonalBest()
         isNewPersonalBest = false
     }
@@ -150,6 +155,8 @@ final class GameState: ObservableObject {
     func markCompleted() {
         isCompleted = true
         updatePersonalBestIfNeeded()
+        awardTapCoins()
+        saveProgress()
     }
 
     private func personalBestKey() -> String {
@@ -172,6 +179,54 @@ final class GameState: ObservableObject {
         }
     }
 
+    private func awardTapCoins() {
+        // Performance-based reward: balanced by accuracy, score, combo, difficulty
+        let accuracy = totalNotes > 0 ? Double(notesHit) / Double(totalNotes) : 0.0
+        let accuracyFactor = max(0.5, accuracy) // ensure at least 50% factor
+
+        let base: Double = 10.0
+        let scoreComponent = Double(score) / 1200.0 // ~0..1000 score -> ~0..0.83
+        let comboComponent = Double(maxCombo) / 25.0 // encourages higher combos
+
+        let difficultyMultiplier: Double
+        switch difficulty {
+        case .easy: difficultyMultiplier = 1.0
+        case .medium: difficultyMultiplier = 1.25
+        case .hard: difficultyMultiplier = 1.5
+        case .extreme: difficultyMultiplier = 2.0
+        }
+
+        let rawReward = (base + scoreComponent + comboComponent) * accuracyFactor * difficultyMultiplier
+        let clamped = max(5, min(Int(rawReward.rounded()), 250))
+        lastCoinsEarned = clamped
+        tapCoins += clamped
+    }
+
+    func saveProgress() {
+        // Local cache
+        saveProgressLocal()
+        // Cloud sync (fire and forget)
+        Task { await ProgressService.shared.save(tapCoins: tapCoins, unlockedSongIDs: unlockedSongIDs) }
+    }
+
+    func saveProgressLocal() {
+        UserDefaults.standard.set(tapCoins, forKey: tapCoinsKey)
+        UserDefaults.standard.set(Array(unlockedSongIDs), forKey: unlockedSongsKey)
+    }
+
+    func loadProgress() {
+        tapCoins = UserDefaults.standard.integer(forKey: tapCoinsKey)
+        if let ids = UserDefaults.standard.array(forKey: unlockedSongsKey) as? [String] {
+            unlockedSongIDs = Set(ids)
+        }
+        // Ensure the default song is always unlocked
+        unlockedSongIDs.insert("hallelujah")
+    }
+
+    func loadProgressCloud() {
+        Task { await ProgressService.shared.loadAndMerge(into: self) }
+    }
+
     func reset() {
         score = 0
         combo = 0
@@ -189,6 +244,7 @@ final class GameState: ObservableObject {
         revengeActive = false
         revengeEndTime = 0
         lastJudgement = .perfect
+        lastCoinsEarned = 0
         loadPersonalBest()
     }
 }

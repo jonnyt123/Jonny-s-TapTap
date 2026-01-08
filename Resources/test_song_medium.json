@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "difficulty": "medium",
+  "songName": "Test Song",
+  "bpm": 120,
+  "offset": 0.0,
+  "lanes": 4,
+  "notes": [
+    { "id": "tm1", "time": 0.5, "lane": 0, "type": "tap" },
+    { "id": "tm2", "time": 1.0, "lane": 2, "type": "tap" },
+    { "id": "tm3", "time": 1.5, "lane": 1, "type": "tap" },
+    { "id": "tm4", "time": 2.0, "lane": 3, "type": "tap" },
+    { "id": "tm5", "time": 2.5, "lane": 0, "type": "tap" },
+    { "id": "tm6", "time": 3.0, "lane": 2, "type": "tap" },
+    { "id": "tm7", "time": 3.5, "lane": 1, "type": "tap" }
+  ]
+}

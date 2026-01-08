@@ -1,4 +1,5 @@
 import Foundation
+import CoreGraphics
 
 enum NoteType: String, Codable {
     case tap = "tap"
@@ -6,7 +7,7 @@ enum NoteType: String, Codable {
     case hold = "hold"
 }
 
-enum Difficulty: String, CaseIterable {
+enum Difficulty: String, CaseIterable, Codable {
     case easy = "Easy"
     case medium = "Medium"
     case hard = "Hard"
@@ -52,6 +53,8 @@ struct Note: Codable, Identifiable {
 }
 
 struct Chart: Codable {
+    let version: Int?
+    let difficulty: Difficulty?
     let songName: String
     let bpm: Double
     let offset: Double
@@ -60,38 +63,54 @@ struct Chart: Codable {
 }
 
 enum ChartLoader {
-    static func loadChart(named chartName: String = "chart", difficulty: Difficulty = .medium) -> Chart {
-        guard let url = Bundle.main.url(forResource: chartName, withExtension: "json"),
-              let data = try? Data(contentsOf: url),
-              let chart = try? JSONDecoder().decode(Chart.self, from: data) else {
-            return Chart(
-                songName: "Placeholder",
-                bpm: 120,
-                offset: 0,
-                lanes: 3,
-                notes: Self.placeholderNotes()
-            )
+    struct LoadResult {
+        let chart: Chart
+        let usedDifficulty: Difficulty
+        let requestedDifficulty: Difficulty
+        let fileName: String
+        let wasFallback: Bool
+    }
+
+    static func loadChart(for song: SongMetadata, difficulty: Difficulty) -> LoadResult {
+        // Try requested, then fallback order (medium -> easy -> hard -> extreme -> placeholder)
+        let ordered = fallbackOrder(requested: difficulty)
+        for diff in ordered {
+            let fileName = song.chartFiles.name(for: diff)
+            if let chart = decodeChart(fileName: fileName) {
+                return LoadResult(chart: chart, usedDifficulty: diff, requestedDifficulty: difficulty, fileName: fileName, wasFallback: diff != difficulty)
+            }
         }
-        
-        // Filter notes based on difficulty density
-        let divisor = difficulty.noteDensityDivisor
-        let filteredNotes = chart.notes.enumerated().filter { index, _ in
-            index % divisor == 0
-        }.map { $0.element }
-        let finalNotes: [Note]
-        if difficulty == .extreme {
-            finalNotes = densifyExtremeNotes(from: filteredNotes, lanes: chart.lanes)
-        } else {
-            finalNotes = filteredNotes
+        // Ultimate fallback
+        return LoadResult(chart: placeholderChart(), usedDifficulty: difficulty, requestedDifficulty: difficulty, fileName: "placeholder", wasFallback: true)
+    }
+
+    static func availability(for song: SongMetadata) -> Set<Difficulty> {
+        var available: Set<Difficulty> = []
+        for diff in Difficulty.allCases {
+            let name = song.chartFiles.name(for: diff)
+            if Bundle.main.url(forResource: name, withExtension: "json") != nil {
+                available.insert(diff)
+            }
         }
-        
-        return Chart(
-            songName: chart.songName,
-            bpm: chart.bpm,
-            offset: chart.offset,
-            lanes: chart.lanes,
-            notes: finalNotes
-        )
+        return available
+    }
+
+    private static func decodeChart(fileName: String) -> Chart? {
+        guard let url = Bundle.main.url(forResource: fileName, withExtension: "json"),
+              let data = try? Data(contentsOf: url) else {
+            return nil
+        }
+        let decoder = JSONDecoder()
+        return try? decoder.decode(Chart.self, from: data)
+    }
+
+    private static func fallbackOrder(requested: Difficulty) -> [Difficulty] {
+        switch requested {
+        case .easy: return [.easy, .medium, .hard, .extreme]
+        case .medium: return [.medium, .easy, .hard, .extreme]
+        case .hard: return [.hard, .medium, .extreme, .easy]
+        case .extreme: return [.extreme, .hard, .medium, .easy]
+        }
     }
 
     private static func densifyExtremeNotes(from notes: [Note], lanes: Int) -> [Note] {
@@ -119,6 +138,18 @@ enum ChartLoader {
 
         let combined = (sortedNotes + extras).sorted { $0.time < $1.time }
         return combined
+    }
+
+    private static func placeholderChart() -> Chart {
+        Chart(
+            version: 1,
+            difficulty: nil,
+            songName: "Placeholder",
+            bpm: 120,
+            offset: 0,
+            lanes: 3,
+            notes: placeholderNotes()
+        )
     }
 
     private static func placeholderNotes() -> [Note] {

@@ -8,11 +8,16 @@ struct ContentView: View {
     @State private var scene: GameScene?
     @State private var selectedDifficulty: Difficulty = .medium
     @State private var selectedSong: SongMetadata = .default
+    @State private var availableDifficulties: Set<Difficulty> = Set(Difficulty.allCases)
+    
+    // Health bar draggable position
+    @AppStorage("healthBarOffsetX") private var healthBarOffsetX: Double = 0
+    @AppStorage("healthBarOffsetY") private var healthBarOffsetY: Double = 60
 
     var body: some View {
         ZStack {
             if !isPlaying {
-                MainMenuView(isPlaying: $isPlaying, selectedDifficulty: $selectedDifficulty, selectedSong: $selectedSong)
+                MainMenuView(gameState: gameState, isPlaying: $isPlaying, selectedDifficulty: $selectedDifficulty, selectedSong: $selectedSong, availableDifficulties: availableDifficulties)
                     .transition(.opacity)
             } else {
                 gameView
@@ -21,11 +26,19 @@ struct ContentView: View {
         }
         .animation(.easeInOut(duration: 0.3), value: isPlaying)
         .onAppear {
+            gameState.loadProgress()
+            gameState.loadProgressCloud()
             gameState.setSong(selectedSong)
             gameState.setDifficulty(selectedDifficulty)
+            refreshAvailability(for: selectedSong)
         }
         .onChange(of: selectedSong) { _, newSong in
             gameState.setSong(newSong)
+            refreshAvailability(for: newSong)
+            if !availableDifficulties.contains(selectedDifficulty) {
+                selectedDifficulty = availableDifficulties.first ?? .medium
+                gameState.setDifficulty(selectedDifficulty)
+            }
             // Extra stop to ensure previous audio is fully halted when switching songs from the menu
             scene?.stop()
             scene = nil
@@ -63,6 +76,8 @@ struct ContentView: View {
         }
         .onAppear {
             if scene == nil && isPlaying {
+                // Reset game state before starting
+                gameState.reset()
                 let newScene = GameScene()
                 newScene.scaleMode = .resizeFill
                 newScene.setSong(selectedSong)
@@ -78,6 +93,8 @@ struct ContentView: View {
         }
         .onChange(of: isPlaying) { _, newValue in
             if newValue {
+                // Reset game state before creating fresh scene
+                gameState.reset()
                 // Create fresh scene when starting game
                 let newScene = GameScene()
                 newScene.scaleMode = .resizeFill
@@ -102,28 +119,52 @@ struct ContentView: View {
 
     private var pauseOverlay: some View {
         ZStack {
-            Color.black.opacity(0.7)
+            Color.black.opacity(0.8)
                 .ignoresSafeArea()
+                .blur(radius: 4)
             
             VStack(spacing: 30) {
-                Text("PAUSED")
-                    .font(.system(size: 48, weight: .black, design: .rounded))
-                    .foregroundStyle(.white)
-                    .shadow(color: .cyan, radius: 20)
+                VStack(spacing: 12) {
+                    Text("PAUSED")
+                        .font(.system(size: 48, weight: .black, design: .rounded))
+                        .foregroundStyle(
+                            LinearGradient(colors: [.cyan, .blue], startPoint: .leading, endPoint: .trailing)
+                        )
+                        .shadow(color: .cyan, radius: 20)
+                    
+                    Divider()
+                        .background(Color.cyan.opacity(0.5))
+                }
                 
-                VStack(spacing: 16) {
+                VStack(spacing: 14) {
+                    HStack {
+                        Image(systemName: "bitcoinsign.circle.fill")
+                            .foregroundStyle(.yellow)
+                            .font(.system(size: 18))
+                        Text("Tap Coins: \(gameState.tapCoins)")
+                            .font(.system(size: 14, weight: .semibold, design: .rounded))
+                            .foregroundStyle(.white)
+                        Spacer()
+                    }
+                    .padding(12)
+                    .background(Color.white.opacity(0.08))
+                    .cornerRadius(12)
+                    
                     Button(action: {
                         isPaused = false
                         scene?.resume()
                     }) {
-                        Label("Resume", systemImage: "play.fill")
-                            .font(.system(size: 20, weight: .bold, design: .rounded))
-                            .foregroundColor(.white)
-                            .frame(width: 200)
-                            .padding(.vertical, 16)
-                            .background(Color.green)
-                            .clipShape(Capsule())
-                            .shadow(radius: 10)
+                        HStack(spacing: 10) {
+                            Image(systemName: "play.fill")
+                            Text("Resume")
+                        }
+                        .font(.system(size: 16, weight: .bold, design: .rounded))
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 14)
+                        .background(Color.green)
+                        .cornerRadius(12)
+                        .shadow(color: Color.green.opacity(0.6), radius: 10)
                     }
                     
                     Button(action: {
@@ -132,18 +173,29 @@ struct ContentView: View {
                         isPaused = false
                         isPlaying = false
                     }) {
-                        Label("Exit", systemImage: "xmark.circle.fill")
-                            .font(.system(size: 20, weight: .bold, design: .rounded))
-                            .foregroundColor(.white)
-                            .frame(width: 200)
-                            .padding(.vertical, 16)
-                            .background(Color.red)
-                            .clipShape(Capsule())
-                            .shadow(radius: 10)
+                        HStack(spacing: 10) {
+                            Image(systemName: "xmark.circle.fill")
+                            Text("Exit")
+                        }
+                        .font(.system(size: 16, weight: .bold, design: .rounded))
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 14)
+                        .background(Color.red)
+                        .cornerRadius(12)
+                        .shadow(color: Color.red.opacity(0.6), radius: 10)
                     }
                 }
+                .padding(24)
+                .background(
+                    RoundedRectangle(cornerRadius: 20)
+                        .fill(Color.white.opacity(0.08))
+                        .overlay(RoundedRectangle(cornerRadius: 20).stroke(Color.white.opacity(0.15), lineWidth: 1))
+                )
             }
+            .padding(40)
         }
+        .transition(.scale.combined(with: .opacity))
     }
     
     private var failureOverlay: some View {
@@ -229,6 +281,22 @@ struct ContentView: View {
                         .font(.system(size: 20, weight: .bold, design: .rounded))
                         .foregroundStyle(.white)
                         .lineLimit(1)
+                }
+
+                // Tap Coins - Compact
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("COINS")
+                        .font(.system(size: 9, weight: .semibold, design: .rounded))
+                        .foregroundStyle(.white.opacity(0.5))
+                    HStack(spacing: 4) {
+                        Image(systemName: "bitcoinsign.circle")
+                            .font(.system(size: 14))
+                            .foregroundStyle(.yellow)
+                        Text("\(gameState.tapCoins)")
+                            .font(.system(size: 16, weight: .bold, design: .rounded))
+                            .foregroundStyle(.white)
+                            .lineLimit(1)
+                    }
                 }
                 
                 // Multiplier - Compact with icon
@@ -327,47 +395,56 @@ struct ContentView: View {
             
             Spacer()
             
-            // Health bar
+            Spacer()
+        }
+        .overlay {
+            // Draggable vertical health bar
             VStack(spacing: 8) {
-                HStack {
-                    Text("Health")
-                        .font(.system(size: 11, weight: .semibold, design: .rounded))
-                        .foregroundStyle(.white.opacity(0.6))
-                    Spacer()
-                    Text("\(gameState.missedNotes)/100")
-                        .font(.system(size: 11, weight: .semibold, design: .rounded))
-                        .foregroundStyle(.white.opacity(0.6))
-                }
+                Text("HP")
+                    .font(.system(size: 10, weight: .bold, design: .rounded))
+                    .foregroundStyle(.white.opacity(0.7))
                 
                 GeometryReader { geo in
-                    ZStack(alignment: .leading) {
+                    ZStack(alignment: .bottom) {
                         Capsule()
                             .fill(.white.opacity(0.15))
-                            .frame(height: 12)
+                            .frame(width: 20)
                         
                         Capsule()
                             .fill(LinearGradient(
                                 colors: healthGradient,
-                                startPoint: .leading,
-                                endPoint: .trailing
+                                startPoint: .bottom,
+                                endPoint: .top
                             ))
-                            .frame(width: geo.size.width * gameState.health, height: 12)
+                            .frame(width: 20, height: geo.size.height * gameState.health)
                             .animation(.spring(response: 0.3), value: gameState.health)
                     }
                 }
-                .frame(height: 12)
+                .frame(width: 20, height: 200)
                 
-                // Judgement feedback
-                Text(statusText)
-                    .font(.system(size: 32, weight: .black, design: .rounded))
-                    .foregroundStyle(judgementColor)
-                    .shadow(color: judgementColor.opacity(0.8), radius: 15)
-                    .scaleEffect(judgementScale)
-                    .animation(.spring(response: 0.3, dampingFraction: 0.6), value: gameState.lastJudgement)
-                    .padding(.top, 4)
+                Text("\(Int((1.0 - Double(gameState.missedNotes) / 100.0) * 100))")
+                    .font(.system(size: 10, weight: .bold, design: .rounded))
+                    .foregroundStyle(.white.opacity(0.7))
             }
-            .padding(.horizontal, 32)
-            .padding(.bottom, 40)
+            .padding(8)
+            .background(.ultraThinMaterial.opacity(0.3))
+            .cornerRadius(12)
+            .position(
+                x: UIScreen.main.bounds.width - 20 + healthBarOffsetX,
+                y: healthBarOffsetY + 140
+            )
+            .gesture(
+                DragGesture()
+                    .onChanged { value in
+                        healthBarOffsetX = value.translation.width
+                        healthBarOffsetY = value.translation.height + 60
+                    }
+                    .onEnded { value in
+                        // Keep the final position
+                        healthBarOffsetX += value.translation.width
+                        healthBarOffsetY += value.translation.height
+                    }
+            )
         }
     }
     
@@ -439,6 +516,13 @@ struct ContentView: View {
                 isPlaying = false
             }
         )
+    }
+
+    private func refreshAvailability(for song: SongMetadata) {
+        availableDifficulties = ChartLoader.availability(for: song)
+        if availableDifficulties.isEmpty {
+            availableDifficulties = [.medium]
+        }
     }
 }
 
@@ -575,6 +659,28 @@ struct ResultsView: View {
                             color: .green
                         )
                     }
+
+                    // Coins Earned Banner
+                    if gameState.lastCoinsEarned > 0 {
+                        HStack(spacing: 10) {
+                            Image(systemName: "bitcoinsign.circle.fill")
+                                .font(.system(size: 20))
+                                .foregroundStyle(.yellow)
+                            Text("+\(gameState.lastCoinsEarned) Tap Coins")
+                                .font(.system(size: 18, weight: .bold, design: .rounded))
+                                .foregroundStyle(.yellow)
+                        }
+                        .padding(14)
+                        .frame(maxWidth: .infinity)
+                        .background(
+                            RoundedRectangle(cornerRadius: 12)
+                                .fill(Color.yellow.opacity(0.15))
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 12)
+                                        .stroke(Color.yellow.opacity(0.5), lineWidth: 2)
+                                )
+                        )
+                    }
                     
                     HStack(spacing: 20) {
                         StatCard(
@@ -655,6 +761,7 @@ struct ResultsView: View {
                     Button(action: onRestart) {
                         HStack(spacing: 8) {
                             Image(systemName: "arrow.clockwise")
+                                .font(.system(size: 16, weight: .bold))
                             Text("Retry")
                         }
                         .font(.system(size: 16, weight: .bold, design: .rounded))
@@ -668,13 +775,14 @@ struct ResultsView: View {
                                 endPoint: .bottomTrailing
                             )
                         )
-                        .clipShape(RoundedRectangle(cornerRadius: 12))
-                        .shadow(color: Color(red: 0.2, green: 0.8, blue: 0.2).opacity(0.5), radius: 10)
+                        .cornerRadius(12)
+                        .shadow(color: Color(red: 0.2, green: 0.8, blue: 0.2).opacity(0.6), radius: 10)
                     }
                     
                     Button(action: onExit) {
                         HStack(spacing: 8) {
                             Image(systemName: "house.fill")
+                                .font(.system(size: 16, weight: .bold))
                             Text("Menu")
                         }
                         .font(.system(size: 16, weight: .bold, design: .rounded))
@@ -688,8 +796,8 @@ struct ResultsView: View {
                                 endPoint: .bottomTrailing
                             )
                         )
-                        .clipShape(RoundedRectangle(cornerRadius: 12))
-                        .shadow(color: Color(red: 0.2, green: 0.6, blue: 1.0).opacity(0.5), radius: 10)
+                        .cornerRadius(12)
+                        .shadow(color: Color(red: 0.2, green: 0.6, blue: 1.0).opacity(0.6), radius: 10)
                     }
                 }
                 .padding(20)

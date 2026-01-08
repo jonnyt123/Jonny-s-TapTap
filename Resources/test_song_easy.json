@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "difficulty": "easy",
+  "songName": "Test Song",
+  "bpm": 120,
+  "offset": 0.0,
+  "lanes": 4,
+  "notes": [
+    { "id": "te1", "time": 0.6, "lane": 0, "type": "tap" },
+    { "id": "te2", "time": 1.4, "lane": 1, "type": "tap" },
+    { "id": "te3", "time": 2.2, "lane": 2, "type": "tap" },
+    { "id": "te4", "time": 3.0, "lane": 3, "type": "tap" }
+  ]
+}

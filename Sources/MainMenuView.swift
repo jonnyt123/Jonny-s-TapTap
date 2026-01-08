@@ -1,12 +1,15 @@
 import SwiftUI
 
 struct MainMenuView: View {
+    @ObservedObject var gameState: GameState
     @Binding var isPlaying: Bool
     @Binding var selectedDifficulty: Difficulty
     @Binding var selectedSong: SongMetadata
+    var availableDifficulties: Set<Difficulty>
     @State private var logoScale: CGFloat = 0.8
     @State private var glowIntensity: Double = 0.5
     @State private var showDifficultyMenu = false
+    @State private var showShop = false
     
     var body: some View {
         ZStack {
@@ -23,12 +26,10 @@ struct MainMenuView: View {
             .ignoresSafeArea()
             
             VStack(spacing: 50) {
-                Spacer()
-                
-                // Logo
+                // Logo at top
                 VStack(spacing: 8) {
                     Text("JONNY'S")
-                        .font(.system(size: 42, weight: .black, design: .rounded))
+                        .font(.system(size: 36, weight: .black, design: .rounded))
                         .foregroundStyle(
                             LinearGradient(
                                 colors: [.white, .gray],
@@ -40,7 +41,7 @@ struct MainMenuView: View {
                         .shadow(color: .pink.opacity(glowIntensity), radius: 30)
                     
                     Text("TAP TAP")
-                        .font(.system(size: 68, weight: .black, design: .rounded))
+                        .font(.system(size: 52, weight: .black, design: .rounded))
                         .kerning(4)
                         .foregroundStyle(
                             LinearGradient(
@@ -54,7 +55,7 @@ struct MainMenuView: View {
                         .shadow(color: .red.opacity(glowIntensity), radius: 45)
                         .overlay(
                             Text("TAP TAP")
-                                .font(.system(size: 68, weight: .black, design: .rounded))
+                                .font(.system(size: 52, weight: .black, design: .rounded))
                                 .kerning(4)
                                 .foregroundStyle(.white.opacity(0.3))
                                 .blur(radius: 2)
@@ -66,117 +67,126 @@ struct MainMenuView: View {
                     .degrees(sin(Date().timeIntervalSinceReferenceDate) * 5),
                     axis: (x: 0, y: 1, z: 0)
                 )
+                .padding(.vertical, 20)
                 
-                Spacer()
-
-                // Song selection
+                // Song selection - Scrollable
                 VStack(alignment: .leading, spacing: 12) {
                     Text("SELECT SONG")
-                        .font(.system(size: 16, weight: .bold, design: .rounded))
+                        .font(.system(size: 14, weight: .bold, design: .rounded))
                         .foregroundStyle(.white)
                         .padding(.horizontal)
-                        .padding(.top, 6)
-
-                    ForEach(SongMetadata.library) { song in
-                        Button(action: {
-                            selectedSong = song
-                        }) {
-                            HStack(spacing: 16) {
-                                VStack(alignment: .leading, spacing: 4) {
-                                    Text(song.title.uppercased())
-                                        .font(.system(size: 18, weight: .heavy, design: .rounded))
-                                    Text(song.artist)
-                                        .font(.system(size: 14, weight: .semibold, design: .rounded))
-                                        .foregroundStyle(.white.opacity(0.7))
-                                }
-                                Spacer()
-                                VStack(alignment: .trailing, spacing: 4) {
-                                    Text("BPM \(Int(song.bpm))")
-                                        .font(.system(size: 12, weight: .bold, design: .rounded))
-                                        .foregroundStyle(.white.opacity(0.8))
-                                    Text("\(song.lanes)-LANE")
-                                        .font(.system(size: 12, weight: .bold, design: .rounded))
-                                        .foregroundStyle(.white.opacity(0.8))
-                                }
-                                if selectedSong.id == song.id {
-                                    Image(systemName: "checkmark.seal.fill")
-                                        .foregroundStyle(song.accent)
-                                        .font(.system(size: 22, weight: .bold))
-                                }
+                    HStack {
+                        Image(systemName: "bitcoinsign.circle")
+                            .foregroundStyle(.yellow)
+                        Text("Tap Coins: \(gameState.tapCoins)")
+                            .font(.system(size: 12, weight: .bold, design: .rounded))
+                            .foregroundStyle(.white.opacity(0.9))
+                        Spacer()
+                        Button(action: { showShop = true }) {
+                            HStack(spacing: 6) {
+                                Image(systemName: "cart")
+                                Text("Shop")
                             }
+                            .font(.system(size: 12, weight: .bold, design: .rounded))
                             .foregroundColor(.white)
-                            .padding(16)
-                            .frame(maxWidth: .infinity)
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 8)
                             .background(
-                                LinearGradient(
-                                    colors: song.primaryColors,
-                                    startPoint: .topLeading,
-                                    endPoint: .bottomTrailing
-                                ).opacity(0.5)
+                                LinearGradient(colors: [.blue.opacity(0.4), .purple.opacity(0.4)], startPoint: .leading, endPoint: .trailing)
                             )
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 14)
-                                    .stroke(selectedSong.id == song.id ? song.accent : Color.white.opacity(0.2), lineWidth: 2)
-                            )
-                            .cornerRadius(14)
-                            .shadow(color: song.accent.opacity(0.35), radius: 16, y: 6)
-                        }
-                        .padding(.horizontal)
-                    }
-                }
-                .padding(.bottom, 10)
-                
-                // Difficulty selection
-                if showDifficultyMenu {
-                    HStack(spacing: 8) {
-                        ForEach(Difficulty.allCases, id: \.self) { difficulty in
-                            Button(action: {
-                                selectedDifficulty = difficulty
-                                withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
-                                    showDifficultyMenu = false
-                                }
-                            }) {
-                                VStack(spacing: 4) {
-                                    Text(difficulty.rawValue.prefix(1))
-                                        .font(.system(size: 20, weight: .black, design: .rounded))
-                                    Text(difficulty.rawValue)
-                                        .font(.system(size: 10, weight: .semibold, design: .rounded))
-                                }
-                                .foregroundColor(selectedDifficulty == difficulty ? .yellow : .white)
-                                .frame(maxWidth: .infinity)
-                                .padding(.vertical, 12)
-                                .background(
-                                    selectedDifficulty == difficulty ?
-                                    Color.cyan.opacity(0.4) : Color.white.opacity(0.15)
-                                )
-                                .cornerRadius(8)
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 8)
-                                        .stroke(selectedDifficulty == difficulty ? Color.yellow : Color.clear, lineWidth: 2)
-                                )
-                            }
+                            .cornerRadius(8)
+                            .shadow(color: .blue.opacity(0.4), radius: 6)
                         }
                     }
                     .padding(.horizontal)
-                    .transition(.opacity)
+
+                    ScrollView(.vertical, showsIndicators: true) {
+                        VStack(spacing: 10) {
+                            ForEach(SongMetadata.library) { song in
+                                Button(action: {
+                                    let isUnlocked = gameState.unlockedSongIDs.contains(song.id)
+                                    if isUnlocked { selectedSong = song }
+                                }) {
+                                    HStack(spacing: 12) {
+                                        VStack(alignment: .leading, spacing: 3) {
+                                            let isUnlocked = gameState.unlockedSongIDs.contains(song.id)
+                                            Text(isUnlocked ? song.title.uppercased() : "LOCKED")
+                                                .font(.system(size: 16, weight: .heavy, design: .rounded))
+                                            Text(song.artist)
+                                                .font(.system(size: 12, weight: .semibold, design: .rounded))
+                                                .foregroundStyle(.white.opacity(0.7))
+                                        }
+                                        Spacer()
+                                        VStack(alignment: .trailing, spacing: 3) {
+                                            Text("BPM \(Int(song.bpm))")
+                                                .font(.system(size: 11, weight: .bold, design: .rounded))
+                                                .foregroundStyle(.white.opacity(0.8))
+                                            Text("\(song.lanes)-LANE")
+                                                .font(.system(size: 11, weight: .bold, design: .rounded))
+                                                .foregroundStyle(.white.opacity(0.8))
+                                        }
+                                        if selectedSong.id == song.id {
+                                            Image(systemName: "checkmark.seal.fill")
+                                                .foregroundStyle(song.accent)
+                                                .font(.system(size: 20, weight: .bold))
+                                        }
+                                    }
+                                    .foregroundColor(.white)
+                                    .padding(12)
+                                    .frame(maxWidth: .infinity)
+                                    .background(
+                                        LinearGradient(
+                                            colors: song.primaryColors,
+                                            startPoint: .topLeading,
+                                            endPoint: .bottomTrailing
+                                        ).opacity( gameState.unlockedSongIDs.contains(song.id) ? 0.6 : 0.12)
+                                    )
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 12)
+                                            .stroke(selectedSong.id == song.id ? song.accent : Color.white.opacity(0.15), lineWidth: 2.5)
+                                    )
+                                    .overlay {
+                                        if !gameState.unlockedSongIDs.contains(song.id) {
+                                            ZStack {
+                                                Color.black.opacity(0.4)
+                                                    .cornerRadius(12)
+                                                Image(systemName: "lock.fill")
+                                                    .font(.system(size: 26, weight: .bold))
+                                                    .foregroundStyle(.white.opacity(0.8))
+                                            }
+                                        }
+                                    )
+                                    .cornerRadius(12)
+                                    .shadow(color: song.accent.opacity(0.35), radius: 12, y: 4)
+                                }
+                                .padding(.horizontal)
+                                .disabled(!gameState.unlockedSongIDs.contains(song.id))
+                            }
+                        }
+                        .padding(.vertical, 6)
+                    }
+                    .scrollIndicators(.visible)
                 }
+                .frame(maxHeight: .infinity)
+                .padding(.vertical, 12)
                 
-                // Play button
-                VStack(spacing: 12) {
+                // Controls at bottom
+                VStack(spacing: 10) {
+                    // Difficulty button
                     Button(action: {
-                        withAnimation(.spring(response: 0.4, dampingFraction: 0.6)) {
+                        withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
                             showDifficultyMenu.toggle()
                         }
                     }) {
-                        HStack(spacing: 12) {
+                        HStack(spacing: 8) {
                             Image(systemName: showDifficultyMenu ? "chevron.up" : "chevron.down")
-                                .font(.system(size: 18, weight: .bold))
+                                .font(.system(size: 16, weight: .bold))
                             Text(showDifficultyMenu ? "HIDE" : "DIFFICULTY: \(selectedDifficulty.rawValue.uppercased())")
-                                .font(.system(size: 16, weight: .bold, design: .rounded))
+                                .font(.system(size: 14, weight: .bold, design: .rounded))
                         }
                         .foregroundColor(.white)
-                        .padding(.horizontal, 30)
-                        .padding(.vertical, 12)
+                        .padding(.horizontal, 24)
+                        .padding(.vertical, 10)
                         .background(Color.cyan.opacity(0.2))
                         .cornerRadius(8)
                         .overlay(
@@ -185,20 +195,63 @@ struct MainMenuView: View {
                         )
                     }
                     
+                    // Difficulty selection (if visible)
+                    if showDifficultyMenu {
+                        HStack(spacing: 6) {
+                            ForEach(Difficulty.allCases, id: \.self) { difficulty in
+                                let isAvailable = availableDifficulties.contains(difficulty)
+                                Button(action: {
+                                    guard isAvailable else { return }
+                                    selectedDifficulty = difficulty
+                                    withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+                                        showDifficultyMenu = false
+                                    }
+                                }) {
+                                    VStack(spacing: 2) {
+                                        Text(difficulty.rawValue.prefix(1))
+                                            .font(.system(size: 16, weight: .black, design: .rounded))
+                                        Text(difficulty.rawValue)
+                                            .font(.system(size: 9, weight: .semibold, design: .rounded))
+                                    }
+                                    .foregroundColor(
+                                        isAvailable ? (selectedDifficulty == difficulty ? .yellow : .white) : .gray
+                                    )
+                                    .frame(maxWidth: .infinity)
+                                    .padding(.vertical, 10)
+                                    .background(
+                                        isAvailable ?
+                                            (selectedDifficulty == difficulty ? Color.cyan.opacity(0.4) : Color.white.opacity(0.15))
+                                            : Color.white.opacity(0.06)
+                                    )
+                                    .cornerRadius(8)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 8)
+                                            .stroke(selectedDifficulty == difficulty ? Color.yellow : Color.clear, lineWidth: 2)
+                                    )
+                                }
+                                .disabled(!isAvailable)
+                            }
+                        }
+                        .padding(.horizontal)
+                        .transition(.opacity)
+                    }
+                    
+                    // Start game button
                     Button(action: {
                         withAnimation(.spring(response: 0.4, dampingFraction: 0.6)) {
                             isPlaying = true
                         }
                     }) {
-                        HStack(spacing: 12) {
+                        HStack(spacing: 10) {
                             Image(systemName: "play.fill")
-                                .font(.system(size: 28))
+                                .font(.system(size: 18, weight: .bold))
                             Text("START GAME")
-                                .font(.system(size: 24, weight: .bold, design: .rounded))
+                                .font(.system(size: 16, weight: .bold, design: .rounded))
                         }
                         .foregroundColor(.white)
-                        .padding(.horizontal, 40)
-                        .padding(.vertical, 20)
+                        .frame(maxWidth: .infinity)
+                        .padding(.horizontal, 24)
+                        .padding(.vertical, 14)
                         .background(
                             LinearGradient(
                                 colors: [.pink, .purple, .blue],
@@ -206,15 +259,20 @@ struct MainMenuView: View {
                                 endPoint: .trailing
                             )
                         )
-                        .clipShape(Capsule())
-                        .shadow(color: .purple.opacity(0.6), radius: 20, y: 10)
+                        .cornerRadius(12)
+                        .shadow(color: .purple.opacity(0.7), radius: 12, y: 6)
                         .overlay(
-                            Capsule()
-                                .stroke(Color.white.opacity(0.3), lineWidth: 2)
+                            RoundedRectangle(cornerRadius: 12)
+                                .stroke(Color.white.opacity(0.2), lineWidth: 1.5)
                         )
                     }
+                    .disabled(!gameState.unlockedSongIDs.contains(selectedSong.id))
                 }
-                .padding(.bottom, 60)
+                .padding(.bottom, 40)
+                .padding(.horizontal)
+            }
+            .sheet(isPresented: $showShop) {
+                ShopView(gameState: gameState)
             }
         }
         .onAppear {

@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "difficulty": "hard",
+  "songName": "Test Song",
+  "bpm": 120,
+  "offset": 0.0,
+  "lanes": 4,
+  "notes": [
+    { "id": "th1", "time": 0.4, "lane": 0, "type": "tap" },
+    { "id": "th2", "time": 0.8, "lane": 1, "type": "tap" },
+    { "id": "th3", "time": 1.1, "lane": 3, "type": "tap" },
+    { "id": "th4", "time": 1.4, "lane": 2, "type": "tap" },
+    { "id": "th5", "time": 1.7, "lane": 0, "type": "tap" },
+    { "id": "th6", "time": 2.0, "lane": 3, "type": "tap" },
+    { "id": "th7", "time": 2.3, "lane": 1, "type": "tap" },
+    { "id": "th8", "time": 2.6, "lane": 2, "type": "tap" },
+    { "id": "th9", "time": 3.0, "lane": 0, "type": "tap" },
+    { "id": "th10", "time": 3.4, "lane": 2, "type": "tap" }
+  ]
+}

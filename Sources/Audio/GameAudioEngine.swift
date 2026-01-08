@@ -25,11 +25,11 @@ final class GameAudioEngine {
     private func configureAudioSession() {
         let session = AVAudioSession.sharedInstance()
         do {
-            try session.setCategory(.playback, mode: .moviePlayback, options: [.duckOthers])
-            try session.overrideOutputAudioPort(.speaker)
-            try session.setActive(true, options: [])
+            try session.setCategory(.playback, mode: .default, options: [.duckOthers, .defaultToSpeaker])
+            try session.setActive(true, options: .notifyOthersOnDeactivation)
+            print("✓ Audio session configured for playback")
         } catch {
-            print("Failed to set up audio session: \(error)")
+            print("✗ Audio session setup failed: \(error)")
         }
     }
     
@@ -38,29 +38,32 @@ final class GameAudioEngine {
         print("DEBUG: Preparing audio for \(song.title) ...")
         var url: URL?
 
-        let fileManager = FileManager.default
-        let docDir = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
-        let docPath = docDir.appendingPathComponent(song.audioName).appendingPathExtension(song.audioExtension)
-
-        if fileManager.fileExists(atPath: docPath.path) {
-            url = docPath
-            print("✓ Found \(song.audioName).\(song.audioExtension) in Documents")
+        // Always prefer the app bundle’s shipped audio first (ensures correct asset like Resources/hallelujah.wav).
+        if let bundleURL = Bundle.main.url(forResource: song.audioName, withExtension: song.audioExtension) {
+            url = bundleURL
+            print("✓ Using bundled audio: \(bundleURL.lastPathComponent)")
         }
 
+        // Next, check the Resources.bundle inside the app bundle.
         if url == nil {
-            if let bundleURL = Bundle.main.url(forResource: song.audioName, withExtension: song.audioExtension) {
-                url = bundleURL
-                print("✓ Found audio in bundle root: \(song.audioName).\(song.audioExtension)")
-            }
-        }
-
-        if url == nil {
+            let fileManager = FileManager.default
             if let resourcesBundle = Bundle.main.url(forResource: "Resources", withExtension: "bundle") {
                 let bundleTrackURL = resourcesBundle.appendingPathComponent(song.audioName).appendingPathExtension(song.audioExtension)
                 if fileManager.fileExists(atPath: bundleTrackURL.path) {
                     url = bundleTrackURL
-                    print("✓ Found audio in Resources.bundle")
+                    print("✓ Using Resources.bundle audio: \(bundleTrackURL.lastPathComponent)")
                 }
+            }
+        }
+
+        // Finally, fall back to Documents (user-downloaded replacement).
+        if url == nil {
+            let fileManager = FileManager.default
+            let docDir = fileManager.urls(for: .documentDirectory, in: .userDomainMask)[0]
+            let docPath = docDir.appendingPathComponent(song.audioName).appendingPathExtension(song.audioExtension)
+            if fileManager.fileExists(atPath: docPath.path) {
+                url = docPath
+                print("✓ Using Documents audio override: \(docPath.lastPathComponent)")
             }
         }
 

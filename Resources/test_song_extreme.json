@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "difficulty": "extreme",
+  "songName": "Test Song",
+  "bpm": 120,
+  "offset": 0.0,
+  "lanes": 4,
+  "notes": [
+    { "id": "tx1", "time": 0.3, "lane": 0, "type": "tap" },
+    { "id": "tx2", "time": 0.55, "lane": 1, "type": "tap" },
+    { "id": "tx3", "time": 0.8, "lane": 2, "type": "tap" },
+    { "id": "tx4", "time": 1.05, "lane": 3, "type": "tap" },
+    { "id": "tx5", "time": 1.3, "lane": 0, "type": "tap" },
+    { "id": "tx6", "time": 1.55, "lane": 2, "type": "tap" },
+    { "id": "tx7", "time": 1.8, "lane": 1, "type": "tap" },
+    { "id": "tx8", "time": 2.05, "lane": 3, "type": "tap" },
+    { "id": "tx9", "time": 2.3, "lane": 0, "type": "tap" },
+    { "id": "tx10", "time": 2.55, "lane": 2, "type": "tap" },
+    { "id": "tx11", "time": 2.8, "lane": 1, "type": "tap" },
+    { "id": "tx12", "time": 3.05, "lane": 3, "type": "tap" },
+    { "id": "tx13", "time": 3.3, "lane": 0, "type": "tap" },
+    { "id": "tx14", "time": 3.55, "lane": 1, "type": "tap" }
+  ]
+}
