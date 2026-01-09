@@ -239,7 +239,7 @@ final class GameScene: SKScene {
 
     private func buildLanes() {
         // Calculate hit line position from bottom of screen based on lane count
-        hitLineY = chart.lanes == 4 ? 250 : hitLineOffset
+        hitLineY = chart.lanes == 4 ? 120 : hitLineOffset
         
         // Add animated neon background
         addAnimatedBackground()
@@ -429,12 +429,13 @@ final class GameScene: SKScene {
     }
     
     private func buildHitLine() {
-        // Create 3 glowing circles for hit targets
+        // Create hit targets matching note lanes
         guard chart.lanes > 0 else { return }
-        let laneWidth = size.width / CGFloat(chart.lanes)
+        let laneWidth = chart.lanes == 3 ? (size.width * 0.7) / CGFloat(chart.lanes) : size.width / CGFloat(chart.lanes)
+        let laneStartX = chart.lanes == 3 ? (size.width - size.width * 0.7) / 2 : (chart.lanes == 4 ? 40 : 0)
         
         for lane in 0..<chart.lanes {
-            let centerX = CGFloat(lane) * laneWidth + laneWidth * 0.5
+            let centerX = laneStartX + CGFloat(lane) * laneWidth + laneWidth * 0.5
             let circle = SKShapeNode(circleOfRadius: 35)
             circle.position = CGPoint(x: centerX, y: hitLineY)
             circle.fillColor = .clear
@@ -526,7 +527,7 @@ final class GameScene: SKScene {
     private func spawnNotesIfNeeded(songTime: Double) {
         guard nextNoteIndex < notes.count else { return }
         let laneWidth = chart.lanes == 3 ? (size.width * 0.7) / CGFloat(chart.lanes) : size.width / CGFloat(chart.lanes)
-        let laneStartX = chart.lanes == 3 ? (size.width - size.width * 0.7) / 2 : 0
+        let laneStartX = chart.lanes == 3 ? (size.width - size.width * 0.7) / 2 : (chart.lanes == 4 ? 40 : 0)
         while nextNoteIndex < notes.count && (notes[nextNoteIndex].time - songTime) <= spawnLeadTime {
             let note = notes[nextNoteIndex]
             let centerX = laneStartX + CGFloat(note.lane) * laneWidth + laneWidth * 0.5
@@ -536,16 +537,36 @@ final class GameScene: SKScene {
             
             // Use custom images for 3-lane songs, stars for 4-lane songs
             if chart.lanes == 3 {
-                let noteImages = ["note_blue", "note_pink", "note_green"]
-                let imageName = noteImages[note.lane % noteImages.count]
-                
-                if let noteImage = UIImage(named: imageName) ?? UIImage(contentsOfFile: Bundle.main.path(forResource: imageName, ofType: "png") ?? "") {
+                // Prefer heavy-metal styled assets if available, with graceful fallback
+                let laneImages = ["note_blue", "note_pink", "note_green"]
+                let metalLaneImages = ["note_metal_blue", "note_metal_pink", "note_metal_green"]
+                let laneIndex = note.lane % laneImages.count
+                let candidates = [metalLaneImages[laneIndex], "note_metal", laneImages[laneIndex]]
+
+                var selectedImage: UIImage?
+                for name in candidates {
+                    if let img = UIImage(named: name) {
+                        selectedImage = img
+                        break
+                    } else if let path = Bundle.main.path(forResource: name.replacingOccurrences(of: ".png", with: ""), ofType: "png"),
+                              let img = UIImage(contentsOfFile: path) {
+                        selectedImage = img
+                        break
+                    }
+                }
+
+                if let noteImage = selectedImage {
                     let spriteNode = SKSpriteNode(texture: SKTexture(image: noteImage))
                     spriteNode.size = CGSize(width: 69, height: 69)  // 25% larger
                     spriteNode.zPosition = 6
+                    // If using a generic metal texture, tint per lane for clarity
+                    if candidates.first == "note_metal" || noteImage.accessibilityIdentifier == "note_metal" {
+                        spriteNode.color = laneColors[laneIndex]
+                        spriteNode.colorBlendFactor = 0.6
+                    }
                     node = spriteNode
                 } else {
-                    // Fallback to star if image not found
+                    // Fallback to star if no images found
                     let starPath = createStarPath(radius: noteRadius)
                     let starNode = SKShapeNode(path: starPath)
                     starNode.fillColor = laneColors[note.lane % laneColors.count]
@@ -556,25 +577,47 @@ final class GameScene: SKScene {
                     node = starNode
                 }
             } else {
-                // Use stars for 4-lane songs
-                let starPath = createStarPath(radius: noteRadius)
-                let starNode = SKShapeNode(path: starPath)
-                let baseColor = laneColors[note.lane % laneColors.count]
-                starNode.fillColor = baseColor
-                starNode.strokeColor = baseColor.withAlphaComponent(1.0)
-                starNode.lineWidth = 2.0
-                starNode.glowWidth = 15
-                starNode.zPosition = 6
+                // Use custom images for 4-lane songs
+                let noteImageName: String
+                switch note.lane {
+                case 0:
+                    noteImageName = "note_blue_4lane"    // Blue/Cyan lane
+                case 1:
+                    noteImageName = "note_green_4lane"   // Green lane
+                case 2:
+                    noteImageName = "note_orange_4lane"  // Orange/Gold lane
+                case 3:
+                    noteImageName = "note_red_4lane"     // Red/Magenta lane
+                default:
+                    noteImageName = ""
+                }
                 
-                // Add 3D depth with darker shadow
-                let shadowStar = SKShapeNode(path: starPath)
-                shadowStar.fillColor = SKColor.black.withAlphaComponent(0.4)
-                shadowStar.strokeColor = .clear
-                shadowStar.position = CGPoint(x: 3, y: -3)
-                shadowStar.zPosition = -1
-                starNode.addChild(shadowStar)
-                
-                node = starNode
+                if !noteImageName.isEmpty,
+                   let noteImage = UIImage(named: noteImageName) ?? UIImage(contentsOfFile: Bundle.main.path(forResource: noteImageName, ofType: "png") ?? "") {
+                    let spriteNode = SKSpriteNode(texture: SKTexture(image: noteImage))
+                    spriteNode.size = CGSize(width: 69, height: 69)
+                    spriteNode.zPosition = 6
+                    node = spriteNode
+                } else {
+                    // Fallback to star if image not found
+                    let starPath = createStarPath(radius: noteRadius)
+                    let starNode = SKShapeNode(path: starPath)
+                    let baseColor = laneColors[note.lane % laneColors.count]
+                    starNode.fillColor = baseColor
+                    starNode.strokeColor = baseColor.withAlphaComponent(1.0)
+                    starNode.lineWidth = 2.0
+                    starNode.glowWidth = 15
+                    starNode.zPosition = 6
+                    
+                    let shadowStar = SKShapeNode(path: starPath)
+                    shadowStar.fillColor = SKColor.black.withAlphaComponent(0.4)
+                    shadowStar.strokeColor = .clear
+                    shadowStar.position = CGPoint(x: 3, y: -3)
+                    shadowStar.zPosition = -1
+                    starNode.addChild(shadowStar)
+                    
+                    node = starNode
+                }
             }
             
             node.position = CGPoint(x: centerX, y: size.height + 40)
@@ -611,7 +654,7 @@ final class GameScene: SKScene {
 
     private func updateActiveNotes(songTime: Double) {
         let laneWidth = chart.lanes == 3 ? (size.width * 0.7) / CGFloat(chart.lanes) : size.width / CGFloat(chart.lanes)
-        let laneStartX = chart.lanes == 3 ? (size.width - size.width * 0.7) / 2 : 0
+        let laneStartX = chart.lanes == 3 ? (size.width - size.width * 0.7) / 2 : (chart.lanes == 4 ? 40 : 0)
         var notesToRemove: [UUID] = []
         
         for (id, node) in activeNotes {
@@ -637,14 +680,12 @@ final class GameScene: SKScene {
                 // 3-lane: notes start close together, spread apart as they fall
                 let spreadFactor: CGFloat = 0.04  // Controls spreading angle
                 switch note.lane {
-                case 0: // Left lane spreads left (away from center)
-                    horizontalOffset = -verticalDistance * spreadFactor * 1.75 - 25  // Shifted left
-                    // Calculate rotation to follow the path angle
-                    rotationAngle = atan2(horizontalOffset, verticalDistance)
-                case 2: // Right lane spreads right (away from center)
-                    horizontalOffset = -verticalDistance * spreadFactor * 1.0 + 25  // Shifted right more
-                    // Calculate rotation to follow the path angle
-                    rotationAngle = atan2(horizontalOffset, verticalDistance)
+                case 0: // Left lane (blue) moved to the left
+                    horizontalOffset = -100  // Move 100 points to the left
+                    rotationAngle = 0
+                case 2: // Right lane (green) moved to the right
+                    horizontalOffset = -80  // Move 80 points to the left
+                    rotationAngle = 0
                 default: // Middle lane stays straight
                     horizontalOffset = -verticalDistance * spreadFactor * 0.15
                     rotationAngle = 0
@@ -716,14 +757,13 @@ final class GameScene: SKScene {
             // Show particle effect based on judgement
             spawnHitParticles(at: node.position, judgement: judgement, lane: note.lane)
             
-            // TTR4-style floating judgment text
+            // Single floating judgment text per hit
             showJudgmentText(judgement, at: node.position)
             
             // TTR4-style lane glow on hit
             flashLaneGlow(lane: note.lane, judgement: judgement)
 
-            // Floating hit marker
-            spawnHitMarker(judgement, at: node.position)
+            // Removed duplicate marker to avoid double text
             
             // Animated removal with scale burst
             let scale = SKAction.scale(to: 1.8, duration: 0.12)
@@ -872,7 +912,7 @@ final class GameScene: SKScene {
         guard !isPausedState else { return }
         let songTime = latestSongTime
         let laneWidth = chart.lanes == 3 ? (size.width * 0.7) / CGFloat(chart.lanes) : size.width / CGFloat(chart.lanes)
-        let laneStartX = chart.lanes == 3 ? (size.width - size.width * 0.7) / 2 : 0
+        let laneStartX = chart.lanes == 3 ? (size.width - size.width * 0.7) / 2 : (chart.lanes == 4 ? 40 : 0)
         let tappedLane = Int((point.x - laneStartX) / laneWidth)
         guard tappedLane >= 0 && tappedLane < chart.lanes else { return }
 
@@ -1103,16 +1143,16 @@ final class GameScene: SKScene {
     }
     
     private func shakeScreen() {
-        let shakeAmount: CGFloat = 10
-        let shakeDuration: TimeInterval = 0.05
-        
+        let shakeAmount: CGFloat = 4
+        let shakeDuration: TimeInterval = 0.03
+
         let moveRight = SKAction.moveBy(x: shakeAmount, y: 0, duration: shakeDuration)
         let moveLeft = SKAction.moveBy(x: -shakeAmount * 2, y: 0, duration: shakeDuration)
         let moveCenter = SKAction.moveBy(x: shakeAmount, y: 0, duration: shakeDuration)
-        
+
         let shakeSequence = SKAction.sequence([moveRight, moveLeft, moveCenter])
-        let repeatShake = SKAction.repeat(shakeSequence, count: 3)
-        
+        let repeatShake = SKAction.repeat(shakeSequence, count: 2)
+
         for child in children {
             if child.zPosition < 100 {  // Don't shake UI elements
                 child.run(repeatShake)

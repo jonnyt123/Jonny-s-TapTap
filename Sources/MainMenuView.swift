@@ -1,4 +1,5 @@
 import SwiftUI
+import UIKit
 
 struct MainMenuView: View {
     @ObservedObject var gameState: GameState
@@ -13,71 +14,53 @@ struct MainMenuView: View {
     
     var body: some View {
         ZStack {
-            // Animated gradient background
-            LinearGradient(
-                colors: [
-                    Color(red: 0.02, green: 0.02, blue: 0.12),
-                    Color(red: 0.08, green: 0.05, blue: 0.15),
-                    Color(red: 0.12, green: 0.02, blue: 0.18)
-                ],
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-            .ignoresSafeArea()
+            // Heavy-metal background image - fills entire screen
+            Color.black
+                .ignoresSafeArea()
             
-            VStack(spacing: 50) {
-                // Logo at top
-                VStack(spacing: 8) {
-                    Text("JONNY'S")
-                        .font(.system(size: 36, weight: .black, design: .rounded))
-                        .foregroundStyle(
-                            LinearGradient(
-                                colors: [.white, .gray],
-                                startPoint: .top,
-                                endPoint: .bottom
-                            )
-                        )
-                        .shadow(color: .purple.opacity(glowIntensity), radius: 20)
-                        .shadow(color: .pink.opacity(glowIntensity), radius: 30)
-                    
-                    Text("TAP TAP")
-                        .font(.system(size: 52, weight: .black, design: .rounded))
-                        .kerning(4)
-                        .foregroundStyle(
-                            LinearGradient(
-                                colors: [.yellow, .orange, .red],
-                                startPoint: .leading,
-                                endPoint: .trailing
-                            )
-                        )
-                        .shadow(color: .yellow.opacity(glowIntensity), radius: 25)
-                        .shadow(color: .orange.opacity(glowIntensity), radius: 35)
-                        .shadow(color: .red.opacity(glowIntensity), radius: 45)
-                        .overlay(
-                            Text("TAP TAP")
-                                .font(.system(size: 52, weight: .black, design: .rounded))
-                                .kerning(4)
-                                .foregroundStyle(.white.opacity(0.3))
-                                .blur(radius: 2)
-                                .offset(y: -2)
-                        )
+            if let bgImage = UIImage(named: "main_menu_bg") ?? loadBackgroundImage() {
+                GeometryReader { geometry in
+                    Image(uiImage: bgImage)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: geometry.size.width, height: geometry.size.height)
+                        .clipped()
                 }
-                .scaleEffect(logoScale)
-                .rotation3DEffect(
-                    .degrees(sin(Date().timeIntervalSinceReferenceDate) * 5),
-                    axis: (x: 0, y: 1, z: 0)
+                .ignoresSafeArea()
+            } else {
+                // Fallback gradient if image not found
+                LinearGradient(
+                    colors: [
+                        Color(red: 0.02, green: 0.02, blue: 0.02),
+                        Color(red: 0.06, green: 0.06, blue: 0.07),
+                        Color(red: 0.18, green: 0.00, blue: 0.03)
+                    ],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
                 )
-                .padding(.vertical, 20)
+                .ignoresSafeArea()
+            }
+            
+            // Dark overlay for better text readability
+            Color.black.opacity(0.25)
+                .ignoresSafeArea()
+                .blendMode(.multiply)
+            
+            VStack(spacing: 30) {
+                // Spacer to push content down past the logo in background
+                Spacer()
+                    .frame(height: 280)
                 
                 // Song selection - Scrollable
                 VStack(alignment: .leading, spacing: 12) {
                     Text("SELECT SONG")
                         .font(.system(size: 14, weight: .bold, design: .rounded))
                         .foregroundStyle(.white)
+                        .shadow(color: .black, radius: 4)
                         .padding(.horizontal)
                     HStack {
-                        Image(systemName: "bitcoinsign.circle")
-                            .foregroundStyle(.yellow)
+                        Image(systemName: "flame.circle.fill")
+                            .foregroundStyle(Color(red: 1.0, green: 0.6, blue: 0.1))
                         Text("Tap Coins: \(gameState.tapCoins)")
                             .font(.system(size: 12, weight: .bold, design: .rounded))
                             .foregroundStyle(.white.opacity(0.9))
@@ -92,10 +75,17 @@ struct MainMenuView: View {
                             .padding(.horizontal, 12)
                             .padding(.vertical, 8)
                             .background(
-                                LinearGradient(colors: [.blue.opacity(0.4), .purple.opacity(0.4)], startPoint: .leading, endPoint: .trailing)
+                                LinearGradient(colors: [
+                                    Color(red: 0.20, green: 0.20, blue: 0.22),
+                                    Color(red: 0.35, green: 0.00, blue: 0.05)
+                                ], startPoint: .leading, endPoint: .trailing)
                             )
                             .cornerRadius(8)
-                            .shadow(color: .blue.opacity(0.4), radius: 6)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 8)
+                                    .stroke(Color(red: 0.7, green: 0.0, blue: 0.05).opacity(0.8), lineWidth: 1.5)
+                            )
+                            .shadow(color: Color(red: 0.6, green: 0.0, blue: 0.0).opacity(0.5), radius: 6)
                         }
                     }
                     .padding(.horizontal)
@@ -126,8 +116,8 @@ struct MainMenuView: View {
                                                 .foregroundStyle(.white.opacity(0.8))
                                         }
                                         if selectedSong.id == song.id {
-                                            Image(systemName: "checkmark.seal.fill")
-                                                .foregroundStyle(song.accent)
+                                            Image(systemName: "bolt.circle.fill")
+                                                .foregroundStyle(Color(red: 0.85, green: 0.0, blue: 0.05))
                                                 .font(.system(size: 20, weight: .bold))
                                         }
                                     }
@@ -136,14 +126,14 @@ struct MainMenuView: View {
                                     .frame(maxWidth: .infinity)
                                     .background(
                                         LinearGradient(
-                                            colors: song.primaryColors,
+                                            colors: metalCardColors(for: song, unlocked: gameState.unlockedSongIDs.contains(song.id)),
                                             startPoint: .topLeading,
                                             endPoint: .bottomTrailing
-                                        ).opacity( gameState.unlockedSongIDs.contains(song.id) ? 0.6 : 0.12)
+                                        ).opacity( gameState.unlockedSongIDs.contains(song.id) ? 0.9 : 0.25)
                                     )
                                     .overlay(
                                         RoundedRectangle(cornerRadius: 12)
-                                            .stroke(selectedSong.id == song.id ? song.accent : Color.white.opacity(0.15), lineWidth: 2.5)
+                                            .stroke(selectedSong.id == song.id ? Color(red: 0.8, green: 0.0, blue: 0.05) : Color.white.opacity(0.12), lineWidth: 2.0)
                                     )
                                     .overlay {
                                         if !gameState.unlockedSongIDs.contains(song.id) {
@@ -155,9 +145,9 @@ struct MainMenuView: View {
                                                     .foregroundStyle(.white.opacity(0.8))
                                             }
                                         }
-                                    )
+                                    }
                                     .cornerRadius(12)
-                                    .shadow(color: song.accent.opacity(0.35), radius: 12, y: 4)
+                                    .shadow(color: Color(red: 0.0, green: 0.0, blue: 0.0).opacity(0.8), radius: 10, y: 4)
                                 }
                                 .padding(.horizontal)
                                 .disabled(!gameState.unlockedSongIDs.contains(song.id))
@@ -187,11 +177,11 @@ struct MainMenuView: View {
                         .foregroundColor(.white)
                         .padding(.horizontal, 24)
                         .padding(.vertical, 10)
-                        .background(Color.cyan.opacity(0.2))
+                        .background(Color(red: 0.12, green: 0.12, blue: 0.14))
                         .cornerRadius(8)
                         .overlay(
                             RoundedRectangle(cornerRadius: 8)
-                                .stroke(Color.cyan.opacity(0.5), lineWidth: 1.5)
+                                .stroke(Color(red: 0.7, green: 0.0, blue: 0.05).opacity(0.8), lineWidth: 1.5)
                         )
                     }
                     
@@ -214,19 +204,19 @@ struct MainMenuView: View {
                                             .font(.system(size: 9, weight: .semibold, design: .rounded))
                                     }
                                     .foregroundColor(
-                                        isAvailable ? (selectedDifficulty == difficulty ? .yellow : .white) : .gray
+                                        isAvailable ? (selectedDifficulty == difficulty ? Color(red: 1.0, green: 0.2, blue: 0.2) : .white) : .gray
                                     )
                                     .frame(maxWidth: .infinity)
                                     .padding(.vertical, 10)
                                     .background(
                                         isAvailable ?
-                                            (selectedDifficulty == difficulty ? Color.cyan.opacity(0.4) : Color.white.opacity(0.15))
-                                            : Color.white.opacity(0.06)
+                                            (selectedDifficulty == difficulty ? Color(red: 0.35, green: 0.00, blue: 0.05).opacity(0.6) : Color.white.opacity(0.08))
+                                            : Color.white.opacity(0.05)
                                     )
                                     .cornerRadius(8)
                                     .overlay(
                                         RoundedRectangle(cornerRadius: 8)
-                                            .stroke(selectedDifficulty == difficulty ? Color.yellow : Color.clear, lineWidth: 2)
+                                            .stroke(selectedDifficulty == difficulty ? Color(red: 0.8, green: 0.0, blue: 0.05) : Color.clear, lineWidth: 2)
                                     )
                                 }
                                 .disabled(!isAvailable)
@@ -254,16 +244,19 @@ struct MainMenuView: View {
                         .padding(.vertical, 14)
                         .background(
                             LinearGradient(
-                                colors: [.pink, .purple, .blue],
+                                colors: [
+                                    Color(red: 0.65, green: 0.00, blue: 0.05),
+                                    Color(red: 0.35, green: 0.00, blue: 0.05)
+                                ],
                                 startPoint: .leading,
                                 endPoint: .trailing
                             )
                         )
                         .cornerRadius(12)
-                        .shadow(color: .purple.opacity(0.7), radius: 12, y: 6)
+                        .shadow(color: Color(red: 0.6, green: 0.0, blue: 0.0).opacity(0.7), radius: 12, y: 6)
                         .overlay(
                             RoundedRectangle(cornerRadius: 12)
-                                .stroke(Color.white.opacity(0.2), lineWidth: 1.5)
+                                .stroke(Color(red: 0.8, green: 0.0, blue: 0.05).opacity(0.9), lineWidth: 1.5)
                         )
                     }
                     .disabled(!gameState.unlockedSongIDs.contains(selectedSong.id))
@@ -275,14 +268,86 @@ struct MainMenuView: View {
                 ShopView(gameState: gameState)
             }
         }
-        .onAppear {
-            // Animate logo
-            withAnimation(.easeInOut(duration: 1.5).repeatForever(autoreverses: true)) {
-                logoScale = 1.05
+    }
+}
+
+private func loadBackgroundImage() -> UIImage? {
+    // Try to load from bundle
+    if let path = Bundle.main.path(forResource: "main_menu_bg", ofType: "jpg"),
+       let image = UIImage(contentsOfFile: path) {
+        return image
+    }
+    if let path = Bundle.main.path(forResource: "main_menu_bg", ofType: "png"),
+       let image = UIImage(contentsOfFile: path) {
+        return image
+    }
+    return nil
+}
+
+// MARK: - Metal Theme Helpers
+
+private func metalTitleFont(_ size: CGFloat) -> Font {
+    if UIFont(name: "MetalDisplay", size: size) != nil {
+        return .custom("MetalDisplay", size: size)
+    } else if UIFont(name: "JonnysTapTap", size: size) != nil {
+        return .custom("JonnysTapTap", size: size)
+    } else if UIFont(name: "Copperplate-Bold", size: size) != nil {
+        return .custom("Copperplate-Bold", size: size)
+    }
+    return .system(size: size, weight: .black, design: .default)
+}
+
+private func metalBrandFont(_ size: CGFloat) -> Font {
+    if UIFont(name: "MetalDisplay", size: size) != nil {
+        return .custom("MetalDisplay", size: size)
+    } else if UIFont(name: "JonnysTapTap", size: size) != nil {
+        return .custom("JonnysTapTap", size: size)
+    } else if UIFont(name: "Copperplate", size: size) != nil {
+        return .custom("Copperplate", size: size)
+    }
+    return .system(size: size, weight: .heavy, design: .default)
+}
+
+private func metalCardColors(for song: SongMetadata, unlocked: Bool) -> [Color] {
+    if !unlocked {
+        return [Color(red: 0.10, green: 0.10, blue: 0.12), Color(red: 0.18, green: 0.00, blue: 0.03)]
+    }
+    if song.lanes == 4 {
+        return [Color(red: 0.15, green: 0.15, blue: 0.18), Color(red: 0.40, green: 0.00, blue: 0.06)]
+    }
+    if song.bpm >= 120 {
+        return [Color(red: 0.14, green: 0.14, blue: 0.17), Color(red: 0.05, green: 0.20, blue: 0.40)]
+    }
+    return [Color(red: 0.14, green: 0.14, blue: 0.17), Color(red: 0.22, green: 0.00, blue: 0.28)]
+}
+
+private struct MetalStripes: View {
+    var body: some View {
+        GeometryReader { geo in
+            let width = geo.size.width
+            let count = Int(width / 8)
+            ZStack {
+                ForEach(0..<(count + 20), id: \.self) { i in
+                    Rectangle()
+                        .fill(Color.white.opacity(0.06))
+                        .frame(width: 2)
+                        .offset(x: CGFloat(i) * 8)
+                }
             }
-            withAnimation(.easeInOut(duration: 2.0).repeatForever(autoreverses: true)) {
-                glowIntensity = 1.0
-            }
+            .rotationEffect(.degrees(12))
+            .offset(y: -geo.size.height * 0.2)
         }
+        .allowsHitTesting(false)
+    }
+}
+
+private struct MetalSheen: View {
+    var body: some View {
+        LinearGradient(
+            colors: [Color.white.opacity(0.15), Color.white.opacity(0.0)],
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        )
+        .allowsHitTesting(false)
     }
 }
