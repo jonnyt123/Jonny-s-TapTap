@@ -17,11 +17,11 @@ struct ContentView: View {
     var body: some View {
         ZStack {
             if !isPlaying {
-                MainMenuView(gameState: gameState, isPlaying: $isPlaying, selectedDifficulty: $selectedDifficulty, selectedSong: $selectedSong, availableDifficulties: availableDifficulties)
-                    .transition(.opacity)
+                MainMenuView(selectedSong: $selectedSong, selectedDifficulty: $selectedDifficulty, isPlaying: $isPlaying, availableDifficulties: availableDifficulties, gameState: gameState)
+                    .transition(AnyTransition.opacity)
             } else {
                 gameView
-                    .transition(.opacity)
+                    .transition(AnyTransition.opacity)
             }
         }
         .animation(.easeInOut(duration: 0.3), value: isPlaying)
@@ -519,6 +519,10 @@ struct ContentView: View {
     }
 
     private func refreshAvailability(for song: SongMetadata) {
+        if song.id == "user_beatmap" {
+            availableDifficulties = Set(Difficulty.allCases)
+            return
+        }
         availableDifficulties = ChartLoader.availability(for: song)
         if availableDifficulties.isEmpty {
             availableDifficulties = [.medium]
@@ -534,6 +538,11 @@ struct ResultsView: View {
     
     @State private var animateGrade = false
     @State private var animateStats = false
+    @State private var didApplyXP = false
+    @State private var xpResult: LevelUpResult?
+    @State private var displayLevel: Int = 1
+    @State private var displayProgress: Double = 0
+    @State private var showChallengeSheet = false
     
     private var accuracy: Double {
         guard gameState.totalNotes > 0 else { return 0 }
@@ -573,236 +582,21 @@ struct ResultsView: View {
     
     var body: some View {
         ZStack {
-            // Background with gradient
-            LinearGradient(
-                gradient: Gradient(colors: [
-                    Color(red: 0.05, green: 0.05, blue: 0.15),
-                    Color(red: 0.1, green: 0.05, blue: 0.2)
-                ]),
-                startPoint: .topLeading,
-                endPoint: .bottomTrailing
-            )
-            .ignoresSafeArea()
-            
-            // Animated background circles
-            Circle()
-                .fill(gradeGlow)
-                .blur(radius: 80)
-                .offset(x: -100, y: -100)
-                .ignoresSafeArea()
-            
-            Circle()
-                .fill(Color.blue.opacity(0.2))
-                .blur(radius: 120)
-                .offset(x: 150, y: 200)
-                .ignoresSafeArea()
-            
-            VStack(spacing: 0) {
-                // Top spacing
-                Spacer()
-                    .frame(height: 20)
-                
-                // Grade Display - Animated
-                VStack(spacing: 20) {
-                    Text("SONG COMPLETE!")
-                        .font(.system(size: 32, weight: .bold, design: .rounded))
-                        .foregroundStyle(
-                            LinearGradient(
-                                colors: [.cyan, .blue, gradeColor],
-                                startPoint: .leading,
-                                endPoint: .trailing
-                            )
-                        )
-                        .shadow(color: .cyan, radius: 15)
-                    
-                    // Grade Circle
-                    ZStack {
-                        Circle()
-                            .fill(
-                                LinearGradient(
-                                    colors: [gradeColor.opacity(0.3), gradeColor.opacity(0.1)],
-                                    startPoint: .topLeading,
-                                    endPoint: .bottomTrailing
-                                )
-                            )
-                            .overlay(
-                                Circle()
-                                    .stroke(gradeColor, lineWidth: 3)
-                            )
-                        
-                        Text(grade)
-                            .font(.system(size: 100, weight: .black, design: .rounded))
-                            .foregroundStyle(gradeColor)
-                            .shadow(color: gradeGlow, radius: 20)
-                    }
-                    .frame(height: 180)
-                    .padding(.vertical, 10)
-                    .scaleEffect(animateGrade ? 1.0 : 0.8)
-                    .opacity(animateGrade ? 1.0 : 0.0)
+            resultsBackground
+            ScrollView {
+                VStack(spacing: 0) {
+                    Spacer().frame(height: 20)
+                    levelProgressSection
+                    gradeSection
+                    statsSection
+                    Spacer()
+                    actionButtons
+                    gameCenterButtons
                 }
-                .padding(.bottom, 30)
-                
-                // Stats Card
-                VStack(spacing: 20) {
-                    // Primary Stats
-                    HStack(spacing: 20) {
-                        StatCard(
-                            label: "Score",
-                            value: "\(gameState.score)",
-                            icon: "star.fill",
-                            color: Color(red: 1.0, green: 0.84, blue: 0.0)
-                        )
-                        StatCard(
-                            label: "Accuracy",
-                            value: String(format: "%.1f%%", accuracy),
-                            icon: "bullseye",
-                            color: .green
-                        )
-                    }
-
-                    // Coins Earned Banner
-                    if gameState.lastCoinsEarned > 0 {
-                        HStack(spacing: 10) {
-                            Image(systemName: "bitcoinsign.circle.fill")
-                                .font(.system(size: 20))
-                                .foregroundStyle(.yellow)
-                            Text("+\(gameState.lastCoinsEarned) Tap Coins")
-                                .font(.system(size: 18, weight: .bold, design: .rounded))
-                                .foregroundStyle(.yellow)
-                        }
-                        .padding(14)
-                        .frame(maxWidth: .infinity)
-                        .background(
-                            RoundedRectangle(cornerRadius: 12)
-                                .fill(Color.yellow.opacity(0.15))
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 12)
-                                        .stroke(Color.yellow.opacity(0.5), lineWidth: 2)
-                                )
-                        )
-                    }
-                    
-                    HStack(spacing: 20) {
-                        StatCard(
-                            label: "Max Combo",
-                            value: "\(gameState.maxCombo)",
-                            icon: "flame.fill",
-                            color: .red
-                        )
-                        StatCard(
-                            label: "Notes Hit",
-                            value: "\(gameState.notesHit)/\(gameState.totalNotes)",
-                            icon: "checkmark.circle.fill",
-                            color: .green
-                        )
-                    }
-                    
-                    // Personal Best
-                    if gameState.isNewPersonalBest {
-                        HStack {
-                            Image(systemName: "crown.fill")
-                                .font(.system(size: 20))
-                                .foregroundStyle(.yellow)
-                            
-                            VStack(alignment: .leading, spacing: 4) {
-                                Text("NEW PERSONAL BEST!")
-                                    .font(.system(size: 16, weight: .bold, design: .rounded))
-                                    .foregroundStyle(.yellow)
-                                Text("\(gameState.personalBest)")
-                                    .font(.system(size: 20, weight: .black, design: .rounded))
-                                    .foregroundStyle(.yellow)
-                            }
-                            
-                            Spacer()
-                        }
-                        .padding(16)
-                        .background(
-                            RoundedRectangle(cornerRadius: 12)
-                                .fill(Color.yellow.opacity(0.15))
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: 12)
-                                        .stroke(Color.yellow.opacity(0.5), lineWidth: 2)
-                                )
-                        )
-                    } else {
-                        HStack {
-                            Text("Personal Best")
-                                .font(.system(size: 16, weight: .semibold, design: .rounded))
-                                .foregroundStyle(.white.opacity(0.7))
-                            Spacer()
-                            Text("\(gameState.personalBest)")
-                                .font(.system(size: 20, weight: .bold, design: .rounded))
-                                .foregroundStyle(.white)
-                        }
-                        .padding(16)
-                        .background(
-                            RoundedRectangle(cornerRadius: 12)
-                                .fill(Color.white.opacity(0.05))
-                        )
-                    }
-                }
-                .padding(24)
-                .background(
-                    RoundedRectangle(cornerRadius: 20)
-                        .fill(Color.white.opacity(0.08))
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 20)
-                                .stroke(Color.white.opacity(0.15), lineWidth: 1)
-                        )
-                )
-                .padding(.horizontal, 20)
-                .offset(y: animateStats ? 0 : 30)
-                .opacity(animateStats ? 1.0 : 0.0)
-                
-                Spacer()
-                
-                // Buttons
-                HStack(spacing: 16) {
-                    Button(action: onRestart) {
-                        HStack(spacing: 8) {
-                            Image(systemName: "arrow.clockwise")
-                                .font(.system(size: 16, weight: .bold))
-                            Text("Retry")
-                        }
-                        .font(.system(size: 16, weight: .bold, design: .rounded))
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 14)
-                        .background(
-                            LinearGradient(
-                                colors: [Color(red: 0.2, green: 0.8, blue: 0.2), Color(red: 0.1, green: 0.6, blue: 0.1)],
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            )
-                        )
-                        .cornerRadius(12)
-                        .shadow(color: Color(red: 0.2, green: 0.8, blue: 0.2).opacity(0.6), radius: 10)
-                    }
-                    
-                    Button(action: onExit) {
-                        HStack(spacing: 8) {
-                            Image(systemName: "house.fill")
-                                .font(.system(size: 16, weight: .bold))
-                            Text("Menu")
-                        }
-                        .font(.system(size: 16, weight: .bold, design: .rounded))
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 14)
-                        .background(
-                            LinearGradient(
-                                colors: [Color(red: 0.2, green: 0.6, blue: 1.0), Color(red: 0.1, green: 0.4, blue: 0.8)],
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            )
-                        )
-                        .cornerRadius(12)
-                        .shadow(color: Color(red: 0.2, green: 0.6, blue: 1.0).opacity(0.6), radius: 10)
-                    }
-                }
-                .padding(20)
             }
         }
+        .padding(.horizontal, 10)
+        .safeAreaInset(edge: .bottom) { Color.clear.frame(height: 10) }
         .onAppear {
             withAnimation(.easeOut(duration: 0.6)) {
                 animateGrade = true
@@ -812,7 +606,353 @@ struct ResultsView: View {
                     animateStats = true
                 }
             }
+            applyXPIfNeeded()
+            GameCenterManager.shared.submitResult(gcResult())
         }
+        .sheet(isPresented: $showChallengeSheet) {
+            ChallengeFriendsSheet(result: gcResult())
+        }
+    }
+
+    private var resultsBackground: some View {
+        ZStack {
+            LinearGradient(
+                gradient: Gradient(colors: [
+                    Color(red: 0.05, green: 0.05, blue: 0.15),
+                    Color(red: 0.1, green: 0.05, blue: 0.2)
+                ]),
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            .ignoresSafeArea()
+
+            Circle()
+                .fill(gradeGlow)
+                .blur(radius: 80)
+                .offset(x: -100, y: -100)
+                .ignoresSafeArea()
+
+            Circle()
+                .fill(Color.blue.opacity(0.2))
+                .blur(radius: 120)
+                .offset(x: 150, y: 200)
+                .ignoresSafeArea()
+        }
+    }
+
+    private var gradeSection: some View {
+        VStack(spacing: 20) {
+            Text("SONG COMPLETE!")
+                .font(.system(size: 32, weight: .bold, design: .rounded))
+                .foregroundStyle(
+                    LinearGradient(
+                        colors: [.cyan, .blue, gradeColor],
+                        startPoint: .leading,
+                        endPoint: .trailing
+                    )
+                )
+                .shadow(color: .cyan, radius: 15)
+
+            ZStack {
+                Circle()
+                    .fill(
+                        LinearGradient(
+                            colors: [gradeColor.opacity(0.3), gradeColor.opacity(0.1)],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
+                    .overlay(
+                        Circle()
+                            .stroke(gradeColor, lineWidth: 3)
+                    )
+
+                Text(grade)
+                    .font(.system(size: 100, weight: .black, design: .rounded))
+                    .foregroundStyle(gradeColor)
+                    .shadow(color: gradeGlow, radius: 20)
+            }
+            .frame(height: 180)
+            .padding(.vertical, 10)
+            .scaleEffect(animateGrade ? 1.0 : 0.8)
+            .opacity(animateGrade ? 1.0 : 0.0)
+        }
+        .padding(.bottom, 30)
+    }
+
+    private var statsSection: some View {
+        VStack(spacing: 20) {
+            HStack(spacing: 20) {
+                StatCard(
+                    label: "Score",
+                    value: "\(gameState.score)",
+                    icon: "star.fill",
+                    color: Color(red: 1.0, green: 0.84, blue: 0.0)
+                )
+                StatCard(
+                    label: "Accuracy",
+                    value: String(format: "%.1f%%", accuracy),
+                    icon: "bullseye",
+                    color: .green
+                )
+            }
+
+            if gameState.lastCoinsEarned > 0 {
+                HStack(spacing: 10) {
+                    Image(systemName: "bitcoinsign.circle.fill")
+                        .font(.system(size: 20))
+                        .foregroundStyle(.yellow)
+                    Text("+\(gameState.lastCoinsEarned) Tap Coins")
+                        .font(.system(size: 18, weight: .bold, design: .rounded))
+                        .foregroundStyle(.yellow)
+                }
+                .padding(14)
+                .frame(maxWidth: .infinity)
+                .background(
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(Color.yellow.opacity(0.15))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 12)
+                                .stroke(Color.yellow.opacity(0.5), lineWidth: 2)
+                        )
+                )
+            }
+
+            HStack(spacing: 20) {
+                StatCard(
+                    label: "Max Combo",
+                    value: "\(gameState.maxCombo)",
+                    icon: "flame.fill",
+                    color: .red
+                )
+                StatCard(
+                    label: "Notes Hit",
+                    value: "\(gameState.notesHit)/\(gameState.totalNotes)",
+                    icon: "checkmark.circle.fill",
+                    color: .green
+                )
+            }
+
+            if gameState.isNewPersonalBest {
+                HStack {
+                    Image(systemName: "crown.fill")
+                        .font(.system(size: 20))
+                        .foregroundStyle(.yellow)
+
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("NEW PERSONAL BEST!")
+                            .font(.system(size: 16, weight: .bold, design: .rounded))
+                            .foregroundStyle(.yellow)
+                        Text("\(gameState.personalBest)")
+                            .font(.system(size: 20, weight: .black, design: .rounded))
+                            .foregroundStyle(.yellow)
+                    }
+
+                    Spacer()
+                }
+                .padding(16)
+                .background(
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(Color.yellow.opacity(0.15))
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 12)
+                                .stroke(Color.yellow.opacity(0.5), lineWidth: 2)
+                        )
+                )
+            } else {
+                HStack {
+                    Text("Personal Best")
+                        .font(.system(size: 16, weight: .semibold, design: .rounded))
+                        .foregroundStyle(.white.opacity(0.7))
+                    Spacer()
+                    Text("\(gameState.personalBest)")
+                        .font(.system(size: 20, weight: .bold, design: .rounded))
+                        .foregroundStyle(.white)
+                }
+                .padding(16)
+                .background(
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(Color.white.opacity(0.05))
+                )
+            }
+        }
+        .padding(24)
+        .background(
+            RoundedRectangle(cornerRadius: 20)
+                .fill(Color.white.opacity(0.08))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(Color.white.opacity(0.15), lineWidth: 1)
+                )
+        )
+        .padding(.horizontal, 20)
+        .offset(y: animateStats ? 0 : 30)
+        .opacity(animateStats ? 1.0 : 0.0)
+    }
+
+    private var actionButtons: some View {
+        HStack(spacing: 16) {
+            Button(action: onRestart) {
+                HStack(spacing: 8) {
+                    Image(systemName: "arrow.clockwise")
+                        .font(.system(size: 16, weight: .bold))
+                    Text("Retry")
+                }
+                .font(.system(size: 16, weight: .bold, design: .rounded))
+                .foregroundColor(.white)
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 14)
+                .background(
+                    LinearGradient(
+                        colors: [Color(red: 0.2, green: 0.8, blue: 0.2), Color(red: 0.1, green: 0.6, blue: 0.1)],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                )
+                .cornerRadius(12)
+                .shadow(color: Color(red: 0.2, green: 0.8, blue: 0.2).opacity(0.6), radius: 10)
+            }
+
+            Button(action: onExit) {
+                HStack(spacing: 8) {
+                    Image(systemName: "house.fill")
+                        .font(.system(size: 16, weight: .bold))
+                    Text("Menu")
+                }
+                .font(.system(size: 16, weight: .bold, design: .rounded))
+                .foregroundColor(.white)
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 14)
+                .background(
+                    LinearGradient(
+                        colors: [Color(red: 0.2, green: 0.6, blue: 1.0), Color(red: 0.1, green: 0.4, blue: 0.8)],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                )
+                .cornerRadius(12)
+                .shadow(color: Color(red: 0.2, green: 0.6, blue: 1.0).opacity(0.6), radius: 10)
+            }
+        }
+        .padding(20)
+    }
+
+    private var gameCenterButtons: some View {
+        HStack(spacing: 12) {
+            Button(action: { GameCenterManager.shared.presentLeaderboards() }) {
+                HStack(spacing: 6) {
+                    Image(systemName: "list.number")
+                    Text("Leaderboards")
+                }
+                .font(.system(size: 12, weight: .bold, design: .rounded))
+            }
+            .buttonStyle(.bordered)
+
+            Button(action: { showChallengeSheet = true }) {
+                HStack(spacing: 6) {
+                    Image(systemName: "person.2.wave.2")
+                    Text("Challenge Friends")
+                }
+                .font(.system(size: 12, weight: .bold, design: .rounded))
+            }
+            .buttonStyle(.borderedProminent)
+        }
+        .padding(.bottom, 20)
+    }
+
+    private var levelProgressSection: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            LevelBadge(level: displayLevel)
+            GeometryReader { geo in
+                ZStack(alignment: .leading) {
+                    RoundedRectangle(cornerRadius: 6)
+                        .fill(Color.white.opacity(0.12))
+                    RoundedRectangle(cornerRadius: 6)
+                        .fill(Color(red: 1.0, green: 0.45, blue: 0.1))
+                        .frame(width: max(6, geo.size.width * CGFloat(min(max(displayProgress, 0), 1))))
+                }
+            }
+            .frame(height: 10)
+            if let xpResult {
+                Text("+\(xpResult.xpGained) XP")
+                    .font(.system(size: 12, weight: .bold, design: .rounded))
+                    .foregroundColor(.white.opacity(0.85))
+            }
+        }
+        .padding(12)
+        .background(Color.black.opacity(0.25))
+        .cornerRadius(10)
+        .overlay(
+            RoundedRectangle(cornerRadius: 10)
+                .stroke(Color.white.opacity(0.15), lineWidth: 1)
+        )
+        .padding(.horizontal, 24)
+        .padding(.bottom, 8)
+    }
+
+    private func applyXPIfNeeded() {
+        guard !didApplyXP else { return }
+        didApplyXP = true
+        let result = SongResult(
+            score: gameState.score,
+            maxScore: max(gameState.totalNotes, 1) * 1000,
+            accuracyPercent: accuracy,
+            maxCombo: gameState.maxCombo,
+            misses: gameState.missedNotes,
+            grade: grade,
+            difficulty: mapDifficulty(gameState.difficulty)
+        )
+        let output = gameState.awardXP(result: result)
+        xpResult = output
+        let thresholds = LevelingCurve.defaultThresholds
+        let oldTotal = output.totalXP - output.xpGained
+        let oldLevel = output.oldLevel
+        displayLevel = oldLevel
+        displayProgress = progress(totalXP: oldTotal, level: oldLevel, thresholds: thresholds)
+
+        if output.didLevelUp {
+            withAnimation(.easeOut(duration: 0.6)) {
+                displayProgress = 1.0
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.65) {
+                displayLevel = output.newLevel
+                withAnimation(.easeOut(duration: 0.6)) {
+                    displayProgress = progress(totalXP: output.totalXP, level: output.newLevel, thresholds: thresholds)
+                }
+            }
+        } else {
+            withAnimation(.easeOut(duration: 0.8)) {
+                displayProgress = progress(totalXP: output.totalXP, level: output.newLevel, thresholds: thresholds)
+            }
+        }
+    }
+
+    private func progress(totalXP: Int64, level: Int, thresholds: [Int64]) -> Double {
+        let prev = thresholds[min(level, LevelingCurve.maxLevel)]
+        let next = thresholds[min(level + 1, LevelingCurve.maxLevel)]
+        if next <= prev { return 1.0 }
+        return Double(totalXP - prev) / Double(next - prev)
+    }
+
+    private func mapDifficulty(_ difficulty: Difficulty) -> SongDifficulty {
+        switch difficulty {
+        case .easy: return .easy
+        case .medium: return .normal
+        case .hard: return .hard
+        case .extreme: return .expert
+        }
+    }
+
+    private func gcResult() -> GCSongResult {
+        GCSongResult(
+            songId: gameState.songID,
+            difficulty: gameState.difficulty.rawValue.lowercased(),
+            score: gameState.score,
+            accuracyPercent: accuracy,
+            maxCombo: gameState.maxCombo,
+            didFC: gameState.missedNotes == 0,
+            timestamp: Date()
+        )
     }
 }
 
@@ -849,4 +989,3 @@ struct StatCard: View {
         )
     }
 }
-

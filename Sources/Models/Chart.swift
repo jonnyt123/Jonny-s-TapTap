@@ -33,13 +33,13 @@ enum Difficulty: String, CaseIterable, Codable {
 }
 
 struct Note: Codable, Identifiable {
-    let id: UUID
+    let id: String
     let time: Double
     let lane: Int
     let type: NoteType
     let duration: Double?
 
-    init(id: UUID = UUID(), time: Double, lane: Int, type: NoteType = .tap, duration: Double? = nil) {
+    init(id: String = UUID().uuidString, time: Double, lane: Int, type: NoteType = .tap, duration: Double? = nil) {
         self.id = id
         self.time = time
         self.lane = lane
@@ -96,12 +96,32 @@ enum ChartLoader {
     }
 
     private static func decodeChart(fileName: String) -> Chart? {
-        guard let url = Bundle.main.url(forResource: fileName, withExtension: "json"),
+        guard let url = resolveChartURL(fileName: fileName),
               let data = try? Data(contentsOf: url) else {
             return nil
         }
         let decoder = JSONDecoder()
         return try? decoder.decode(Chart.self, from: data)
+    }
+
+    private static func resolveChartURL(fileName: String) -> URL? {
+        if let url = Bundle.main.url(forResource: fileName, withExtension: "json") {
+            return url
+        }
+        if let url = Bundle.main.url(forResource: fileName, withExtension: "json", subdirectory: "Resources") {
+            return url
+        }
+        guard let resourceRoot = Bundle.main.resourceURL else {
+            return nil
+        }
+        let target = "\(fileName).json"
+        let enumerator = FileManager.default.enumerator(at: resourceRoot, includingPropertiesForKeys: nil)
+        while let fileURL = enumerator?.nextObject() as? URL {
+            if fileURL.lastPathComponent == target {
+                return fileURL
+            }
+        }
+        return nil
     }
 
     private static func fallbackOrder(requested: Difficulty) -> [Difficulty] {

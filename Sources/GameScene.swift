@@ -7,9 +7,9 @@ final class GameScene: SKScene {
 
     private var chart: Chart = ChartLoader.loadChart(for: SongMetadata.default, difficulty: .medium).chart
     private var notes: [Note] = []
-    private var noteLookup: [UUID: Note] = [:]
+    private var noteLookup: [String: Note] = [:]
     private var nextNoteIndex: Int = 0
-    private var activeNotes: [UUID: SKNode] = [:]
+    private var activeNotes: [String: SKNode] = [:]
     private var audio = GameAudioEngine(song: SongMetadata.default)
     private var didBuildLanes: Bool = false
     private var particleCache: [String: SKEmitterNode] = [:]
@@ -23,7 +23,7 @@ final class GameScene: SKScene {
     private var shakeThreshold: Double = 1.8
     
     // Hold note tracking
-    private var activeHolds: [UUID: (startTime: TimeInterval, lane: Int)] = [:]
+    private var activeHolds: [String: (startTime: TimeInterval, lane: Int)] = [:]
     private var touchedLanes: Set<Int> = []
 
     private var songStartTime: TimeInterval?
@@ -35,6 +35,8 @@ final class GameScene: SKScene {
     private var hitLineY: CGFloat = 200  // Calculated dynamically based on screen size
     private var lastNoteEndTime: Double = 0
     private let laneAngleFactor: CGFloat = 0.15  // Controls the horizontal angle of lanes as notes fall (adjust for lane angle)
+    private let fourLaneTopCenters: [CGFloat] = [0.339, 0.442, 0.554, 0.665]
+    private let fourLaneBottomCenters: [CGFloat] = [0.125, 0.372, 0.613, 0.868]
 
     private let laneColors: [SKColor] = [
         SKColor(red: 0.4, green: 0.65, blue: 0.75, alpha: 1),    // Desaturated Cyan (lane 0)
@@ -103,6 +105,7 @@ final class GameScene: SKScene {
 
     override func didMove(to view: SKView) {
         super.didMove(to: view)
+        view.isMultipleTouchEnabled = true
         view.ignoresSiblingOrder = true
         view.preferredFramesPerSecond = 120
         view.shouldCullNonVisibleNodes = true
@@ -128,13 +131,27 @@ final class GameScene: SKScene {
         gameState?.reset()
         
         let requestedDifficulty = gameState?.difficulty ?? .medium
-        let loadResult = ChartLoader.loadChart(for: song, difficulty: requestedDifficulty)
-        chart = loadResult.chart
-        if loadResult.wasFallback {
-            gameState?.difficulty = loadResult.usedDifficulty
-            print("⚠️ Requested difficulty \(requestedDifficulty.rawValue) missing, using \(loadResult.usedDifficulty.rawValue) from \(loadResult.fileName)")
+        if song.id == "user_beatmap", let beatmap = gameState?.customBeatmap {
+            let adaptedNotes = BeatmapAdapter.toNotes(beatmap)
+            chart = Chart(
+                version: 1,
+                difficulty: requestedDifficulty,
+                songName: song.title,
+                bpm: song.bpm,
+                offset: 0,
+                lanes: beatmap.lanes,
+                notes: adaptedNotes
+            )
+            notes = adaptedNotes
+        } else {
+            let loadResult = ChartLoader.loadChart(for: song, difficulty: requestedDifficulty)
+            chart = loadResult.chart
+            if loadResult.wasFallback {
+                gameState?.difficulty = loadResult.usedDifficulty
+                print("⚠️ Requested difficulty \(requestedDifficulty.rawValue) missing, using \(loadResult.usedDifficulty.rawValue) from \(loadResult.fileName)")
+            }
+            notes = chart.notes.sorted { $0.time < $1.time }
         }
-        notes = chart.notes.sorted { $0.time < $1.time }
         noteLookup = Dictionary(uniqueKeysWithValues: notes.map { ($0.id, $0) })
         lastNoteEndTime = notes.map { $0.time + ($0.duration ?? 0) }.max() ?? 0
         nextNoteIndex = 0
@@ -235,12 +252,38 @@ final class GameScene: SKScene {
         audio.stop()
         removeAllChildren()
         motionManager.stopAccelerometerUpdates()
+
+        // Aggressively clear all state and references
+        notes.removeAll()
+        noteLookup.removeAll()
+        activeNotes.removeAll()
+        activeHolds.removeAll()
+        revengeBackgroundNodes.removeAll()
+        // Do not assign a new Chart; just clear state
+        songStartTime = nil
+        latestSongTime = 0
+        didBuildLanes = false
+        isPausedState = false
+        lastCombo = 0
+        lastMultiplier = 1
+        isRevengeAnimating = false
+        revengeAnimationIndex = 0
+        laneBackgroundNode = nil
+        comboLabel = nil
+        multiplierLabel = nil
+        laneGlowNodes.removeAll()
+        // Optionally clear any other custom state here
     }
 
     private func buildLanes() {
         // Calculate hit line position from bottom of screen based on lane count
-        hitLineY = chart.lanes == 4 ? 120 : hitLineOffset
-        
+        // For 4-lane songs, place hit line at bottom 15% of the screen
+        if chart.lanes == 4 {
+            hitLineY = size.height * 0.15
+        } else {
+            hitLineY = hitLineOffset
+        }
+
         // Add animated neon background
         addAnimatedBackground()
 
@@ -290,11 +333,13 @@ final class GameScene: SKScene {
     private func addAnimatedBackground() {
         // Add neon lane background with gameplay image based on lane count
         let backgroundName = chart.lanes == 4 ? "gameplay_background_4lane" : "gameplay_background"
-        let backgroundOffset: CGFloat = chart.lanes == 4 ? 80 : 120  // 4-lane background moved down (lower offset)
-        
+        // For 4-lane, move background image only slightly down for better alignment
+        // Move background up for 4-lane songs
+        let backgroundOffset: CGFloat = chart.lanes == 4 ? 0 : 120
+
         if let bgImage = UIImage(named: backgroundName) ?? UIImage(contentsOfFile: Bundle.main.path(forResource: backgroundName, ofType: "png") ?? "") {
             let bgSprite = SKSpriteNode(texture: SKTexture(image: bgImage))
-            // Shift background up so buttons align with hit line
+            // Shift background vertically for lane alignment
             bgSprite.position = CGPoint(x: size.width / 2, y: size.height / 2 + backgroundOffset)
             bgSprite.size = size
             bgSprite.zPosition = -10
@@ -386,13 +431,21 @@ final class GameScene: SKScene {
     }
 
     private func buildLaneGuides() {
-        let laneWidth = chart.lanes == 3 ? (size.width * 0.7) / CGFloat(chart.lanes) : size.width / CGFloat(chart.lanes)
-        let laneStartX = chart.lanes == 3 ? (size.width - size.width * 0.7) / 2 : 0
-        
+        if chart.lanes == 4 {
+            return
+        }
+        let laneSpacingFactor = UserDefaults.standard.double(forKey: "laneSpacingFactor")
+        let spacing = (laneSpacingFactor >= 0.5 && laneSpacingFactor <= 1.0) ? laneSpacingFactor : 0.85
+        let laneWidth = (size.width * spacing) / CGFloat(chart.lanes)
+        let laneStartX = (size.width - size.width * spacing) / 2
+        let laneCenters = (0..<chart.lanes).map { lane in
+            laneStartX + laneWidth * CGFloat(lane) + laneWidth * 0.5
+        }
+
         for lane in 0..<chart.lanes {
             // Lane separators (vertical lines between lanes)
             if lane < chart.lanes - 1 {
-                let x = laneStartX + CGFloat(lane + 1) * laneWidth
+                let x = (laneCenters[lane] + laneCenters[lane + 1]) / 2
                 let line = SKShapeNode(rect: CGRect(x: x - 1, y: 0, width: 2, height: size.height))
                 line.fillColor = SKColor(red: 0.5, green: 0.5, blue: 0.7, alpha: 0.15)
                 line.strokeColor = .clear
@@ -411,11 +464,16 @@ final class GameScene: SKScene {
     
     private func buildLaneGlows() {
         laneGlowNodes.removeAll()
-        let laneWidth = chart.lanes == 3 ? (size.width * 0.7) / CGFloat(chart.lanes) : size.width / CGFloat(chart.lanes)
-        let laneStartX = chart.lanes == 3 ? (size.width - size.width * 0.7) / 2 : 0
-        
+        let laneSpacingFactor = UserDefaults.standard.double(forKey: "laneSpacingFactor")
+        let spacing = (laneSpacingFactor >= 0.5 && laneSpacingFactor <= 1.0) ? laneSpacingFactor : 0.85
+        let laneWidth = (size.width * spacing) / CGFloat(chart.lanes)
+        let laneStartX = (size.width - size.width * spacing) / 2
+        let laneCenters = (0..<chart.lanes).map { lane in
+            laneStartX + laneWidth * CGFloat(lane) + laneWidth * 0.5
+        }
+
         for lane in 0..<chart.lanes {
-            let centerX = laneStartX + CGFloat(lane) * laneWidth + laneWidth * 0.5
+            let centerX = laneCenters[lane]
             let glowRect = CGRect(x: centerX - laneWidth * 0.5, y: 0, width: laneWidth, height: size.height)
             let glow = SKShapeNode(rect: glowRect)
             glow.fillColor = laneColors[lane % laneColors.count]
@@ -431,9 +489,10 @@ final class GameScene: SKScene {
     private func buildHitLine() {
         // Create hit targets matching note lanes
         guard chart.lanes > 0 else { return }
-        let laneWidth = chart.lanes == 3 ? (size.width * 0.7) / CGFloat(chart.lanes) : size.width / CGFloat(chart.lanes)
-        let laneStartX = chart.lanes == 3 ? (size.width - size.width * 0.7) / 2 : (chart.lanes == 4 ? 40 : 0)
-        
+        let laneSpacingFactor = UserDefaults.standard.double(forKey: "laneSpacingFactor")
+        let spacing = (laneSpacingFactor >= 0.5 && laneSpacingFactor <= 1.0) ? laneSpacingFactor : 0.85
+        let laneWidth = (size.width * spacing) / CGFloat(chart.lanes)
+        let laneStartX = (size.width - size.width * spacing) / 2
         for lane in 0..<chart.lanes {
             let centerX = laneStartX + CGFloat(lane) * laneWidth + laneWidth * 0.5
             let circle = SKShapeNode(circleOfRadius: 35)
@@ -444,7 +503,6 @@ final class GameScene: SKScene {
             circle.glowWidth = 20
             circle.zPosition = 5
             addChild(circle)
-            
             // Pulsing animation
             let pulse = SKAction.sequence([
                 SKAction.fadeAlpha(to: 0.5, duration: 0.8),
@@ -452,6 +510,35 @@ final class GameScene: SKScene {
             ])
             circle.run(SKAction.repeatForever(pulse))
         }
+    }
+
+    private func laneX(for lane: Int, y: CGFloat) -> CGFloat {
+        if chart.lanes != 4 {
+            let laneSpacingFactor = UserDefaults.standard.double(forKey: "laneSpacingFactor")
+            let spacing = (laneSpacingFactor >= 0.5 && laneSpacingFactor <= 1.0) ? laneSpacingFactor : 0.85
+            let laneWidth = (size.width * spacing) / CGFloat(chart.lanes)
+            let laneStartX = (size.width - size.width * spacing) / 2
+            return laneStartX + CGFloat(lane) * laneWidth + laneWidth * 0.5
+        }
+        let bottomX = size.width * fourLaneBottomCenters[lane]
+        let topX = size.width * fourLaneTopCenters[lane]
+        let totalTravel = max(size.height + 40 - hitLineY, 1)
+        let t = min(max((y - hitLineY) / totalTravel, 0), 1)
+        return bottomX + (topX - bottomX) * t
+    }
+
+    private func fourLaneIndex(for x: CGFloat) -> Int? {
+        let centers = fourLaneBottomCenters.map { $0 * size.width }.sorted()
+        var edges: [CGFloat] = []
+        edges.append(0)
+        for i in 0..<(centers.count - 1) {
+            edges.append((centers[i] + centers[i + 1]) / 2)
+        }
+        edges.append(size.width)
+        for i in 0..<4 where x >= edges[i] && x < edges[i + 1] {
+            return i
+        }
+        return nil
     }
 
     override func update(_ currentTime: TimeInterval) {
@@ -526,11 +613,17 @@ final class GameScene: SKScene {
 
     private func spawnNotesIfNeeded(songTime: Double) {
         guard nextNoteIndex < notes.count else { return }
-        let laneWidth = chart.lanes == 3 ? (size.width * 0.7) / CGFloat(chart.lanes) : size.width / CGFloat(chart.lanes)
-        let laneStartX = chart.lanes == 3 ? (size.width - size.width * 0.7) / 2 : (chart.lanes == 4 ? 40 : 0)
+        let laneSpacingFactor = UserDefaults.standard.double(forKey: "laneSpacingFactor")
+        let spacing = (laneSpacingFactor >= 0.5 && laneSpacingFactor <= 1.0) ? laneSpacingFactor : 0.85
+        let laneWidth = (size.width * spacing) / CGFloat(chart.lanes)
+        let laneStartX = (size.width - size.width * spacing) / 2
+        let laneCenters = (0..<chart.lanes).map { lane in
+            laneStartX + laneWidth * CGFloat(lane) + laneWidth * 0.5
+        }
         while nextNoteIndex < notes.count && (notes[nextNoteIndex].time - songTime) <= spawnLeadTime {
             let note = notes[nextNoteIndex]
-            let centerX = laneStartX + CGFloat(note.lane) * laneWidth + laneWidth * 0.5
+            let spawnY = size.height + 40
+            let centerX = chart.lanes == 4 ? laneX(for: note.lane, y: spawnY) : laneCenters[note.lane]
             let noteRadius: CGFloat = 30  // Star radius (25% larger)
             
             let node: SKNode
@@ -595,7 +688,7 @@ final class GameScene: SKScene {
                 if !noteImageName.isEmpty,
                    let noteImage = UIImage(named: noteImageName) ?? UIImage(contentsOfFile: Bundle.main.path(forResource: noteImageName, ofType: "png") ?? "") {
                     let spriteNode = SKSpriteNode(texture: SKTexture(image: noteImage))
-                    spriteNode.size = CGSize(width: 69, height: 69)
+                    spriteNode.size = CGSize(width: 58, height: 58)
                     spriteNode.zPosition = 6
                     node = spriteNode
                 } else {
@@ -620,7 +713,7 @@ final class GameScene: SKScene {
                 }
             }
             
-            node.position = CGPoint(x: centerX, y: size.height + 40)
+            node.position = CGPoint(x: centerX, y: spawnY)
             
             // Use lane-specific color for consistency
             let baseColor = laneColors[note.lane % laneColors.count]
@@ -653,59 +746,53 @@ final class GameScene: SKScene {
     }
 
     private func updateActiveNotes(songTime: Double) {
-        let laneWidth = chart.lanes == 3 ? (size.width * 0.7) / CGFloat(chart.lanes) : size.width / CGFloat(chart.lanes)
-        let laneStartX = chart.lanes == 3 ? (size.width - size.width * 0.7) / 2 : (chart.lanes == 4 ? 40 : 0)
-        var notesToRemove: [UUID] = []
+        let laneSpacingFactor = UserDefaults.standard.double(forKey: "laneSpacingFactor")
+        let spacing = (laneSpacingFactor >= 0.5 && laneSpacingFactor <= 1.0) ? laneSpacingFactor : 0.85
+        let laneWidth = (size.width * spacing) / CGFloat(chart.lanes)
+        let laneStartX = (size.width - size.width * spacing) / 2
+        let laneCenters = (0..<chart.lanes).map { lane in
+            laneStartX + laneWidth * CGFloat(lane) + laneWidth * 0.5
+        }
+        var notesToRemove: [String] = []
         
+        // To avoid modifying the dictionary while iterating, collect ids to miss in a separate array
+        var notesToMiss: [(id: String, node: SKNode, note: Note)] = []
         for (id, node) in activeNotes {
             guard let note = noteLookup[id] else {
                 notesToRemove.append(id)
                 continue
             }
-            
             // Skip hold notes as they're handled separately
             if note.type == .hold {
                 continue
             }
-            
             let delta = note.time - songTime
-            let centerX = laneStartX + CGFloat(note.lane) * laneWidth + laneWidth * 0.5
             let verticalDistance = CGFloat(delta) * noteSpeed
-            
-            // Apply different paths based on lane count
-            let horizontalOffset: CGFloat
+            let currentY = hitLineY + verticalDistance
+            let centerX = chart.lanes == 4 ? laneX(for: note.lane, y: currentY) : laneCenters[note.lane]
             var rotationAngle: CGFloat = 0
-            
-            if chart.lanes == 3 {
-                // 3-lane: notes start close together, spread apart as they fall
-                let spreadFactor: CGFloat = 0.04  // Controls spreading angle
-                switch note.lane {
-                case 0: // Left lane (blue) moved to the left
-                    horizontalOffset = -100  // Move 100 points to the left
-                    rotationAngle = 0
-                case 2: // Right lane (green) moved to the right
-                    horizontalOffset = -80  // Move 80 points to the left
-                    rotationAngle = 0
-                default: // Middle lane stays straight
-                    horizontalOffset = -verticalDistance * spreadFactor * 0.15
-                    rotationAngle = 0
-                }
-            } else {
-                // 4-lane: all lanes drift right
-                horizontalOffset = verticalDistance * laneAngleFactor
+            if chart.lanes != 3 {
                 rotationAngle = 0
             }
-            
-            // Keep note centered in its lane as it moves down
-            node.position = CGPoint(x: centerX + horizontalOffset, y: hitLineY + verticalDistance)
-            
-            // Apply rotation to sprite nodes (not shape nodes)
+            node.position = CGPoint(x: centerX, y: currentY)
             if let spriteNode = node as? SKSpriteNode {
                 spriteNode.zRotation = rotationAngle
             }
-
+            if chart.lanes == 4 {
+                let totalTravel = max(size.height + 40 - hitLineY, 1)
+                let t = min(max((currentY - hitLineY) / totalTravel, 0), 1)
+                let scale = 0.6 + (1 - t) * 0.35
+                node.setScale(scale)
+            }
+            // Only miss if still in activeNotes (i.e., not just hit)
             if delta < -hitWindow {
-                // Note passed the hit line without being hit - show MISS text
+                notesToMiss.append((id, node, note))
+            }
+        }
+        // Now process misses after the loop
+        for (id, node, note) in notesToMiss {
+            // Double-check the note is still in activeNotes (not just hit)
+            if activeNotes[id] != nil {
                 showMissText(at: node.position)
                 register(judgement: .miss, for: note, showMissText: false)
             }
@@ -719,7 +806,7 @@ final class GameScene: SKScene {
     }
     
     private func updateHoldNotes(songTime: Double) {
-        var holdsToRemove: [UUID] = []
+        var holdsToRemove: [String] = []
         
         for (id, _) in activeHolds {
             guard let note = noteLookup[id], note.type == .hold, let duration = note.duration else {
@@ -750,27 +837,20 @@ final class GameScene: SKScene {
 
     private func register(judgement: Judgement, for note: Note, showMissText: Bool = false) {
         gameState?.registerHit(judgement)
-        
-        if let node = activeNotes[note.id] {
+        // Always remove from activeNotes immediately on any hit/miss
+        if let node = activeNotes.removeValue(forKey: note.id) {
             node.removeAllActions()
-            
             // Show particle effect based on judgement
             spawnHitParticles(at: node.position, judgement: judgement, lane: note.lane)
-            
             // Single floating judgment text per hit
             showJudgmentText(judgement, at: node.position)
-            
             // TTR4-style lane glow on hit
             flashLaneGlow(lane: note.lane, judgement: judgement)
-
-            // Removed duplicate marker to avoid double text
-            
             // Animated removal with scale burst
             let scale = SKAction.scale(to: 1.8, duration: 0.12)
             let fade = SKAction.fadeOut(withDuration: 0.12)
             let group = SKAction.group([fade, scale])
             node.run(group) { node.removeFromParent() }
-            activeNotes.removeValue(forKey: note.id)
         }
     }
     
@@ -888,78 +968,131 @@ final class GameScene: SKScene {
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard !isPausedState else { return }
-        guard let touch = touches.first else { return }
-        let location = touch.location(in: self)
-        handleTap(at: location, touch: touch, phase: .began)
+        // Collect all lanes tapped in this frame
+        var tappedLanes: Set<Int> = []
+        for touch in touches {
+            let location = touch.location(in: self)
+            let tappedLane: Int?
+            if chart.lanes == 4 {
+                tappedLane = fourLaneIndex(for: location.x)
+            } else {
+                let laneSpacingFactor = UserDefaults.standard.double(forKey: "laneSpacingFactor")
+                let spacing = (laneSpacingFactor >= 0.5 && laneSpacingFactor <= 1.0) ? laneSpacingFactor : 0.85
+                let laneWidth = (size.width * spacing) / CGFloat(chart.lanes)
+                let laneStartX = (size.width - size.width * spacing) / 2
+                tappedLane = Int((location.x - laneStartX) / laneWidth)
+            }
+            if let tappedLane, tappedLane >= 0 && tappedLane < chart.lanes {
+                tappedLanes.insert(tappedLane)
+            }
+        }
+        // Register tap for all tapped lanes
+        for lane in tappedLanes {
+            handleTapForLane(lane: lane, phase: .began)
+        }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard !isPausedState else { return }
-        guard let touch = touches.first else { return }
-        let location = touch.location(in: self)
-        handleTap(at: location, touch: touch, phase: .moved)
+        var tappedLanes: Set<Int> = []
+        for touch in touches {
+            let location = touch.location(in: self)
+            let tappedLane: Int?
+            if chart.lanes == 4 {
+                tappedLane = fourLaneIndex(for: location.x)
+            } else {
+                let laneSpacingFactor = UserDefaults.standard.double(forKey: "laneSpacingFactor")
+                let spacing = (laneSpacingFactor >= 0.5 && laneSpacingFactor <= 1.0) ? laneSpacingFactor : 0.85
+                let laneWidth = (size.width * spacing) / CGFloat(chart.lanes)
+                let laneStartX = (size.width - size.width * spacing) / 2
+                tappedLane = Int((location.x - laneStartX) / laneWidth)
+            }
+            if let tappedLane, tappedLane >= 0 && tappedLane < chart.lanes {
+                tappedLanes.insert(tappedLane)
+            }
+        }
+        for lane in tappedLanes {
+            handleTapForLane(lane: lane, phase: .moved)
+        }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard !isPausedState else { return }
-        guard let touch = touches.first else { return }
-        let location = touch.location(in: self)
-        handleTap(at: location, touch: touch, phase: .ended)
+        var tappedLanes: Set<Int> = []
+        for touch in touches {
+            let location = touch.location(in: self)
+            let tappedLane: Int?
+            if chart.lanes == 4 {
+                tappedLane = fourLaneIndex(for: location.x)
+            } else {
+                let laneSpacingFactor = UserDefaults.standard.double(forKey: "laneSpacingFactor")
+                let spacing = (laneSpacingFactor >= 0.5 && laneSpacingFactor <= 1.0) ? laneSpacingFactor : 0.85
+                let laneWidth = (size.width * spacing) / CGFloat(chart.lanes)
+                let laneStartX = (size.width - size.width * spacing) / 2
+                tappedLane = Int((location.x - laneStartX) / laneWidth)
+            }
+            if let tappedLane, tappedLane >= 0 && tappedLane < chart.lanes {
+                tappedLanes.insert(tappedLane)
+            }
+        }
+        for lane in tappedLanes {
+            handleTapForLane(lane: lane, phase: .ended)
+        }
     }
 
-    private func handleTap(at point: CGPoint, touch: UITouch, phase: UITouch.Phase) {
+    private func handleTapForLane(lane: Int, phase: UITouch.Phase) {
         guard songStartTime != nil else { return }
         guard !isPausedState else { return }
         let songTime = latestSongTime
-        let laneWidth = chart.lanes == 3 ? (size.width * 0.7) / CGFloat(chart.lanes) : size.width / CGFloat(chart.lanes)
-        let laneStartX = chart.lanes == 3 ? (size.width - size.width * 0.7) / 2 : (chart.lanes == 4 ? 40 : 0)
-        let tappedLane = Int((point.x - laneStartX) / laneWidth)
-        guard tappedLane >= 0 && tappedLane < chart.lanes else { return }
+        guard lane >= 0 && lane < chart.lanes else { return }
 
+        // Always check for tap/shake notes on any tap, regardless of previous holds/taps
+        let tapCandidates = notes.filter {
+            ($0.type == .tap || $0.type == .shake) &&
+            $0.lane == lane &&
+            activeNotes[$0.id] != nil &&
+            abs($0.time - songTime) <= hitWindow
+        }
+        if !tapCandidates.isEmpty {
+            for target in tapCandidates {
+                let delta = abs(target.time - songTime)
+                let judgement = getJudgement(for: delta)
+                register(judgement: judgement, for: target)
+            }
+        } else {
+            // Only count as a bad tap if there are no future notes in this lane within a reasonable window (e.g., 2x hitWindow)
+            let futureNote = notes.first(where: {
+                ($0.type == .tap || $0.type == .shake) &&
+                $0.lane == lane &&
+                $0.time > songTime &&
+                $0.time - songTime <= hitWindow * 2
+            })
+            if futureNote == nil {
+                gameState?.registerBadTap()
+            }
+        }
+
+        // Only use touchedLanes for hold notes
         switch phase {
         case .began:
-            touchedLanes.insert(tappedLane)
-            
+            touchedLanes.insert(lane)
             // Check for hold notes
             let holdCandidates = notes.filter {
                 $0.type == .hold &&
-                $0.lane == tappedLane &&
+                $0.lane == lane &&
                 activeNotes[$0.id] != nil &&
                 abs($0.time - songTime) <= hitWindow
             }
-            
             if let target = holdCandidates.min(by: {
                 abs($0.time - songTime) < abs($1.time - songTime)
             }) {
-                activeHolds[target.id] = (songTime, tappedLane)
+                activeHolds[target.id] = (songTime, lane)
             }
         case .ended:
-            touchedLanes.remove(tappedLane)
-            return
+            touchedLanes.remove(lane)
         default:
-            return
+            break
         }
-        
-        // Find all active tap/shake notes in the tapped lane within hit window
-        let candidates = notes.filter { 
-            ($0.type == .tap || $0.type == .shake) &&
-            $0.lane == tappedLane && 
-            activeNotes[$0.id] != nil && 
-            abs($0.time - songTime) <= hitWindow 
-        }
-        
-        // Register the closest note in time
-        guard let target = candidates.min(by: { 
-            abs($0.time - songTime) < abs($1.time - songTime) 
-        }) else {
-            // No note found - bad tap (penalty without marking a note miss)
-            gameState?.registerBadTap()
-            return
-        }
-        
-        let delta = abs(target.time - songTime)
-        let judgement = getJudgement(for: delta)
-        register(judgement: judgement, for: target)
     }
     
     private func getJudgement(for delta: Double) -> Judgement {

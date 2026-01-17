@@ -41,13 +41,16 @@ final class GameState: ObservableObject {
     @Published var isNewPersonalBest: Bool = false
     @Published var multiplier: Int = 1
     @Published var experience: Int = 0
+    @Published var totalXP: Int64 = 0
+    @Published var level: Int = 1
     @Published var revengeActive: Bool = false
     @Published var revengeEndTime: Double = 0
     @Published var difficulty: Difficulty = .medium
     @Published var songID: String = "track3"
     @Published var songTitle: String = "Hallelujah"
     @Published var songChartFiles: ChartFiles = ChartFiles(same: "chart")
-    @Published var tapCoins: Int = 0
+    @Published var customBeatmap: Beatmap? = nil
+    @Published var tapCoins: Int = 0 // Player now always starts with 0 coins
     @Published var unlockedSongIDs: Set<String> = ["hallelujah"]
     @Published var lastCoinsEarned: Int = 0
     
@@ -58,6 +61,10 @@ final class GameState: ObservableObject {
     private let personalBestKeyPrefix = "personalBest_"
     private let tapCoinsKey = "tapCoins"
     private let unlockedSongsKey = "unlockedSongs"
+    private let xpKey = "playerTotalXP"
+    private let levelKey = "playerLevel"
+
+    private let xpThresholds = LevelingCurve.powerCurve(exponent: 2.2)
 
     func registerHit(_ judgement: Judgement) {
         if isFailed { return }
@@ -67,8 +74,8 @@ final class GameState: ObservableObject {
         // Apply multiplier
         points = Int(Double(points) * Double(multiplier))
         
-        // Apply revenge bonus
-        if revengeActive {
+        let revengeModeEnabled = UserDefaults.standard.bool(forKey: "revengeModeEnabled")
+        if revengeActive && revengeModeEnabled {
             points = points * revengeMultiplier
         }
         
@@ -106,20 +113,27 @@ final class GameState: ObservableObject {
     }
     
     func activateRevengeMode(currentTime: Double) {
-        if !revengeActive && combo >= revengeThreshold {
+        let revengeModeEnabled = UserDefaults.standard.bool(forKey: "revengeModeEnabled")
+        if revengeModeEnabled && !revengeActive && combo >= revengeThreshold {
             revengeActive = true
             revengeEndTime = currentTime + revengeDuration
         }
     }
     
     func updateRevengeMode(currentTime: Double) {
+        let revengeModeEnabled = UserDefaults.standard.bool(forKey: "revengeModeEnabled")
+        if !revengeModeEnabled {
+            revengeActive = false
+            return
+        }
         if revengeActive && currentTime >= revengeEndTime {
             revengeActive = false
         }
     }
     
     func canActivateRevenge() -> Bool {
-        return combo >= revengeThreshold && !revengeActive
+        let revengeModeEnabled = UserDefaults.standard.bool(forKey: "revengeModeEnabled")
+        return revengeModeEnabled && combo >= revengeThreshold && !revengeActive
     }
 
     func setDifficulty(_ difficulty: Difficulty) {
@@ -132,6 +146,9 @@ final class GameState: ObservableObject {
         songID = song.id
         songTitle = song.title
         songChartFiles = song.chartFiles
+        if song.id != "user_beatmap" {
+            customBeatmap = nil
+        }
         loadPersonalBest()
         isNewPersonalBest = false
     }
@@ -212,10 +229,15 @@ final class GameState: ObservableObject {
     func saveProgressLocal() {
         UserDefaults.standard.set(tapCoins, forKey: tapCoinsKey)
         UserDefaults.standard.set(Array(unlockedSongIDs), forKey: unlockedSongsKey)
+        UserDefaults.standard.set(Int(totalXP), forKey: xpKey)
+        UserDefaults.standard.set(level, forKey: levelKey)
     }
 
     func loadProgress() {
         tapCoins = UserDefaults.standard.integer(forKey: tapCoinsKey)
+        totalXP = Int64(UserDefaults.standard.integer(forKey: xpKey))
+        let storedLevel = UserDefaults.standard.integer(forKey: levelKey)
+        level = storedLevel > 0 ? storedLevel : LevelingSystem.level(for: totalXP, thresholds: xpThresholds)
         if let ids = UserDefaults.standard.array(forKey: unlockedSongsKey) as? [String] {
             unlockedSongIDs = Set(ids)
         }
@@ -246,5 +268,14 @@ final class GameState: ObservableObject {
         lastJudgement = .perfect
         lastCoinsEarned = 0
         loadPersonalBest()
+    }
+
+    @discardableResult
+    func awardXP(result: SongResult) -> LevelUpResult {
+        let output = LevelingSystem.awardXP(result: result, totalXP: totalXP, thresholds: xpThresholds)
+        totalXP = output.totalXP
+        level = output.newLevel
+        saveProgressLocal()
+        return output
     }
 }

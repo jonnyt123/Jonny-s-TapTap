@@ -8,37 +8,37 @@
     {
       "id": "7f109ab8-673f-4aff-8da3-cd5bacc20fde",
       "time": 0.035,
-      "lane": 0,
+      "lane": 2,
       "type": "tap"
     },
     {
       "id": "2e13af41-5579-4f51-bc39-6a596f6034f9",
       "time": 0.348,
-      "lane": 0,
+      "lane": 1,
       "type": "tap"
     },
     {
       "id": "219b7de6-1b99-4246-b869-1b3a8ce84ef4",
       "time": 0.662,
-      "lane": 1,
+      "lane": 0,
       "type": "tap"
     },
     {
       "id": "d9cb85a6-1816-4c12-8f62-9a6d3c2113ab",
       "time": 0.969,
-      "lane": 0,
+      "lane": 2,
       "type": "tap"
     },
     {
       "id": "dd1fb94c-af8b-48d7-a205-6bd14f3f4b06",
       "time": 1.277,
-      "lane": 0,
+      "lane": 1,
       "type": "tap"
     },
     {
       "id": "697ae9c9-2cf8-4810-a028-42a31ff795ed",
       "time": 1.591,
-      "lane": 1,
+      "lane": 2,
       "type": "tap"
     },
     {
@@ -50,7 +50,7 @@
     {
       "id": "bc8fc64c-4da9-4035-81ff-0bf4d4ff8c89",
       "time": 2.206,
-      "lane": 0,
+      "lane": 2,
       "type": "tap"
     },
     {
@@ -68,37 +68,37 @@
     {
       "id": "6871a2a7-a127-40ee-8452-5ce668576718",
       "time": 3.135,
-      "lane": 0,
+      "lane": 2,
       "type": "tap"
     },
     {
       "id": "ed255c73-e1c2-4fb3-ab20-5a83f904bfdc",
       "time": 3.437,
-      "lane": 1,
+      "lane": 0,
       "type": "tap"
     },
     {
       "id": "da794aa5-b7b6-4a7a-a850-e0422f353c08",
       "time": 3.738,
-      "lane": 0,
+      "lane": 1,
       "type": "tap"
     },
     {
       "id": "b3a4e6d4-ace2-452f-a3fc-f85b7d1e8e60",
       "time": 4.052,
-      "lane": 0,
+      "lane": 2,
       "type": "tap"
     },
     {
       "id": "83a21263-f44d-4ea4-bb6d-ef4a2e8454d2",
       "time": 4.209,
-      "lane": 1,
+      "lane": 2,
       "type": "tap"
     },
     {
       "id": "81e44e7e-04b5-47d6-8e1b-598912d9e1b5",
       "time": 4.365,
-      "lane": 0,
+      "lane": 1,
       "type": "tap"
     },
     {
@@ -116,7 +116,7 @@
     {
       "id": "1f37cfbe-3a71-4103-b582-30332438fbba",
       "time": 4.969,
-      "lane": 0,
+      "lane": 2,
       "type": "tap"
     },
     {
@@ -140,37 +140,37 @@
     {
       "id": "550fccb2-b234-42eb-801c-5bdcb8fb25ad",
       "time": 6.2,
-      "lane": 0,
+      "lane": 2,
       "type": "tap"
     },
     {
       "id": "7982cb3d-4e8b-4dbb-bc82-058290b82920",
       "time": 6.67,
-      "lane": 1,
+      "lane": 0,
       "type": "tap"
     },
     {
       "id": "50366f45-8cd3-4886-b806-5f9d9641d404",
       "time": 6.827,
-      "lane": 0,
+      "lane": 1,
       "type": "tap"
     },
     {
       "id": "19b05e4d-0e2b-4a1e-8372-b5df1c3e96e7",
       "time": 7.442,
-      "lane": 0,
+      "lane": 2,
       "type": "tap"
     },
     {
       "id": "8de3200d-17ec-4652-b5ec-8624366d44bd",
       "time": 7.755,
-      "lane": 1,
+      "lane": 2,
       "type": "tap"
     },
     {
       "id": "c0288be0-94a3-420f-ae4e-c394ca687850",
       "time": 8.069,
-      "lane": 0,
+      "lane": 1,
       "type": "tap"
     },
     {
@@ -206,37 +206,37 @@
     {
       "id": "320d4fc2-a61c-47f1-ae29-310003558dbf",
       "time": 9.607,
-      "lane": 0,
+      "lane": 2,
       "type": "tap"
     },
     {
       "id": "8ceb6caf-8e40-4971-b260-8d14974fb63f",
       "time": 9.915,
-      "lane": 0,
+      "lane": 1,
       "type": "tap"
     },
     {
       "id": "de7c1f3f-793c-4f13-a69b-9aef1eccff6b",
       "time": 10.069,
-      "lane": 1,
+      "lane": 0,
       "type": "tap"
     },
     {
       "id": "50488980-eacc-42de-9eaf-ef3311abeb26",
       "time": 10.53,
-      "lane": 0,
+      "lane": 2,
       "type": "tap"
     },
     {
       "id": "e1263969-eeef-423d-b508-eeb407a4a25d",
       "time": 11.146,
-      "lane": 0,
+      "lane": 1,
       "type": "tap"
     },
     {
       "id": "fa05fc5e-5a39-44c2-83d5-a05151c94fcc",
       "time": 11.299,
-      "lane": 1,
+      "lane": 2,
       "type": "tap"
     },
     {
@@ -248,7 +248,7 @@
     {
       "id": "b8fee08e-2bd2-4966-8dd1-27a955a18388",
       "time": 11.903,
-      "lane": 0,
+      "lane": 2,
       "type": "tap"
     },
     {
@@ -266,37 +266,37 @@
     {
       "id": "e0988a97-c8f7-4f7b-95cf-9fcec1618eec",
       "time": 12.826,
-      "lane": 0,
+      "lane": 2,
       "type": "tap"
     },
     {
       "id": "455bfe65-f8a9-451a-9f32-f4126f9841e7",
       "time": 12.992,
-      "lane": 1,
+      "lane": 0,
       "type": "tap"
     },
     {
       "id": "b3202e9d-7321-4a0c-bfef-08c17af3df72",
       "time": 13.142,
-      "lane": 0,
+      "lane": 1,
       "type": "tap"
     },
     {
       "id": "4a47f947-f4a5-4249-b4d7-dc7d20308461",
       "time": 13.293,
-      "lane": 0,
+      "lane": 2,
       "type": "tap"
     },
     {
       "id": "0d6b4c95-f9c2-45ec-9a1b-9ecd43d1e59f",
       "time": 13.595,
-      "lane": 1,
+      "lane": 2,
       "type": "tap"
     },
     {
       "id": "f17a8401-d417-4557-beef-c7a32e7fbf50",
       "time": 13.726,
-      "lane": 0,
+      "lane": 1,
       "type": "tap"
     },
     {
@@ -332,37 +332,37 @@
     {
       "id": "dd237716-3211-4b37-8413-6f37b164e47f",
       "time": 15.151,
-      "lane": 0,
+      "lane": 2,
       "type": "tap"
     },
     {
       "id": "8dc34920-2bde-4e98-8fa7-da83e40e11be",
       "time": 15.464,
-      "lane": 0,
+      "lane": 1,
       "type": "tap"
     },
     {
       "id": "98a1d7b4-ea66-4baa-9d59-d8db5f845c80",
       "time": 16.08,
-      "lane": 1,
+      "lane": 0,
       "type": "tap"
     },
     {
       "id": "923b5963-533d-4ebc-a04c-30ceec424860",
       "time": 16.393,
-      "lane": 0,
+      "lane": 2,
       "type": "tap"
     },
     {
       "id": "433c5f64-3c87-4b6b-aeff-68e9c2f7e093",
       "time": 16.707,
-      "lane": 0,
+      "lane": 1,
       "type": "tap"
     },
     {
       "id": "26971f46-edbf-4549-a686-9e9b8fb13466",
       "time": 17.31,
-      "lane": 1,
+      "lane": 2,
       "type": "tap"
     },
     {
@@ -374,7 +374,7 @@
     {
       "id": "f4abd9ba-d303-49e5-85d8-95570901c391",
       "time": 17.914,
-      "lane": 0,
+      "lane": 2,
       "type": "tap"
     },
     {

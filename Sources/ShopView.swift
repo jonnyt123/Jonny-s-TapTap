@@ -12,18 +12,17 @@ struct ShopView: View {
     @State private var justPurchased: String? = nil
     @State private var showCoinAnim = false
     
-    // Placeholder catalog mapped to existing song IDs
-    private let catalog: [ShopItem] = [
-        ShopItem(id: "test_song", title: "Test Song", price: 50),
-        ShopItem(id: "crazy_train", title: "Crazy Train", price: 120),
-        ShopItem(id: "i_will_not_bow", title: "I Will Not Bow", price: 100),
-        ShopItem(id: "day_n_nite", title: "Day N Nite", price: 110),
-        ShopItem(id: "blink182_see_you", title: "See You", price: 90),
-        ShopItem(id: "madchild_chainsaw", title: "Chainsaw", price: 80),
-        ShopItem(id: "hippie_sabotage_high", title: "High Enough", price: 95),
-        ShopItem(id: "mgk_dont_let_me_go", title: "Don't Let Me Go", price: 105),
-        ShopItem(id: "bizzy_banks_fonem", title: "On Fonem Grave", price: 85)
-    ]
+    // Dynamically generate catalog from SongMetadata.library (except default song)
+    private var catalog: [ShopItem] {
+        // Assign prices based on order or custom logic
+        let prices = [50, 120, 100, 110, 90, 80, 95, 105, 85, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230]
+        return SongMetadata.library.enumerated().compactMap { (idx, song) in
+            // Don't sell the default song (usually hallelujah)
+            if song.id == "hallelujah" { return nil }
+            let price = idx < prices.count ? prices[idx] : 100 + idx * 10
+            return ShopItem(id: song.id, title: song.title, price: price)
+        }
+    }
     
     var body: some View {
         NavigationStack {

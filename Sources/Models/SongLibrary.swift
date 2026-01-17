@@ -46,6 +46,66 @@ struct SongMetadata: Identifiable, Equatable {
 extension SongMetadata {
     static let library: [SongMetadata] = [
         SongMetadata(
+            id: "21_guns",
+            title: "21 Guns",
+            artist: "Green Day",
+            audioName: "Green Day - 21 Guns Official Music Video",
+            audioExtension: "mp3",
+            chartFiles: ChartFiles(
+                easy: "21_guns_easy",
+                medium: "21_guns_medium",
+                hard: "21_guns_hard",
+                extreme: "21_guns_extreme"
+            ),
+            lanes: 4,
+            bpm: 120.0,
+            primaryColors: [
+                Color(red: 0.2, green: 0.6, blue: 0.2),
+                Color(red: 0.1, green: 0.1, blue: 0.1)
+            ],
+            accent: .green
+        ),
+        SongMetadata(
+            id: "green_day_holiday",
+            title: "Holiday",
+            artist: "Green Day",
+            audioName: "Green Day - Holiday [Official Music Video]",
+            audioExtension: "mp3",
+            chartFiles: ChartFiles(
+                easy: "green_day_holiday_easy",
+                medium: "green_day_holiday_medium",
+                hard: "green_day_holiday_hard",
+                extreme: "green_day_holiday_extreme"
+            ),
+            lanes: 4,
+            bpm: 147.66,
+            primaryColors: [
+                Color(red: 0.16, green: 0.62, blue: 0.22),
+                Color(red: 0.08, green: 0.08, blue: 0.12)
+            ],
+            accent: .green
+        ),
+        SongMetadata(
+            id: "dragonforce_ttfaf",
+            title: "Through The Fire and Flames",
+            artist: "Dragonforce",
+            audioName: "dragonforce_through_the_fire_and_flames",
+            audioExtension: "mp3",
+            chartFiles: ChartFiles(
+                easy: "dragonforce_through_the_fire_and_flames_easy",
+                medium: "dragonforce_through_the_fire_and_flames_medium",
+                hard: "dragonforce_through_the_fire_and_flames_hard",
+                extreme: "dragonforce_through_the_fire_and_flames_extreme"
+            ),
+            lanes: 4,
+            bpm: 200.0,
+            primaryColors: [
+                Color(red: 0.8, green: 0.1, blue: 0.1),
+                Color(red: 0.1, green: 0.1, blue: 0.1)
+            ],
+            accent: .red
+        ),
+        SongMetadata(
             id: "hallelujah",
             title: "Hallelujah",
             artist: "Jonny Thompson",
@@ -91,7 +151,12 @@ extension SongMetadata {
             artist: "Ozzy Osbourne",
             audioName: "crazy_train",
             audioExtension: "mp3",
-            chartFiles: ChartFiles(same: "crazy_train"),
+            chartFiles: ChartFiles(
+                easy: "crazy_train_easy",
+                medium: "crazy_train_medium",
+                hard: "crazy_train_hard",
+                extreme: "crazy_train_extreme"
+            ),
             lanes: 4,
             bpm: 138,
             primaryColors: [
@@ -106,7 +171,12 @@ extension SongMetadata {
             artist: "Breaking Benjamin",
             audioName: "i_will_not_bow",
             audioExtension: "mp3",
-            chartFiles: ChartFiles(same: "i_will_not_bow"),
+            chartFiles: ChartFiles(
+                easy: "i_will_not_bow_easy",
+                medium: "i_will_not_bow_medium",
+                hard: "i_will_not_bow_hard",
+                extreme: "i_will_not_bow_extreme"
+            ),
             lanes: 4,
             bpm: 92,
             primaryColors: [
@@ -121,7 +191,12 @@ extension SongMetadata {
             artist: "Kid Cudi",
             audioName: "day_n_nite",
             audioExtension: "mp3",
-            chartFiles: ChartFiles(same: "day_n_nite"),
+            chartFiles: ChartFiles(
+                easy: "day_n_nite_easy",
+                medium: "day_n_nite_medium",
+                hard: "day_n_nite_hard",
+                extreme: "day_n_nite_extreme"
+            ),
             lanes: 4,
             bpm: 139.67,
             primaryColors: [
@@ -136,7 +211,12 @@ extension SongMetadata {
             artist: "blink-182",
             audioName: "blink182_see_you",
             audioExtension: "mp3",
-            chartFiles: ChartFiles(same: "blink182_see_you"),
+            chartFiles: ChartFiles(
+                easy: "blink182_see_you_easy",
+                medium: "blink182_see_you_medium",
+                hard: "blink182_see_you_hard",
+                extreme: "blink182_see_you_extreme"
+            ),
             lanes: 3,
             bpm: 100,
             primaryColors: [
@@ -151,7 +231,12 @@ extension SongMetadata {
             artist: "Madchild ft. Slaine",
             audioName: "madchild_chainsaw",
             audioExtension: "mp3",
-            chartFiles: ChartFiles(same: "madchild_chainsaw"),
+            chartFiles: ChartFiles(
+                easy: "madchild_chainsaw_easy",
+                medium: "madchild_chainsaw_medium",
+                hard: "madchild_chainsaw_hard",
+                extreme: "madchild_chainsaw_extreme"
+            ),
             lanes: 3,
             bpm: 95,
             primaryColors: [
@@ -166,7 +251,12 @@ extension SongMetadata {
             artist: "Hippie Sabotage",
             audioName: "hippie_sabotage_high",
             audioExtension: "m4a",
-            chartFiles: ChartFiles(same: "hippie_sabotage_high"),
+            chartFiles: ChartFiles(
+                easy: "hippie_sabotage_high_easy",
+                medium: "hippie_sabotage_high_medium",
+                hard: "hippie_sabotage_high_hard",
+                extreme: "hippie_sabotage_high_extreme"
+            ),
             lanes: 3,
             bpm: 110,
             primaryColors: [
@@ -181,7 +271,12 @@ extension SongMetadata {
             artist: "MGk",
             audioName: "mgk_dont_let_me_go",
             audioExtension: "mp3",
-            chartFiles: ChartFiles(same: "mgk_dont_let_me_go"),
+            chartFiles: ChartFiles(
+                easy: "mgk_dont_let_me_go_easy",
+                medium: "mgk_dont_let_me_go_medium",
+                hard: "mgk_dont_let_me_go_hard",
+                extreme: "mgk_dont_let_me_go_extreme"
+            ),
             lanes: 4,
             bpm: 120,
             primaryColors: [
@@ -196,7 +291,12 @@ extension SongMetadata {
             artist: "Bizzy Banks",
             audioName: "bizzy_banks_fonem",
             audioExtension: "mp3",
-            chartFiles: ChartFiles(same: "bizzy_banks_fonem"),
+            chartFiles: ChartFiles(
+                easy: "bizzy_banks_fonem_easy",
+                medium: "bizzy_banks_fonem_medium",
+                hard: "bizzy_banks_fonem_hard",
+                extreme: "bizzy_banks_fonem_extreme"
+            ),
             lanes: 3,
             bpm: 85,
             primaryColors: [

@@ -1,0 +1,3345 @@
+{
+  "songName": "Crazy Train",
+  "artist": "Ozzy Osbourne",
+  "bpm": 138.0,
+  "offset": 0.0,
+  "lanes": 4,
+  "notes": [
+    {
+      "id": "7b345a0c-a40b-4505-8094-cbc2398c4bf3",
+      "time": 2.302,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "1ac77a9f-de05-4b20-abcd-5b06fe230705",
+      "time": 3.194,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "7256e461-8992-48d0-9f2f-efc048bc5927",
+      "time": 3.492,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "1d644ff0-931f-44a3-a591-d185474342c5",
+      "time": 4.087,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "5785f3d0-e7ff-4c4e-9d5d-78ee30afa045",
+      "time": 4.708,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "65f44d67-2580-4f2f-a200-8c3759b80be6",
+      "time": 4.915,
+      "lane": 3,
+      "type": "tap"
+    },
+    {
+      "id": "872ec49a-fdbd-4d0c-9745-6f987df2c2cd",
+      "time": 5.329,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "c93d61e3-fee7-4eb3-955f-8e0186aeebb9",
+      "time": 5.77,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "edc0a59f-017b-4f16-a1ff-826fa1a706e4",
+      "time": 5.997,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "52c2de2d-5187-4e2b-b17f-735dd0268344",
+      "time": 6.223,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "17fce058-5468-427d-afc0-dfa94042578f",
+      "time": 6.676,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "609663a4-1af8-430a-9d96-f92f10f28755",
+      "time": 6.902,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "86f8c733-86f7-4c72-8e4e-be0a79ca35e8",
+      "time": 7.129,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "33b64d68-0925-4876-9085-9380130c1caa",
+      "time": 7.558,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "36aa542d-e7f0-45e6-8a03-ee41716e281f",
+      "time": 7.767,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "d0de9c60-8277-4b0a-9edc-deeb4dfd931f",
+      "time": 7.976,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "ed87ad9c-0852-44c5-82e4-8ceafcc0ed8a",
+      "time": 8.44,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "452b03f7-ef96-422f-88c9-c4c84025ecd8",
+      "time": 8.905,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "53441cca-7559-43e6-aa0b-bc77e447e066",
+      "time": 9.346,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "e6d7d206-8723-4b45-aae1-1598b5a56877",
+      "time": 9.584,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "351745aa-3922-4b60-b437-f4c68f4e2b9c",
+      "time": 9.822,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "96360a80-7dc2-4888-bf3a-8ed125c94472",
+      "time": 10.24,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "b8f45c84-3661-4940-8bf3-fe57a86c3a85",
+      "time": 10.461,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "a86c5021-9b41-4a0c-b867-a3978a1650e5",
+      "time": 10.681,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "b0d3b3cf-31aa-410b-8f2f-ecfba7f93172",
+      "time": 11.099,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "e6aefb66-4ef3-41e2-9d37-9b6a91be6459",
+      "time": 12.017,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "902d2713-790c-46c8-b35d-ef9e5f705739",
+      "time": 12.322,
+      "lane": 3,
+      "type": "tap"
+    },
+    {
+      "id": "fa1d863a-73b0-4201-a8f4-63b685a313ab",
+      "time": 12.934,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "076ae1da-25be-4d0c-9394-e5d28dea7f0b",
+      "time": 13.16,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "e6b1ff32-63d5-4117-bff8-0a79788d8835",
+      "time": 13.488,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "ae471bea-bd76-434f-8a5e-7c81e8fdc360",
+      "time": 13.816,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "35807b4c-2e64-47ec-aaf8-c5a77681b9f0",
+      "time": 14.042,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "c95e364e-c3fc-417a-b2fe-0fb083232040",
+      "time": 14.37,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "4668f293-936c-473e-bc7e-e04e38bd6ba7",
+      "time": 14.698,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "d42c56c1-aeef-4873-a046-c9299ed8365c",
+      "time": 14.93,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "974fd1bc-2c9e-4950-8783-158912095ae0",
+      "time": 15.163,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "7516683b-39c1-4cb4-9dc9-f9a4d6e4f375",
+      "time": 15.569,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "69993a8c-c09e-4456-8642-181a46c29576",
+      "time": 15.975,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "69050574-0b4e-45ab-9e19-14b0288493a0",
+      "time": 16.225,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "b5734930-2e7a-4f6c-bca1-8f0343f0210b",
+      "time": 16.475,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "c264de14-a7de-4294-a6a3-e2f3394633f1",
+      "time": 16.591,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "0c48b614-d497-4273-94c7-82959e304b45",
+      "time": 16.98,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "3b1cc7be-24ba-4046-af0e-8b38a2205349",
+      "time": 17.369,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "fafe891d-bcfb-4da9-983b-a33e0d2e4ca6",
+      "time": 17.607,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "e1b7c69e-4d77-422f-bca7-25dc3eef69d1",
+      "time": 17.923,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "f9c0d259-2eec-4bc4-b480-efda0c41908e",
+      "time": 18.239,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "db368fa3-eceb-45c0-b9e8-fe84f1db7cc5",
+      "time": 18.466,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "53eb5da8-7076-474e-8ba6-b49431e77391",
+      "time": 19.253,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "f03f0ae2-c9b7-48e4-a816-6c71886b4fea",
+      "time": 19.515,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "bb279635-29bf-4c46-9785-f83963aa6f47",
+      "time": 20.039,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "662b9441-c468-4cdf-8f52-481bfa004b45",
+      "time": 20.254,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "c8064ce7-1732-4154-989e-c9a9958a1891",
+      "time": 20.576,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "e449fb3f-8f39-46a6-bf33-236c1947dfbb",
+      "time": 20.898,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "f847698f-e354-45a4-9020-bf32f1409c22",
+      "time": 21.119,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "3525d17f-54dc-495b-b1dc-f537d1a5f134",
+      "time": 21.444,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "a1f3a7dd-ffe6-41bf-a4d4-7bcd004e68e9",
+      "time": 21.769,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "2ff87290-2936-4425-b869-60533b69990d",
+      "time": 21.983,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "4dfb3ff5-69fe-472e-b756-466e23372b2a",
+      "time": 22.776,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "b856b67b-9161-4d15-a7b7-300816c2fb4a",
+      "time": 23.04,
+      "lane": 3,
+      "type": "tap"
+    },
+    {
+      "id": "c21f1edf-e536-412b-95cb-d8e56f18a5c2",
+      "time": 23.568,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "1710e8a4-91af-4fc4-8c06-0551e05fc85e",
+      "time": 23.789,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "cb7bf601-9cd4-4c1a-a66c-46268a7c5e04",
+      "time": 24.009,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "3202d468-eb7c-44a2-9522-d4b28c7e0255",
+      "time": 24.332,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "15774e90-7cfa-4153-85c3-a1005d4e74f7",
+      "time": 24.549,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "7bc6ded0-000f-4b64-8dee-5041596a5084",
+      "time": 24.88,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "41cd25ea-5a6a-4e2a-b978-d3dbe7c67029",
+      "time": 25.31,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "36e258fa-44ff-4b55-a894-c49c263847d4",
+      "time": 25.53,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "ac9cc6a9-f76d-4057-8218-b3d43639528e",
+      "time": 26.099,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "8b6d3189-6cdd-4af7-97bc-cf82616feaa5",
+      "time": 26.668,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "16d29020-81b0-4b05-aee5-8177bfe719e0",
+      "time": 27.133,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "57d6a900-d6a4-4aaf-a494-11cda1640db3",
+      "time": 27.353,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "75f39f0c-98c1-4790-8be2-f0370ec27101",
+      "time": 27.678,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "9d6490c3-457c-4b16-b901-61984aee6c1a",
+      "time": 28.003,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "20ee92fb-5fcf-4d93-af7b-c9527840c406",
+      "time": 28.224,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "0d7f2ad4-502b-42aa-91da-9915a3a343af",
+      "time": 28.444,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "15543d85-eaeb-4393-a92b-0641f6db3561",
+      "time": 28.874,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "0aec088f-c0e2-484b-8d90-5b5322ce5b48",
+      "time": 29.095,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "4d912112-e4c0-49c8-a5ba-c398603ce8b4",
+      "time": 29.602,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "b69d0328-b3bd-4724-a3ea-dca644316c41",
+      "time": 30.108,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "cb0d85e9-6165-480d-94f2-346296259fe9",
+      "time": 30.385,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "c9599bf8-71bd-431f-ae5a-0f126e23946f",
+      "time": 30.662,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "18f9d154-7815-4cb2-b572-e101b77b22f7",
+      "time": 30.766,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "1d7ff8ad-4523-412c-a4ea-bd80e938a5b6",
+      "time": 30.975,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "4e22db32-805e-4dc5-84e2-3d233de654db",
+      "time": 31.08,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "58872671-e96e-4f0d-97ba-a3580ce5c828",
+      "time": 31.3,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "c05aa0a3-a323-4c1b-a869-19e210abe885",
+      "time": 31.411,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "8997be66-4313-4d84-9f4a-2fa438da672d",
+      "time": 31.521,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "ba1eaf2f-6dc6-426d-9acd-301a4c168860",
+      "time": 31.626,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "83098f71-cac3-46f6-a55d-347d560fab48",
+      "time": 31.73,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "6ada351e-a48b-46a4-9fe4-fb676f632fad",
+      "time": 32.044,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "45fb6709-d823-4527-a989-28698f2eb9eb",
+      "time": 32.357,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "05156086-26e7-4b13-9a0f-358dcef0d497",
+      "time": 32.81,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "8e3ec5e9-400e-4935-851c-dabcf6d4e37d",
+      "time": 33.149,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "dc64e16c-73d6-4e03-816c-9edb383108d9",
+      "time": 33.263,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "4bf361c7-2bbb-4793-98c8-c34d7eed2911",
+      "time": 33.373,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "127ef484-7fa7-427e-b646-df876065bf8b",
+      "time": 33.704,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "000e175f-4d69-4b84-aedf-aa57a7634a5e",
+      "time": 34.145,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "3b871fa4-2241-4d6a-943f-31608c9393b5",
+      "time": 34.586,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "7a7a4fcf-6057-420c-8c8a-eae4760c29c1",
+      "time": 34.917,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "50a76f51-3d52-479e-82c9-3f4dbd2d7cd4",
+      "time": 35.248,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "696bd274-c63f-4ea7-a778-b3dfd8fcf767",
+      "time": 35.358,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "091d059e-cdf7-4b58-8d5c-f47bddc5b9d2",
+      "time": 35.866,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "7197ab84-394b-4a7f-86ba-c79404bc763a",
+      "time": 36.374,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "a3ad632f-90b1-4a5a-abd2-26441ee66b50",
+      "time": 36.815,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "912ca624-589d-49b4-8a55-aa3e43a242a8",
+      "time": 37.137,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "8d53cdb5-28f5-4e3b-88f5-f5ea3ce75a6b",
+      "time": 37.412,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "165c28f0-dcc8-4b6f-94b1-8f173ad668c7",
+      "time": 37.686,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "0185ab9f-9862-457e-b842-8f7ebfc694b1",
+      "time": 38.116,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "2f0d9b3a-0b33-4301-a5c4-cc8b31f2fce9",
+      "time": 38.568,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "685f9a62-2831-4f7f-be43-3a1e3a012492",
+      "time": 38.676,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "c24f4e3c-defb-4fa0-8bd8-a4195ab51217",
+      "time": 38.998,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "9a73f88c-b74d-46cb-99cf-26a1bf1bbe98",
+      "time": 39.665,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "ac2611d4-b4e4-4e74-ad3c-289595612dbc",
+      "time": 39.888,
+      "lane": 3,
+      "type": "tap"
+    },
+    {
+      "id": "9779fb4a-2eca-4bfb-a5fd-28038ff49596",
+      "time": 40.333,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "fdeff303-89bf-45bf-8f3d-307e9eeb540e",
+      "time": 40.763,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "d8766803-4f08-491d-a619-011bf4b059ba",
+      "time": 41.215,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "e55822fc-c0cb-41aa-acf6-c15c8802aeb1",
+      "time": 41.645,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "5cbf9d01-a811-4fad-a69f-e7f24e2f7bee",
+      "time": 42.075,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "254e68ee-c228-4b83-be66-e884676e1b12",
+      "time": 42.504,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "626e6f96-9e49-47f2-b6b4-6a21e4afc796",
+      "time": 42.945,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "e54e56b2-6df8-4d17-aaa2-ab200289c1b1",
+      "time": 43.38,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "cc23c12e-94d3-4416-b530-83ca4b2abebf",
+      "time": 43.816,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "fa2b4d4f-8286-422d-a38d-386743f89024",
+      "time": 44.269,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "6e4ed345-a1f1-4def-8a8f-65e616b2f8dc",
+      "time": 44.687,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "d6299c6c-a14e-4b1a-ace9-9613e345589d",
+      "time": 45.026,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "8ed98725-4ffc-4c3e-a8c0-5eeb6a682ad7",
+      "time": 45.303,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "7ca88790-be66-42cb-b84d-dd270a524266",
+      "time": 45.581,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "dd987729-31de-4667-8793-05d69e0bcfda",
+      "time": 45.999,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "32b710f8-2707-4697-ac14-66480d536665",
+      "time": 46.103,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "a7254b2c-69b7-4ea9-8e2c-07823894e542",
+      "time": 46.208,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "4d1b10f4-ed8f-4f7a-8255-04fe57ddae9f",
+      "time": 46.312,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "ac20d316-addd-4682-ac73-a3261dd313f9",
+      "time": 46.417,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "229a49cc-4c1e-4a8c-b7e6-0720d9d9cb62",
+      "time": 46.881,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "6d41e344-cbaf-423c-9312-c460396fbc6a",
+      "time": 47.477,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "9940171e-d6f9-470c-9bb5-8c93e5bb6113",
+      "time": 48.074,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "de8ce217-8990-48a3-b67c-6a90a6c4153b",
+      "time": 48.181,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "dd6ebdec-0985-4fcd-8ad2-aa31960e5f17",
+      "time": 48.611,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "84d74b51-febb-4b62-b43f-bffa17da921b",
+      "time": 48.832,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "65b59b53-2475-441c-8f10-0ff3a1732cfe",
+      "time": 49.157,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "3b0ef6ff-6172-4831-b9ed-3c2102c51763",
+      "time": 49.482,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "d129bba6-6652-4704-9647-71261dd39843",
+      "time": 49.923,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "5706bb92-c127-4847-a3e5-1713af3f2d90",
+      "time": 50.364,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "190df747-a401-46f8-83f8-f98484f1144c",
+      "time": 50.805,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "308d5bb1-8f2c-42f9-8699-5117a0b5e691",
+      "time": 51.014,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "f4d70e74-4d72-444d-8600-c4e53a181b65",
+      "time": 51.223,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "b338e919-a1c6-4093-a276-23a5003939e2",
+      "time": 51.659,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "fe7f91d1-1bc4-467b-b213-f642cef94c6f",
+      "time": 52.094,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "bb8de653-ae75-4fd2-987c-ec76a64f6f1d",
+      "time": 52.315,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "d2b9aefe-7c9f-476b-bd1c-7a7c703b6eef",
+      "time": 52.645,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "2bfaa7b1-7b1b-4123-90b9-9bc2770a3d5a",
+      "time": 52.976,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "5eddf798-34a7-4264-8a73-bf0ce1675b5b",
+      "time": 53.191,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "9df38261-ddc2-4cfc-a010-b6ddddc07198",
+      "time": 53.751,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "1a419acb-52aa-4105-9135-ee2b3fe50b65",
+      "time": 54.311,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "673678b5-9189-4acb-b16a-49ab72ca565c",
+      "time": 54.764,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "cb217c6d-c972-4e2b-beb2-111c122bf022",
+      "time": 55.095,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "e6569e77-a76f-44c6-84c7-42c12fbc72bf",
+      "time": 55.205,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "8eb8580f-e16e-4e75-a5ae-109f205498ec",
+      "time": 55.647,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "cd4e2071-face-430a-b37c-5d5346674367",
+      "time": 56.076,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "247ae3b0-f096-45fb-bbc7-0cb9daf89b74",
+      "time": 56.398,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "a39dc2eb-2202-410e-a9fa-fe4da0451e31",
+      "time": 57.114,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "ca015b23-fdd7-4178-9b61-c795b79dd546",
+      "time": 57.352,
+      "lane": 3,
+      "type": "tap"
+    },
+    {
+      "id": "cefe6605-1625-46f6-bd25-9a0ee254ac02",
+      "time": 57.829,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "c93a447a-4fd3-49ca-9409-53ac34ba1d72",
+      "time": 58.27,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "ef1430d2-2ffc-4cf3-a77d-7d047c632418",
+      "time": 58.491,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "8b84045e-1985-4d78-b83a-ae39ec485861",
+      "time": 58.816,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "01fff737-5724-48ba-8c8d-9fa365cbb86c",
+      "time": 59.141,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "0ce1244c-69e0-4deb-a020-a893beba279a",
+      "time": 59.582,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "0f195760-53be-4e9d-a5a1-b5470f2f8077",
+      "time": 60.68,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "f3238933-7284-4b00-b84c-094a12212204",
+      "time": 61.045,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "9e94747a-b98f-459d-bae8-b6677dd23264",
+      "time": 61.777,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "78d5e6eb-69f4-4e23-9b53-53d298545943",
+      "time": 62.229,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "ccd4b30c-61fd-4463-b643-bb6e6529f4d4",
+      "time": 62.868,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "cfdacaf8-8ae0-45d6-8928-a90b6db3f43e",
+      "time": 63.081,
+      "lane": 3,
+      "type": "tap"
+    },
+    {
+      "id": "f939a656-68a3-4b91-9971-a69ea47c2f47",
+      "time": 63.507,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "ed4650f8-0de1-4766-a535-ff5cd988c74d",
+      "time": 63.948,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "d9ef1d5f-7c4d-4527-80f1-a2435671c353",
+      "time": 64.389,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "5bda6db6-8e18-468b-8f5a-d4ac899dc459",
+      "time": 64.776,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "8fac9b44-fa56-4be4-b801-65e246a07c34",
+      "time": 65.164,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "8b421d84-78b5-4002-9934-6b7e7321d5d4",
+      "time": 65.647,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "92ec1aa7-e0c3-489f-ae4d-4fa783cd1e0c",
+      "time": 66.13,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "9f3ca58a-db77-4cac-835f-71c70c0d6f11",
+      "time": 66.507,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "9dede198-d891-4886-9fd7-b9459d907ef2",
+      "time": 66.885,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "7c5db8a5-57ac-47f1-bc9b-16e8b6bf644a",
+      "time": 66.99,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "9ae91119-c5d0-4661-bceb-ba76493e3809",
+      "time": 67.097,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "23edeffe-1b8a-4059-8264-9863752ec564",
+      "time": 67.204,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "0e70fbeb-38a9-42ae-a746-c0e4e4590cc4",
+      "time": 67.544,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "82e0c5c9-82a7-4369-ac4c-2d382ae40a50",
+      "time": 67.884,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "099630a4-6031-4b63-bf87-dcada87f45cf",
+      "time": 68.209,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "e31366c4-da86-4ba7-9394-a85d035ca1bd",
+      "time": 68.534,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "8d0a43a0-af3b-415a-9729-e96cb732dcaf",
+      "time": 69.288,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "f0888d95-aaad-44a2-9a89-b07564f0c3db",
+      "time": 69.54,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "91aba10c-9de4-4905-98e3-0ebdbce6b2b1",
+      "time": 70.043,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "edf74a75-ebbf-438d-a364-540d3162938c",
+      "time": 70.269,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "89f1f9cc-ed52-4b82-8a22-d739aff603a2",
+      "time": 70.383,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "e0203b1d-b560-421b-bc6b-8bcdbed32d1e",
+      "time": 70.648,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "98b4b156-a847-4b9f-b1ad-ccb8ec39e47a",
+      "time": 70.914,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "fbc0542b-a609-427b-bd13-7a7e782865f7",
+      "time": 71.378,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "862dbf29-363c-431a-b36c-db8803f972ad",
+      "time": 71.653,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "0ce8b4f0-7c67-4441-b0c6-3d4571041b15",
+      "time": 71.927,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "ccc1b6f6-8d03-4f87-b9b8-740c6c9c401b",
+      "time": 72.834,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "19b32531-8c8f-46c9-abac-029c23e90f3b",
+      "time": 73.136,
+      "lane": 3,
+      "type": "tap"
+    },
+    {
+      "id": "648c8972-b747-4db4-9e78-b9b29bd6635a",
+      "time": 73.741,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "64cd82fa-09df-43a0-a688-cc4d3ca85407",
+      "time": 73.956,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "c1dda1c6-c562-478f-bc92-4e5a202ecf6a",
+      "time": 74.159,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "bc741260-5260-4113-b2a9-329e5a0a1970",
+      "time": 75.364,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "71109af5-0f2c-4e98-96c5-6b17411a7fac",
+      "time": 75.765,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "a63c8634-9c92-47ae-982e-8e503ea2b309",
+      "time": 76.568,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "bc75cb7a-2a0d-4f5d-9962-9fbbd83640d7",
+      "time": 76.998,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "1e59b505-3b24-42f6-acb6-ef62e678272a",
+      "time": 77.427,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "941d2c9c-a56c-4b35-8938-33905bd333f4",
+      "time": 77.874,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "4bc8394d-7f94-4311-a5b7-5cb3bea0031d",
+      "time": 78.321,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "bb5d9cdb-d2cf-47d7-94da-c65bfa10d2f1",
+      "time": 78.75,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "c515843c-af78-4867-bfa9-8e6009353586",
+      "time": 79.203,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "5cf483aa-0eb1-4ccd-ac03-a8659f045047",
+      "time": 79.621,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "357aaf41-a772-478f-ac94-8a39f90f6169",
+      "time": 80.051,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "68fbeb94-caac-40c6-99ce-b71b5844b8da",
+      "time": 80.487,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "6d89602c-0794-42c0-99bd-8c781d9c88be",
+      "time": 80.922,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "96c0b4b0-f90f-4b28-9256-a7f086e98108",
+      "time": 81.328,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "f77c6cfa-76fa-4e07-b46b-5d94cc7926b5",
+      "time": 81.88,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "5107b4c8-6a08-485c-b416-7760408590a4",
+      "time": 82.431,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "ef76b069-85a1-465d-8eab-3d2c8b36d894",
+      "time": 82.64,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "2d4541f9-f250-4539-bf98-9b60a2e0a3a2",
+      "time": 83.07,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "0e852657-ea03-4d4a-b5be-024b89097a06",
+      "time": 83.499,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "322d8106-cc2d-490c-92a3-91529f3e87a7",
+      "time": 83.934,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "e9caeb72-38b7-445f-88cb-e2c5622d8a5f",
+      "time": 84.37,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "c76bf8a5-f90e-48fb-a8bd-f78e6ca7aa83",
+      "time": 84.975,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "c54512fd-b201-4d7b-ae86-d7d6f48e8c41",
+      "time": 85.177,
+      "lane": 3,
+      "type": "tap"
+    },
+    {
+      "id": "26757608-0ba8-4638-ab9a-944bfb325738",
+      "time": 85.58,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "a3c774ef-31a8-4e92-8c26-9ff259c21bd1",
+      "time": 85.896,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "e322db20-cf6c-4d3e-8c2b-c0e14a4fbc0c",
+      "time": 86.326,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "9d335953-c8f1-4ea6-bb15-2c6614b2f75d",
+      "time": 86.665,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "b211aa8a-d825-4da1-b03a-d7e8a4e220ac",
+      "time": 87.005,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "e4930af0-45c8-44ac-bec9-dc8be9206d21",
+      "time": 87.22,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "6243abc0-58ce-48ac-a235-de543ed64c68",
+      "time": 87.65,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "0528beeb-eff0-4209-9cd0-9224987ce203",
+      "time": 87.864,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "80291bfb-6298-438d-bef9-d1b197b9098d",
+      "time": 88.282,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "6a691171-fb34-4e88-a8c9-55f7daaa80a4",
+      "time": 88.747,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "b99cb3de-ada6-44a8-8981-f0947fbd5d49",
+      "time": 89.165,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "3d8ab74a-5cad-4b3c-bb90-fb4823f247ac",
+      "time": 89.374,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "2f7e5b9c-abb3-455b-a122-9f1235c4e341",
+      "time": 89.583,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "e2ed5530-836c-42da-9cfe-054597f1e2cc",
+      "time": 89.792,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "d3d437ed-93c3-41b0-b632-36f22006f047",
+      "time": 90.061,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "96b7feb9-8b8e-4c42-b936-82624035962d",
+      "time": 90.331,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "466ec034-f966-42b1-be34-29bf31f9faac",
+      "time": 90.596,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "a46eebce-f2ef-4814-a275-fccbe7ed77cd",
+      "time": 90.86,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "b20465ce-eabd-4889-aa0a-7bc1eefb02e8",
+      "time": 91.312,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "86ca1a92-ae25-4bc1-84b8-c5f77257c4ec",
+      "time": 91.643,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "84d39180-3cf8-4d5a-9b7d-1b95b9b6409f",
+      "time": 91.913,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "ffcecd23-ede2-44c2-95a7-411c826a5913",
+      "time": 92.183,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "37fdca0b-7a41-4ceb-89fe-c7cac86fd78c",
+      "time": 92.613,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "cd708b61-06ac-4acb-9fa7-6ad7a7fd4dd6",
+      "time": 93.054,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "cfcbb761-842d-4199-975f-5a0d04c65306",
+      "time": 94.162,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "e48511a5-36f6-4815-a7aa-38c34a376ca9",
+      "time": 94.532,
+      "lane": 3,
+      "type": "tap"
+    },
+    {
+      "id": "740fe104-7113-4415-a07c-ccf76e110a42",
+      "time": 95.271,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "f5c91bb9-b95b-4ae8-b948-13f3387435f4",
+      "time": 95.724,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "38d371a4-6425-4a31-9416-861d271dcde9",
+      "time": 96.165,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "a7b3171b-ead3-493b-8efb-0ee29c28434e",
+      "time": 96.38,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "c84f0138-9d07-40a0-bf24-0538035ea4d4",
+      "time": 96.595,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "a75a5194-1434-44c3-86d6-89222486bc69",
+      "time": 96.816,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "d02f90c3-79fc-415c-80c8-3a4c3953f011",
+      "time": 97.036,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "f15d59c9-0870-4447-a10b-8d9312c5b67b",
+      "time": 97.356,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "af853a87-07d9-4438-8b68-987ca43749c7",
+      "time": 97.675,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "faba0eb1-75e7-4eae-addd-95d4f909a707",
+      "time": 97.884,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "4d463c48-6fdc-4124-8640-0e9e01c55496",
+      "time": 98.215,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "13624cea-8bfa-412e-b699-62d3125a7eeb",
+      "time": 98.545,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "8c6a9f68-4a3d-4154-93eb-f17b26a26887",
+      "time": 98.65,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "4fd95ced-d3cd-4228-9289-dd3b3fa23fa1",
+      "time": 99.094,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "47423a30-5934-488e-800f-2b8817151576",
+      "time": 100.213,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "42d6716f-7ee1-44af-8cda-5882c9eeff65",
+      "time": 100.586,
+      "lane": 3,
+      "type": "tap"
+    },
+    {
+      "id": "d5d4aea4-320b-4383-8bd0-1aa313b9cd5a",
+      "time": 101.332,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "046132c2-926e-4f3f-a310-bc8ee8a3774e",
+      "time": 102.559,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "00e6c671-d6c6-4c72-bbe9-cb5374dc6ff3",
+      "time": 102.969,
+      "lane": 3,
+      "type": "tap"
+    },
+    {
+      "id": "a8305d3f-18d2-4028-8fd0-1a9315516013",
+      "time": 103.787,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "2f228873-5c45-4f1a-9330-0913d047f234",
+      "time": 105.805,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "e183d4c8-41d1-435b-84b6-199d705b770f",
+      "time": 106.477,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "dde031d0-dcbe-43fd-bd68-c6a3223c1f87",
+      "time": 107.822,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "b0fca6d5-f87e-4432-aaef-7c342e879c6f",
+      "time": 108.263,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "f0908ebe-b03a-4d6d-ab73-e2ee4a22e2b0",
+      "time": 108.577,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "dc38f0b3-ba0a-469d-876d-cffb7b590b05",
+      "time": 109.935,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "fbe5eeef-0d4f-43cd-a3d2-c3953404d70e",
+      "time": 110.388,
+      "lane": 3,
+      "type": "tap"
+    },
+    {
+      "id": "26d61044-fc3c-4b10-b437-cfe01ce7bd38",
+      "time": 111.293,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "da98ae27-67e0-4bf0-879c-a6029b32fcd7",
+      "time": 111.671,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "74f11e44-bd02-476a-8a6b-8cd0d16f357f",
+      "time": 112.048,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "2f770c14-43c0-43fc-be03-503f51d1a1a6",
+      "time": 112.53,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "e81cab52-6156-4ba1-8f61-f8202d45747c",
+      "time": 113.012,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "790e4964-7fa8-475a-a374-4419a2fb6d5c",
+      "time": 113.82,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "cdbffa5c-50e5-4947-bef5-ca8b2ceebd51",
+      "time": 114.089,
+      "lane": 3,
+      "type": "tap"
+    },
+    {
+      "id": "3bf46a5e-b16d-4bee-b176-23ccd450f64d",
+      "time": 114.628,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "ec9ec88d-f7c5-4cec-8d3f-be074ee2b92a",
+      "time": 115.013,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "4f46b02e-7dfb-4b95-964e-38ee41cff23e",
+      "time": 115.397,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "6505539f-b810-4c19-9b55-dccaf7d671c9",
+      "time": 115.94,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "c0bddcb3-b8d8-4568-a571-3c3a31b97682",
+      "time": 116.483,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "597c6da7-32a6-4924-baae-af709c097071",
+      "time": 117.359,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "5cd22ac3-ff88-439b-92c5-92b12730ad23",
+      "time": 117.652,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "a72c839f-65e3-422f-b5bc-f35b46f5b144",
+      "time": 118.236,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "cb99c456-211f-41b5-934d-6bc4d6492e7b",
+      "time": 118.567,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "5e965502-2370-4dff-bb80-90533bc92dd7",
+      "time": 118.837,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "776d8962-45dc-4e23-b608-a4eeb7aa8ecc",
+      "time": 119.107,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "07804bde-af00-4ccb-8355-6c4276bb9f66",
+      "time": 119.536,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "3e3b3240-3117-4228-9d96-8e0660291dcd",
+      "time": 119.966,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "15196b20-7b20-4fc6-b776-293a5115a48c",
+      "time": 120.401,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "ab6396bd-9c81-4c91-8761-63de90a3f5ee",
+      "time": 120.837,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "18634e14-43d5-4d18-b311-b21c48c58375",
+      "time": 121.272,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "7b01eaec-bbbd-438f-a241-ae8fdc7a1bb8",
+      "time": 121.707,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "717bb7a4-43d3-43c7-a62b-f39b06f5950d",
+      "time": 122.089,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "213552c1-01d7-4997-ac1d-4a9b24f70d06",
+      "time": 122.471,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "02574711-9c02-4e01-bf32-1ba50f3a75b0",
+      "time": 122.739,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "dd4720ff-3eae-4b7d-b7d8-286f7f95cfca",
+      "time": 123.008,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "1707ebba-ea97-4dd1-8c99-0ed11562f986",
+      "time": 123.426,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "06dc6b1f-f33f-4c6c-bc00-b1d84ae635b3",
+      "time": 124.619,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "225a6821-b65b-445f-942d-a690336a61aa",
+      "time": 125.017,
+      "lane": 3,
+      "type": "tap"
+    },
+    {
+      "id": "82508c04-e90e-4642-9153-171d18231209",
+      "time": 125.812,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "4b1da388-95ef-4184-82b2-a88721325e2f",
+      "time": 125.919,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "aa254a1f-7dda-4790-94c7-539f3336131f",
+      "time": 126.727,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "e83b637e-0efd-44e3-86d5-50534b8b8224",
+      "time": 126.997,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "73b5adff-bf0b-490d-8e90-54c5356da773",
+      "time": 127.536,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "6e0499c8-5e85-4307-afc1-1263975a7c7f",
+      "time": 127.745,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "596e3043-75ee-4b19-86f4-5f10f7bf72ce",
+      "time": 128.18,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "e0c46fd2-b773-4138-89e2-1d370f3aeed1",
+      "time": 128.615,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "eaecd481-927a-4c57-b43b-e4c194ab5b3f",
+      "time": 129.039,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "52b76013-ef60-4264-bc47-b6db7e28c0a2",
+      "time": 129.463,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "ccfe39d2-baed-4b04-b921-e692f704d26b",
+      "time": 130.257,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "65e43916-1a42-4ea7-918e-5c3c6df3f166",
+      "time": 130.522,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "d485ebcb-36be-48c5-b65e-5c2af1552c79",
+      "time": 131.051,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "b9b29013-b228-4555-a353-826be0083ffa",
+      "time": 131.522,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "ab6e019e-9a19-4320-96bc-eb5b7107cddd",
+      "time": 131.994,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "8dbb7ef0-232f-4185-9e40-75b53f55cded",
+      "time": 132.65,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "2d3b6466-ddd2-4a62-a834-e140e8b2184b",
+      "time": 132.869,
+      "lane": 3,
+      "type": "tap"
+    },
+    {
+      "id": "82888fdd-ebf3-407b-9873-64b84f5862f4",
+      "time": 133.306,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "dd04843d-5ff1-4a7e-ae19-7b2117595201",
+      "time": 133.532,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "82006526-14b5-4f6e-b8c9-7e84df9c7ebd",
+      "time": 134.319,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "11f9c7e3-3161-40ba-9d58-410d370e33aa",
+      "time": 134.581,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "60c34106-7ca9-45e4-bb52-8054880746d6",
+      "time": 135.105,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "3eb2bf82-6068-44de-9b8d-a1b839c85c67",
+      "time": 135.332,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "580b3ca9-8190-4733-b6c8-5139e5ca68cf",
+      "time": 135.558,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "9d0242ea-8ee0-4f96-8c86-d29509ccced8",
+      "time": 135.988,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "0f4e87de-39f2-4060-aafb-289fbc28b977",
+      "time": 136.208,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "e06945c3-1100-4b61-baaa-c4c5fba98ba5",
+      "time": 136.539,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "dcc42375-8ebe-472a-bdec-ba803d18de80",
+      "time": 136.87,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "f5119cdd-92ec-4977-8efa-df8b23f61003",
+      "time": 137.085,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "1bf51a07-a6d1-4c9c-9d39-1cc5b9dd64f5",
+      "time": 137.645,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "12fcc832-7a79-4fe5-8ab7-f018d368e2f9",
+      "time": 138.205,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "332e7435-5836-460b-ba2a-b2697972e374",
+      "time": 138.658,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "a8753349-9844-4955-970c-e9eec686e236",
+      "time": 138.873,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "a73b34cf-3d8b-4382-9621-0a5121623d89",
+      "time": 139.201,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "d748abf5-e20c-4102-9080-5db6444f91d8",
+      "time": 139.529,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "c34cb241-813d-41f8-8ba5-79dd1f4c7fa3",
+      "time": 139.743,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "e6f75520-ad92-432f-84de-74a5f9a69bfc",
+      "time": 140.06,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "47a52c21-3138-4db1-95b0-fb9b6c02bc66",
+      "time": 140.376,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "a88db534-6405-4cad-9a21-7488708de1d7",
+      "time": 140.603,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "946e92a9-83a3-451a-bfa8-13dfed905be2",
+      "time": 141.383,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "5ebff781-e77b-47ed-9479-114e66cfedf6",
+      "time": 141.644,
+      "lane": 3,
+      "type": "tap"
+    },
+    {
+      "id": "e58b17f0-7812-49f0-a8bb-822877946ec2",
+      "time": 142.164,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "172a0ac9-2088-465f-89ae-34be2002d4b0",
+      "time": 142.385,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "12b57669-4847-4813-9f79-0e7e3249b3c0",
+      "time": 142.661,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "d5fb3cc3-24eb-49d2-a631-66457ebe5701",
+      "time": 142.936,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "dc8b8831-56f4-4c2b-8298-eb34a4c2a3b5",
+      "time": 143.267,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "70761859-a577-4816-b3ea-f5adb2a0308f",
+      "time": 143.592,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "e2aac781-b249-477e-9261-64ff4ae89ea5",
+      "time": 143.917,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "dc0b7140-4333-4528-9ea5-bb0ed06fd998",
+      "time": 144.03,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "f71777f1-dd70-4222-8e5e-c5b78dc12866",
+      "time": 144.862,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "dca092b2-e95f-43e5-a8f2-8b447236f8b5",
+      "time": 145.139,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "da5a82d8-e007-4890-a380-c462d4b17087",
+      "time": 145.694,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "e88c9afa-5f3e-4432-b536-5038684b25a3",
+      "time": 146.001,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "0b7e6d23-3fc1-4b8e-9c46-e7fb56d720e3",
+      "time": 146.309,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "324150e3-368d-4181-ba4e-beac9d53a796",
+      "time": 146.727,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "de4a1c86-5a19-4267-9757-390ee3081359",
+      "time": 146.936,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "79084f07-d6bd-4de9-a08b-a09cb6b0f0cd",
+      "time": 147.365,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "c41cbd2f-d05d-43af-bc3e-2be3f33e2a54",
+      "time": 147.818,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "c867ae6f-38d9-4c06-9eb2-505269964d50",
+      "time": 148.248,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "f6b6a6ee-ef1f-48a6-ab28-1c3ff1e788a3",
+      "time": 148.712,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "991ca599-3810-4232-a021-6c448cee63bb",
+      "time": 149.034,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "3bf1a274-4b04-4b9d-b00f-1933c8ec1d89",
+      "time": 149.142,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "84570366-76fb-4c66-9142-bfce66a64815",
+      "time": 149.583,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "27b18ea2-dfd7-4cf9-bc0e-bdd823aee100",
+      "time": 150.024,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "60d4956d-3552-42ab-ba8b-1eff335a50d5",
+      "time": 150.465,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "86a17a8b-84a4-47da-bd87-1e6fdc3e2d7f",
+      "time": 150.573,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "8613b50f-d856-499b-9cb0-bb7605cc47c5",
+      "time": 150.68,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "8aca1645-3efe-4779-926e-a84e5be4ab61",
+      "time": 150.949,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "74bbd219-e6a1-4007-8f2e-1f2110f08034",
+      "time": 151.217,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "f010f9d2-eb6c-4a19-ae89-3cfbd1013822",
+      "time": 151.492,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "f5f624df-be37-4c84-b256-6906a98b0fa7",
+      "time": 151.766,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "32a7b60b-9eaa-426b-a30b-e89f1ae5ff31",
+      "time": 152.218,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "2f9a2fe2-b714-4003-9420-92212a244186",
+      "time": 152.648,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "512bd070-52fd-47ee-85fb-aca175f9de0f",
+      "time": 153.078,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "09568a66-164c-4936-9b2f-3cc97fdfcc53",
+      "time": 153.53,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "bf4b9bc7-2fe2-4bab-be2d-4f4a5a54a7b5",
+      "time": 153.96,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "7c244d5b-1186-4474-9389-51df2efd97bf",
+      "time": 155.255,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "bf1700e1-21b1-429a-be4c-18490dbc0d96",
+      "time": 155.686,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "38599715-1f21-4f07-94ad-00363d61b606",
+      "time": 156.549,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "c9620efc-e773-4e95-9fe6-740aa1e30d1d",
+      "time": 156.99,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "cb49438e-1c1b-461b-be66-a8896ff70622",
+      "time": 157.408,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "77cd7414-6cb9-4250-86e0-e70079630523",
+      "time": 157.849,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "71735714-07da-4483-9f15-f039d04fdcf0",
+      "time": 158.279,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "60db5823-fcc8-4b47-a7aa-8c1ac83dc8f1",
+      "time": 158.61,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "0f01cd7b-f301-4b19-8489-fecce438d5f8",
+      "time": 158.892,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "01430f66-7052-4fe4-86f3-3f718c0195d3",
+      "time": 159.173,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "6d38e27d-c67d-466f-81e0-431779b0c341",
+      "time": 159.504,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "770286fe-c406-4ac4-9f2b-656ca70a8022",
+      "time": 159.614,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "7e538d6c-3708-4465-99df-1c0706673543",
+      "time": 160.044,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "b0ae3eb1-df14-4e64-87f5-61e508e93b40",
+      "time": 160.485,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "9690fe2e-ae74-4b10-a754-57d807d1d7fc",
+      "time": 160.926,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "70b903fa-96b0-4f7d-8820-363d694e6a8f",
+      "time": 161.785,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "6694bb9a-28a5-4aca-8cc1-e53c6a9c7172",
+      "time": 162.071,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "28aa00da-3185-47f7-aaba-5defc1e9f37a",
+      "time": 162.644,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "7f3b39dd-550e-4594-a4e1-cfef5edc1398",
+      "time": 163.051,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "a84fa064-adfc-4401-a005-ce693a0d2f53",
+      "time": 163.503,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "b16289b2-0ad6-4e2b-948f-26d73086a9c2",
+      "time": 163.614,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "95efcd51-f2cd-490a-8015-f2079201a7ac",
+      "time": 163.94,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "41f05eee-36a5-4b7b-a955-7d68de7c2fae",
+      "time": 164.267,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "c8483993-dc36-4ef9-ad00-2f84e97a1ee0",
+      "time": 164.541,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "0a64fee4-1a33-465a-a001-7e1da96484b7",
+      "time": 164.815,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "ce19dfef-2ca4-4d22-9515-12b4073609c1",
+      "time": 165.245,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "d5a5dc2f-19a1-4f21-9c93-2c31c51f5e21",
+      "time": 165.674,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "7c153a1c-5721-4f80-8227-fef7c442b276",
+      "time": 166.104,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "e099abc6-876d-4772-93cd-94614a1578eb",
+      "time": 166.522,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "4b83d2d0-b491-4380-9bce-324a063fe5df",
+      "time": 166.975,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "32bc26c7-cb15-4af7-b9b4-ba1ad4ce8abf",
+      "time": 167.416,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "29333509-87b5-4f50-ad1c-205004a0bca1",
+      "time": 167.845,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "2ec18b9c-5fad-4436-855f-3a431b1c6cab",
+      "time": 168.054,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "13dc77d7-4918-4301-995b-45ec8348114a",
+      "time": 168.391,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "8de3dce4-5934-4804-a431-fe57a480f4c5",
+      "time": 168.728,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "59c4b8f4-eb5f-4281-bc8e-7c720b287445",
+      "time": 169.157,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "d00ac591-74bf-4b9d-9a11-2a06b39bd03b",
+      "time": 169.599,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "df21920a-45b9-4cf5-816e-54a7e82c1745",
+      "time": 169.938,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "a172008c-3285-453c-b577-6b650702f617",
+      "time": 170.051,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "c6253ad1-8e01-4c26-b5e5-d9b75c11fb81",
+      "time": 170.647,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "ac6bd54b-513d-440f-9a18-10002f4568b5",
+      "time": 171.244,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "ecd4bd81-620f-4752-8e6a-b0443c57283f",
+      "time": 171.721,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "384bac2d-2acc-4f19-817a-c48e5e191b17",
+      "time": 172.199,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "c59cb4ef-bdbb-40df-ba27-66e3169fe5bc",
+      "time": 172.652,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "bbe37530-0944-4079-8e0d-2b06634a5552",
+      "time": 172.873,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "4ff44339-95df-455a-94ea-de12774ccdb1",
+      "time": 173.093,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "f5ae338d-ab8c-449c-9dad-222acbc51f15",
+      "time": 173.424,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "11d44703-f82a-44d3-9667-7ef3d115aa0b",
+      "time": 173.534,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "21597e5d-613c-4df3-83b7-1f4f874ef18d",
+      "time": 173.952,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "0a7ca626-132f-4e17-8e5a-86a8a416b417",
+      "time": 174.393,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "82b09675-131a-4c62-910b-186e3932652d",
+      "time": 174.823,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "b1ff1090-5032-4aff-9d7b-d6787e47548d",
+      "time": 175.523,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "4f9bc2c1-6a5b-44b0-bbcf-d123a5406a0a",
+      "time": 175.756,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "69173b41-0259-46db-9190-7fb51ee0d362",
+      "time": 176.222,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "a187242d-383b-43cb-a0f4-360d1bb605d1",
+      "time": 176.553,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "cb9ef261-7a09-4546-8d20-63da5be0d00b",
+      "time": 176.884,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "e227ca9d-3f94-4367-b327-ed9177a27e6b",
+      "time": 177.148,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "f6cf94a0-06c0-4764-aaad-56733e2380fa",
+      "time": 177.412,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "3436d3cc-1247-43c1-b8d2-a58fb920345f",
+      "time": 177.841,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "5f2c5ed2-5ba3-4b93-9c5b-e99421071281",
+      "time": 178.271,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "213fee64-244d-4be4-baba-93fecf7c1a57",
+      "time": 178.7,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "ddc184d7-9a32-4241-9a2a-c5f8655f2fd4",
+      "time": 179.13,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "98c5a2ae-ba40-4f78-8aa0-d852f432206f",
+      "time": 179.56,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "cb56f6f5-7a59-4baa-b700-f15e10172c46",
+      "time": 179.989,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "93a60d49-7a11-491c-a66c-2cf17c72a353",
+      "time": 180.633,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "e04a09b5-d45e-4cb0-bcf7-c33e32ea073b",
+      "time": 180.848,
+      "lane": 3,
+      "type": "tap"
+    },
+    {
+      "id": "bcd9c87e-c8e9-4e7c-b9eb-50ce41c9c12f",
+      "time": 181.278,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "560a302c-4677-4030-a337-958adaaa7f8b",
+      "time": 181.487,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "5f70a7e8-15ce-4adb-a527-95e438b5e6a8",
+      "time": 181.592,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "7d542b13-4af1-4e53-bd22-80932ab8275b",
+      "time": 181.696,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "e7493431-065c-4aa8-a91e-c07955dfef29",
+      "time": 182.132,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "b74bd67e-d52d-4bbf-9dc9-c9ae1d37fca7",
+      "time": 182.567,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "b728d1a6-b88f-402c-a3f4-e3e7cc760e59",
+      "time": 183.095,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "30e664c4-10bf-4e24-a1b5-e84eebf04a1d",
+      "time": 183.623,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "8f2a76f9-d574-44bb-b1da-d5db78d8f449",
+      "time": 183.948,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "d4be0cc1-0997-4e04-aec2-21a23bdd01af",
+      "time": 184.274,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "321064bd-3673-4f9c-8749-fb6cbf0fb621",
+      "time": 184.715,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "2a03842c-157d-47bf-8620-9f10e71ed33f",
+      "time": 185.156,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "c8d349a1-e99a-49b7-a878-6d85c86bf4aa",
+      "time": 186.026,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "6cdf3055-7390-4c8d-9327-1e921de86c52",
+      "time": 186.317,
+      "lane": 3,
+      "type": "tap"
+    },
+    {
+      "id": "5f2eb751-f2cb-453e-bf7d-01faa15527b0",
+      "time": 186.897,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "db8de61a-f4f6-47d7-abc2-32bd6cf01415",
+      "time": 187.273,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "9f7b221f-188c-4598-a4d9-7d6bdd6a0490",
+      "time": 187.649,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "32827929-ea24-4e76-afa9-09b16ae9efff",
+      "time": 187.918,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "94febd55-4bcd-4449-ace6-6c957f01945b",
+      "time": 188.186,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "5e87d7e0-676b-40c7-ad9d-70df140e82d5",
+      "time": 188.407,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "edc90809-b57c-4329-a46f-abfc10d70c28",
+      "time": 188.627,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "40797f52-49bf-4e93-8245-93259133f86a",
+      "time": 189.394,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "b87b0b10-0ab9-41ec-9c6d-8668909c44a3",
+      "time": 189.649,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "4ed40ee9-b9b1-41cd-a453-9a5a24af8654",
+      "time": 190.16,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "04117212-a4e9-4da9-b840-1e5d0a3266e5",
+      "time": 190.706,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "ee9db9d4-0206-4fcb-a593-2093421351fa",
+      "time": 191.251,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "480e0c95-c2b2-463e-9074-6b0eefbd4550",
+      "time": 192.116,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "e810b0c2-c3f8-4fb0-84d2-e1488e0c9109",
+      "time": 192.404,
+      "lane": 3,
+      "type": "tap"
+    },
+    {
+      "id": "0954c183-7985-48a6-b040-b0435553d062",
+      "time": 192.981,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "5b690aff-9a45-4994-8648-7c848466f586",
+      "time": 193.411,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "3c95f58e-dfbd-48d8-a1c6-a86bd9763598",
+      "time": 193.84,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "b2a916aa-ddbc-4f23-ab9d-2446de386f16",
+      "time": 194.27,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "838f214f-16cd-4895-9859-298725e62393",
+      "time": 194.699,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "354e35bc-4e13-4987-ae6c-28d97ea576e2",
+      "time": 195.14,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "3e5fb02d-6db9-4833-ac2a-3583a327f123",
+      "time": 195.57,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "414c7f67-87f5-4af3-bfc3-505fe4881da3",
+      "time": 195.988,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "aa7a7069-ca57-4166-adb6-b0a0fb9327b2",
+      "time": 196.452,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "2f2efa86-78e8-4a2b-b621-a6629615f4d7",
+      "time": 197.299,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "8bd6bac2-f8a5-423f-a687-8b7cad605297",
+      "time": 197.582,
+      "lane": 3,
+      "type": "tap"
+    },
+    {
+      "id": "21b7ee13-f611-4788-ba74-227925278bc1",
+      "time": 198.147,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "2b466eaf-4e86-4b36-a27c-5c642bccb6af",
+      "time": 199.233,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "b5552785-238d-48f6-be4f-d64cd2a66ba3",
+      "time": 199.595,
+      "lane": 3,
+      "type": "tap"
+    },
+    {
+      "id": "e33c6561-7b10-4a26-8f8e-b11a6a1568aa",
+      "time": 200.319,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "bceb7b3b-1efb-4d6c-a192-9e0113ae6821",
+      "time": 200.533,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "f5efabaf-757b-4ac9-8bee-3c2902b2677f",
+      "time": 200.748,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "3440873b-a662-4f15-a20b-8175eb1a76dc",
+      "time": 201.183,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "4e189151-94e0-48d5-8fdc-018b4404a5af",
+      "time": 201.619,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "9f410637-0257-4af8-9643-89ddf8bf0d92",
+      "time": 201.952,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "439dfdd1-5e31-48e9-bfa6-db1fd763a680",
+      "time": 202.286,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "a1016a95-f394-4566-8079-94ab59ee46be",
+      "time": 202.394,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "c38e8337-f2dd-4b4e-b02b-1110a1f1d362",
+      "time": 202.656,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "754f2bd2-c51f-4514-a2c1-3d39591559f0",
+      "time": 202.919,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "e661fb18-7af1-4cce-978b-7c18cf54c7a5",
+      "time": 203.372,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "fecac740-e906-4411-8998-22d2619c41da",
+      "time": 203.802,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "81444548-a935-4e3b-b5cd-fa211e8a43eb",
+      "time": 203.909,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "aa21de38-0d83-442a-a08c-70242a71f07e",
+      "time": 204.124,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "142af9b2-ec79-4370-b1ee-71b38f96c77d",
+      "time": 204.434,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "cf1237a2-b538-4eae-89ea-18a0a89cf6ba",
+      "time": 205.197,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "88934711-e268-40e8-b6ac-8726e25286b1",
+      "time": 205.452,
+      "lane": 3,
+      "type": "tap"
+    },
+    {
+      "id": "a308ba67-d6c6-4264-bfed-2d9a65a2f87a",
+      "time": 205.961,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "653ec7e7-7739-4a6a-aa8c-f6150b8dd6b6",
+      "time": 206.402,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "0168666c-35f0-4695-ad8b-e4d5600b1777",
+      "time": 206.843,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "c4612f02-692f-4655-ac42-c254b8196287",
+      "time": 206.959,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "5da4d436-9174-4fc1-8702-5806fa9854e2",
+      "time": 207.308,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "e3ce46ef-e814-485e-a06d-9e1eb1577860",
+      "time": 207.401,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "3adf0af9-bd45-4548-8a48-cdede87f438d",
+      "time": 207.679,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "6756a8cf-29b6-4a6c-9a00-c855fb3d5c5a",
+      "time": 207.894,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "f39a36f8-9be3-4817-8ee9-efcb2b9b3985",
+      "time": 208.001,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "bf85d240-9f30-4afd-bf99-7ca245e8b262",
+      "time": 208.281,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "f26286e7-1530-4071-a951-0a1a470d8ea7",
+      "time": 208.562,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "07952391-3870-457f-a55d-2947eed36b57",
+      "time": 209.201,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "6c91d732-c696-4c6d-9a93-93980c46a26a",
+      "time": 209.413,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "dbcd2486-031a-4523-89e2-eda7017d5de3",
+      "time": 209.839,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "5d92447d-9436-4685-bacc-da011aa19c46",
+      "time": 210.292,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "ef30817b-639e-45cd-b950-2e17c60cfbd5",
+      "time": 210.506,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "3440b734-d832-4b50-99a7-cadd9f59da85",
+      "time": 210.721,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "cd1d99e1-6595-42ae-8a17-d01b5b67c935",
+      "time": 211.139,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "b2ae503f-7933-419b-92b5-882529902d70",
+      "time": 211.534,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "c0f20521-b85b-4340-896f-2273760c4314",
+      "time": 211.987,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "84ec82d1-ae62-4387-a75c-7c5bf8f945d4",
+      "time": 212.416,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "e2933262-f3b5-408c-944c-cb1ae4f806ed",
+      "time": 212.738,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "9b0357df-aac1-46b6-84ef-69bade7307ac",
+      "time": 213.06,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "49ac5bb6-0dcf-4124-9d79-824f841cf668",
+      "time": 213.275,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "d718b530-095a-4fab-9bb3-3a50e21ffebe",
+      "time": 213.728,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "ad4cba33-1fd0-4835-ad21-43e6a0481671",
+      "time": 213.937,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "dbef436a-863c-4e23-83b0-669f2033aacb",
+      "time": 214.146,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "f2bab968-cc8b-457f-89fa-9a22526b5004",
+      "time": 214.796,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "caa65aa1-6c61-47dd-b30f-ceae4e74cf89",
+      "time": 215.013,
+      "lane": 3,
+      "type": "tap"
+    },
+    {
+      "id": "e79a9e2f-3291-497e-b505-bdaabc823033",
+      "time": 215.446,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "0f332105-ef95-4466-af51-f90256b35919",
+      "time": 215.76,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "9c9423dd-05de-42cd-a08b-52b6559300f8",
+      "time": 216.248,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "6c1aaba4-f0b9-4f6e-bf07-edf0318f3703",
+      "time": 216.735,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "b68848e0-4951-4aa1-b015-f194d7469efa",
+      "time": 217.165,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "065484e3-e88a-4b64-a8c0-f59881a5277f",
+      "time": 217.374,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "d928b373-8575-4a37-afed-1f0cf60be5c2",
+      "time": 217.693,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "23760baa-5a23-43f7-9f5d-f8d3d7841351",
+      "time": 218.012,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "7657cb6b-2933-4ade-bd50-564a991b529b",
+      "time": 218.125,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "135a763d-f9ce-4fdc-993b-c36f43a82f69",
+      "time": 218.465,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "932abe97-075b-4f34-a9a7-9d3e3814113c",
+      "time": 218.894,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "4e9494f3-d344-4af6-896e-ad1dd7fd6f3e",
+      "time": 219.324,
+      "lane": 1,
+      "type": "tap"
+    },
+    {
+      "id": "47fdf676-0430-452d-8cfd-7096501bdf20",
+      "time": 219.635,
+      "lane": 2,
+      "type": "tap"
+    },
+    {
+      "id": "be305854-f625-4cf9-b1d8-8e9a5a63184b",
+      "time": 219.945,
+      "lane": 0,
+      "type": "tap"
+    },
+    {
+      "id": "7d1cc280-9579-4270-9bf4-f7ced141414b",
+      "time": 220.16,
+      "lane": 1,
+      "type": "tap"
+    }
+  ]
+}

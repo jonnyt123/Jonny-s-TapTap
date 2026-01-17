@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 63;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		04AA2FE5ADA04C96EAA9F329 /* crazy_train.json in Resources */ = {isa = PBXBuildFile; fileRef = 5FF461CF2BC503B1D284706A /* crazy_train.json */; };
+		0288F594351244BCA7D0A6A7 /* GameCenter/GameCenterModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = B445A79847DC44708A86EA91 /* GameCenter/GameCenterModels.swift */; };
+		0B8D6813227F631290FDFCE3 /* Expert.dat in Resources */ = {isa = PBXBuildFile; fileRef = B2E27EF4A5ABDF8629ED98E7 /* Expert.dat */; };
 		0BB278E39DA85292918DFBC7 /* hallelujah_medium.json in Resources */ = {isa = PBXBuildFile; fileRef = 15DE58C16456163152E4D32B /* hallelujah_medium.json */; };
 		0E4C0C259AC99CC1B634EA03 /* revenge_bg_0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 41F99D160964546E146007CE /* revenge_bg_0.jpg */; };
 		103138D179D4DF1F8196951C /* BloodRainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF85C9C8202E6A908A4F0BFE /* BloodRainView.swift */; };
@@ -17,70 +18,147 @@
 		17A60FD3DEFEF2486B471D4B /* hallelujah_easy.json in Resources */ = {isa = PBXBuildFile; fileRef = 33A4632967903EB404E24ACC /* hallelujah_easy.json */; };
 		18282492F42B2852767CA16C /* note_orange_4lane.png in Resources */ = {isa = PBXBuildFile; fileRef = 4FBADC0E0440603BE7FCDB9F /* note_orange_4lane.png */; };
 		184BA592E2F03497C6DF25AD /* day_n_nite.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = EDBC13975B65BF20A47600BD /* day_n_nite.mp3 */; };
+		198A7D9B4E2E4B7AA14796CA /* GameCenter/LeaderboardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 399347950D444F2EBC831E5B /* GameCenter/LeaderboardService.swift */; };
+		1A603002A796F30A6D569411 /* notes.chart in Resources */ = {isa = PBXBuildFile; fileRef = 5245B974B2C55FB1AC42BBB0 /* notes.chart */; };
+		1C82B7C817827EE4181EFC94 /* blink182_see_you_hard.json in Resources */ = {isa = PBXBuildFile; fileRef = 0AE010E4D8127CBC829A6982 /* blink182_see_you_hard.json */; };
 		1DD726C7FFAF3EEF39F7FA5F /* main_menu_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 27D57C68743AEC9A8821BB31 /* main_menu_bg.png */; };
 		1E47DA6550E070790CB0C275 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03F94F622525F2144550E240 /* GameState.swift */; };
 		1EB98525F0F41607B5491623 /* note_blue.png in Resources */ = {isa = PBXBuildFile; fileRef = A304CDDEC39FF15CE06254E5 /* note_blue.png */; };
+		1F114417B09E1D6AB545F751 /* day_n_nite_medium.json in Resources */ = {isa = PBXBuildFile; fileRef = CD923DA61BFC59786F49F801 /* day_n_nite_medium.json */; };
 		1FBC698D6652C152DCB66016 /* hallelujah_hard.json in Resources */ = {isa = PBXBuildFile; fileRef = 4F611CFD5CD84A1D9689117D /* hallelujah_hard.json */; };
+		22E820505C623B3CB937A03B /* Hard.dat in Resources */ = {isa = PBXBuildFile; fileRef = D6FCF33FF10851A87CBAC7B9 /* Hard.dat */; };
+		245877AB12DDC664178BB140 /* 21_guns_hard.json in Resources */ = {isa = PBXBuildFile; fileRef = 13277A8AFA878A67472003B0 /* 21_guns_hard.json */; };
 		281614221F55F87CDF1F46C9 /* revenge_bg_3.png in Resources */ = {isa = PBXBuildFile; fileRef = F3BB8E1AB47C318A61DFFE28 /* revenge_bg_3.png */; };
 		28221AA73047E14F81D5F814 /* SKTextureExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D237091170528745B40675E /* SKTextureExtension.swift */; };
+		291A67B25F36705FE5F888D5 /* dragonforce_through_the_fire_and_flames.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = A68EDAF252593841B135DD40 /* dragonforce_through_the_fire_and_flames.mp3 */; };
 		2B045FA523D6788C17D3ED72 /* i_will_not_bow.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4AF234ABC7872A5AFB695822 /* i_will_not_bow.mp3 */; };
+		2B7573CF3FBC21CF34A75BAD /* crazy_train_easy.json in Resources */ = {isa = PBXBuildFile; fileRef = DADBA37B0C066F84F895C8A2 /* crazy_train_easy.json */; };
+		2C9EE5638FBA490282BDDBD7 /* LevelingSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4162AAB5EED246B5AE3C1BB1 /* LevelingSystem.swift */; };
 		2D2BEC715ED4BEB1020027F8 /* particles_layer.png in Resources */ = {isa = PBXBuildFile; fileRef = 8D7CBC578B72410793B46596 /* particles_layer.png */; };
+		3042767C098E4F12A52848CD /* GameCenter/GameCenterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8510B256247A44C1957A9FA0 /* GameCenter/GameCenterManager.swift */; };
 		30BC7EE438F6EDF082BAA437 /* bizzy_banks_fonem.json in Resources */ = {isa = PBXBuildFile; fileRef = FA3771ED06E51AF1F8F9BBFD /* bizzy_banks_fonem.json */; };
+		3398F26F69CB41E380D3BACE /* GameCenter/GameCenterConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4734EEE991E64D69B2F98E58 /* GameCenter/GameCenterConfiguration.swift */; };
+		33EE3DE11CEA4C709FFF6761 /* LevelingStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = A0CC2999930442ADAD9DDF62 /* LevelingStore.swift */; };
 		34240057165D14D5C2A98520 /* curly_savv_hideout.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = DF69469B48C7C00E7697A043 /* curly_savv_hideout.mp3 */; };
 		35BC8412E681377B7065A34D /* FireRainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB91CEEF620742CFA093CD3D /* FireRainView.swift */; };
 		3B54BEEA4F250ECCF137516B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386A3EA32102EAAAFA4E3CDD /* ContentView.swift */; };
 		3BAFACE64335A52E1B17CCA2 /* note_blue_4lane.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A920100AC21F99742D1352E /* note_blue_4lane.png */; };
+		3BDF9DAEFA24CE67C638F562 /* blink182_see_you_medium.json in Resources */ = {isa = PBXBuildFile; fileRef = B57AF72D73DC7611AF4BD29E /* blink182_see_you_medium.json */; };
 		3D8A60EB6877B163D885F86F /* hallelujah_extreme.json in Resources */ = {isa = PBXBuildFile; fileRef = 24AFB45CB1474BAF32470098 /* hallelujah_extreme.json */; };
 		3DD6A1AEFC5D7C68A44D4B37 /* blink182_see_you.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 6A35372FA812A9A272A295C3 /* blink182_see_you.mp3 */; };
+		3F8BC8F1517DA86AB44CBEED /* bizzy_banks_fonem_hard.json in Resources */ = {isa = PBXBuildFile; fileRef = 8AC12E1BED8F017C4E19CF2A /* bizzy_banks_fonem_hard.json */; };
 		3FF1D0A407263ADB7024AB6B /* revenge_bg_1.png in Resources */ = {isa = PBXBuildFile; fileRef = 24FA0F722D1FC361F57B11D5 /* revenge_bg_1.png */; };
 		412BE0A3B8E506193E9C30E7 /* test_song_extreme.json in Resources */ = {isa = PBXBuildFile; fileRef = 55C9C9A69BBFBB9E2F7219F6 /* test_song_extreme.json */; };
+		43C448B12025409BA697D0A4 /* green_day_holiday_extreme.json in Resources */ = {isa = PBXBuildFile; fileRef = B60B0FD7F8324461BBC05B60 /* green_day_holiday_extreme.json */; };
+		4455B6AB8043BEF59A7FA0C5 /* day_n_nite_hard.json in Resources */ = {isa = PBXBuildFile; fileRef = 48E10B1C17D0F5D47E99F320 /* day_n_nite_hard.json */; };
+		4481E19A714D5874AEFFC39D /* song.opus in Resources */ = {isa = PBXBuildFile; fileRef = A54BC62704D9F35AB159C2E6 /* song.opus */; };
 		45560CFFC476766498C856A3 /* note_green_4lane.png in Resources */ = {isa = PBXBuildFile; fileRef = BD12DE6A69FD4863067748B5 /* note_green_4lane.png */; };
+		46622E020D8A3D1A07BC3C61 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6C2083EC085DC26791A26A9 /* SettingsView.swift */; };
+		4EE1608043C8EB47EA3960B3 /* song.ini in Resources */ = {isa = PBXBuildFile; fileRef = AEC76AE45FC859C5897B8B9C /* song.ini */; };
 		51006251B6794E6B854D2C2C /* mgk_dont_let_me_go.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F1456AC84979399DBF176304 /* mgk_dont_let_me_go.mp3 */; };
 		538DA6E6D099EC6BCA6040E0 /* 2d07ae7e-18bd-433e-a0a2-4aa97650d495.png in Resources */ = {isa = PBXBuildFile; fileRef = CFF407F6ECC4100D9E4698E7 /* 2d07ae7e-18bd-433e-a0a2-4aa97650d495.png */; };
 		545487861620EA689B5CE0B9 /* test_song_hard.json in Resources */ = {isa = PBXBuildFile; fileRef = BCC8BAE069C6D27AC09002B3 /* test_song_hard.json */; };
+		59B1D8EA24E94AA5A36D9226 /* BeatmapEditorScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44CECBB121BE4F758655A904 /* BeatmapEditorScene.swift */; };
+		5AFE61D292969E2380871C8D /* i_will_not_bow_easy.json in Resources */ = {isa = PBXBuildFile; fileRef = BFE1ED6EB51E7AA3FBD87DB8 /* i_will_not_bow_easy.json */; };
 		5B8F4E074C8E2B671DC5A653 /* A_set_of_four_transparent_background_PNG_layers_is.png in Resources */ = {isa = PBXBuildFile; fileRef = 75AD54311DE8A03AF510AAD2 /* A_set_of_four_transparent_background_PNG_layers_is.png */; };
+		5F279C2E1F19AE773E91A76A /* mgk_dont_let_me_go_hard.json in Resources */ = {isa = PBXBuildFile; fileRef = BBE5210F370CFCD85EE25FF9 /* mgk_dont_let_me_go_hard.json */; };
+		5FBE328CC54F44F58D433E58 /* GameCenter/GameCenterViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E563BB16968741F1A27926DB /* GameCenter/GameCenterViews.swift */; };
 		622E085CDF0783D715A32C64 /* Chart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FA740698E1E3E113F8C986D /* Chart.swift */; };
+		63889C7FA199934C44DBCE4E /* bizzy_banks_fonem_medium.json in Resources */ = {isa = PBXBuildFile; fileRef = 5741B8D036017AB64C6BBCD1 /* bizzy_banks_fonem_medium.json */; };
+		648720B1C2009127842BC7E2 /* Info.dat in Resources */ = {isa = PBXBuildFile; fileRef = EFC71BCC46E0C339C5050F3E /* Info.dat */; };
+		64B4303015B96611CC39DB6B /* i_will_not_bow_extreme.json in Resources */ = {isa = PBXBuildFile; fileRef = 54645E1A24DC46EFBEF01D62 /* i_will_not_bow_extreme.json */; };
+		64BB9C0C800754EB80A9093C /* blink182_see_you_extreme.json in Resources */ = {isa = PBXBuildFile; fileRef = BECC61BEAC37C85E54024AA2 /* blink182_see_you_extreme.json */; };
 		66F5DB3DFF6C202D16143871 /* LaunchScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = D9EA850A3049C9E81402BA7A /* LaunchScreen.png */; };
-		672164C60BA7DBF06D87FFE3 /* day_n_nite_beatmap.json in Resources */ = {isa = PBXBuildFile; fileRef = C2D1CD8CA7ECD7FE0966899E /* day_n_nite_beatmap.json */; };
+		680B20DC1F8460D15A2D0005 /* crazy_train_hard.json in Resources */ = {isa = PBXBuildFile; fileRef = 0E10BA372CDC3BDD6D9310EE /* crazy_train_hard.json */; };
+		6CEBD9DE54628D7F446340F9 /* hippie_sabotage_high_hard.json in Resources */ = {isa = PBXBuildFile; fileRef = 4388A998A5630056157ABC31 /* hippie_sabotage_high_hard.json */; };
+		6DE08A0892041CF3B96BE7D6 /* blink182_see_you_easy.json in Resources */ = {isa = PBXBuildFile; fileRef = 14F26EB866120E3E5F71C01D /* blink182_see_you_easy.json */; };
+		6E56768179988F01043A9FCC /* madchild_chainsaw_extreme.json in Resources */ = {isa = PBXBuildFile; fileRef = 36223320897DFD6B682396F0 /* madchild_chainsaw_extreme.json */; };
 		6FDFE3E99DC362F5CE6970A8 /* day_n_nite.json in Resources */ = {isa = PBXBuildFile; fileRef = A417F03EC34963D514CEE2CA /* day_n_nite.json */; };
 		714A023A3BF3BEE5A3F94419 /* madchild_chainsaw.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 41FDB191A1802DAB48797ADC /* madchild_chainsaw.mp3 */; };
 		73B763A1466EC1C7C99A3F88 /* note_pink.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA29A8151AF7AEC55B78DF7 /* note_pink.png */; };
 		73E95BD96B735EC592F262C5 /* revenge_overlay.png in Resources */ = {isa = PBXBuildFile; fileRef = FBDCEFBEB641FEFF29C1D781 /* revenge_overlay.png */; };
 		74DD050B5E79684104802B73 /* ShopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B884622D40D3289698D2F1C6 /* ShopView.swift */; };
 		752BE0850FE6D110C7A13B71 /* gameplay_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 064A3F3D40D5BEA0BE027C63 /* gameplay_background.png */; };
+		7670E3B6FF4A4A0A94029E79 /* LevelingCurve.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F6E232541F43D7893F996A /* LevelingCurve.swift */; };
 		76806CD6BD3D1D7FDF65DB5A /* chart.json in Resources */ = {isa = PBXBuildFile; fileRef = 04EC3DFB6D3A784545ADB98A /* chart.json */; };
+		7790A01A98784001AB3D0C65 /* BeatmapEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEA8617962B47E9A2D32CF4 /* BeatmapEditorView.swift */; };
+		783A3A8F7D0402EAD1425119 /* bizzy_banks_fonem_easy.json in Resources */ = {isa = PBXBuildFile; fileRef = 55E26E955350922F878D3AEB /* bizzy_banks_fonem_easy.json */; };
 		7AD4D98B8BE8EF54BD97A99B /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70D513FBB96DCA5C40CEE8CC /* LoadingView.swift */; };
 		7C88EEC80D49FC3C9D5640F6 /* hallelujah.wav in Resources */ = {isa = PBXBuildFile; fileRef = 03A97D2D12611EFE6B0092DA /* hallelujah.wav */; };
 		81344F8AD60B27013D6C1AC7 /* note_red_4lane.png in Resources */ = {isa = PBXBuildFile; fileRef = BFDDAE3C6185A30A45B906FF /* note_red_4lane.png */; };
+		85C97AAC3E9123993BCD115D /* crazy_train_extreme.json in Resources */ = {isa = PBXBuildFile; fileRef = 9546994D7BD873EC54342947 /* crazy_train_extreme.json */; };
+		875C4C809F0AC77E349D073C /* NoArrowsHard.dat in Resources */ = {isa = PBXBuildFile; fileRef = 73952193D652F0E93942F188 /* NoArrowsHard.dat */; };
 		87CDD642D5845A82A8DA660D /* hippie_sabotage_high.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 4D14DDEBA2B0FF4F2A6238CB /* hippie_sabotage_high.m4a */; };
 		891E1FDF330BF5F3A989FE0C /* bizzy_banks_fonem.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 62E78BBFEB31987286AC1F47 /* bizzy_banks_fonem.mp3 */; };
+		8A6D5AABA4D74AF38B84ED84 /* UserBeatmapPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB710DD1F3042CF8367EB7C /* UserBeatmapPickerView.swift */; };
+		8AB545853B534F9DB8739BDD /* Green Day - Holiday [Official Music Video].mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 5990D7CDD4C6429E9F6D988D /* Green Day - Holiday [Official Music Video].mp3 */; };
 		8ABC26AE2C14DD523B2D0C65 /* lane_background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = A8E974EA181FB53534DB7CD9 /* lane_background.jpg */; };
 		8E4710751BC68430AE59F87A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FF827DB7E7A2436AD7E0B8EA /* Assets.xcassets */; };
+		930A58613884D80403ECEA37 /* hippie_sabotage_high_extreme.json in Resources */ = {isa = PBXBuildFile; fileRef = B75AC8DFE8A4EF8FC5671ED3 /* hippie_sabotage_high_extreme.json */; };
 		93868D12860E2C626BD915CE /* remix_revision.json in Resources */ = {isa = PBXBuildFile; fileRef = BB3E040B83C265F6F224CC51 /* remix_revision.json */; };
+		93A885BEBD7B48F5ADA86E20 /* green_day_holiday_easy.json in Resources */ = {isa = PBXBuildFile; fileRef = 8F42DD51E832431A87C43326 /* green_day_holiday_easy.json */; };
 		98F43270F9AE6CC8435AC4AC /* note_green.png in Resources */ = {isa = PBXBuildFile; fileRef = B3357B35AB35E0133C1EBE16 /* note_green.png */; };
 		9941CB6ED3446FF557CDF572 /* GameAudioEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CBB6FD14A113EFB43F4BF5 /* GameAudioEngine.swift */; };
 		9995BB0950409A9D8EAF1B14 /* i_will_not_bow.json in Resources */ = {isa = PBXBuildFile; fileRef = 58431646C6004636DBFEF16B /* i_will_not_bow.json */; };
 		9D4DA9EDF378EF406B7F5472 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BA1C35E8EEAA8B99CCE4480A /* LaunchScreen.storyboard */; };
+		9D5708ED71BE05DD1830DE40 /* i_will_not_bow_medium.json in Resources */ = {isa = PBXBuildFile; fileRef = D4DB67E762407DF01F898EF0 /* i_will_not_bow_medium.json */; };
 		A220A37E79667F24DB4CCA98 /* mgk_dont_let_me_go.json in Resources */ = {isa = PBXBuildFile; fileRef = C3E92278B4959C4A77BEA979 /* mgk_dont_let_me_go.json */; };
+		A338576206AF680936AE28FB /* day_n_nite_extreme.json in Resources */ = {isa = PBXBuildFile; fileRef = 28D1A77B376BF508652E3719 /* day_n_nite_extreme.json */; };
 		A43562292B5A3E7E5B76C7B5 /* test_song_easy.json in Resources */ = {isa = PBXBuildFile; fileRef = F9876C8308B1B6A9BC3FE38F /* test_song_easy.json */; };
+		A4F05B59AB6C47559C0FA7DF /* green_day_holiday_medium.json in Resources */ = {isa = PBXBuildFile; fileRef = 0BB8DDE9376D43BCAB354BB2 /* green_day_holiday_medium.json */; };
 		A8A05FAE215027AE3CADE1A0 /* track.wav in Resources */ = {isa = PBXBuildFile; fileRef = 94643C06E46468F138C0BF27 /* track.wav */; };
+		A8A33E6933DEF342919D5DF0 /* madchild_chainsaw_easy.json in Resources */ = {isa = PBXBuildFile; fileRef = 0D3568055E875FC01A77B2C5 /* madchild_chainsaw_easy.json */; };
 		AD9393383D99C5CC59CF5145 /* madchild_chainsaw.json in Resources */ = {isa = PBXBuildFile; fileRef = 57810A436B140418B77D4E71 /* madchild_chainsaw.json */; };
+		B0EB9B8CA596042B943B4157 /* madchild_chainsaw_medium.json in Resources */ = {isa = PBXBuildFile; fileRef = BD3A3A51245BC748A1823A56 /* madchild_chainsaw_medium.json */; };
+		B2950BFC0436B43922213CA1 /* madchild_chainsaw_hard.json in Resources */ = {isa = PBXBuildFile; fileRef = B9C7D301E8F7C223F91DB0A8 /* madchild_chainsaw_hard.json */; };
+		B3AF5BB952B8422FB81E1D0A /* BeatmapEditorCore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D03181729F411FA55643EA /* BeatmapEditorCore.swift */; };
+		B3BC39F8C6134DA38697A905 /* green_day_holiday_hard.json in Resources */ = {isa = PBXBuildFile; fileRef = 9DB91473A7354A28AFA2A543 /* green_day_holiday_hard.json */; };
+		B436873B17A45DFAC4E458B7 /* Green Day - 21 Guns Official Music Video.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = CE27FA51CC37562A6412791F /* Green Day - 21 Guns Official Music Video.mp3 */; };
+		B4E5B2759725017F3301652C /* NoArrowsExpertPlus.dat in Resources */ = {isa = PBXBuildFile; fileRef = 7ECEDB7734423C34FA53F0DE /* NoArrowsExpertPlus.dat */; };
+		BA162A87B235F6F24D3BCB4D /* hippie_sabotage_high_medium.json in Resources */ = {isa = PBXBuildFile; fileRef = 48865600E3DD86620684CDDC /* hippie_sabotage_high_medium.json */; };
+		BAB60E72BC3B80050B6062DF /* dragonforce_through_the_fire_and_flames_easy.json in Resources */ = {isa = PBXBuildFile; fileRef = C977A157AB4FE12148C847AA /* dragonforce_through_the_fire_and_flames_easy.json */; };
+		BC1F519540E9C4661F0B87A2 /* 21_guns_easy.json in Resources */ = {isa = PBXBuildFile; fileRef = 561A73AC81F3C4316442DD82 /* 21_guns_easy.json */; };
+		BD80AB5A4BE91A28C760F9DA /* mgk_dont_let_me_go_extreme.json in Resources */ = {isa = PBXBuildFile; fileRef = 23A4E39105D8A188C025D63B /* mgk_dont_let_me_go_extreme.json */; };
+		C1F6A5283A3DD96ED60E3FA3 /* crazy_train_medium.json in Resources */ = {isa = PBXBuildFile; fileRef = 2F7294892B72CD508DFD116B /* crazy_train_medium.json */; };
+		C6F5056CB10C4792866CD0D9 /* dragonforce_through_the_fire_and_flames_extreme.json in Resources */ = {isa = PBXBuildFile; fileRef = 9DF241D8122D69E1FEF7BFC8 /* dragonforce_through_the_fire_and_flames_extreme.json */; };
 		C98EFC4991F004E25A639A90 /* track 3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 92AE99D0546BB2B7099006E3 /* track 3.wav */; };
+		C994773B5D30487C8D65F987 /* GameCenter/GameCenterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3869067FC3348B28D4FB4D6 /* GameCenter/GameCenterPresenter.swift */; };
+		CAB12608EB226F035E971255 /* 21_guns_extreme.json in Resources */ = {isa = PBXBuildFile; fileRef = 49D042E853071348A95B6036 /* 21_guns_extreme.json */; };
 		CCD1DC7B86C2CD43DBDFED0A /* ProgressService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4FCDDECEF56383933BF6CF2 /* ProgressService.swift */; };
 		CD1668D7457AD65421C3294F /* hippie_sabotage_high.json in Resources */ = {isa = PBXBuildFile; fileRef = 056286103340802687F024D7 /* hippie_sabotage_high.json */; };
 		CF7644D0343BBAFF90A414AD /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86623312D3D236CA73594B6 /* GameScene.swift */; };
 		D0CF5265C8736DDBFD12917F /* A_set_of_digital_illustrations_displays_a_futurist.png in Resources */ = {isa = PBXBuildFile; fileRef = 1C4997EFAA776D03A22E5AEE /* A_set_of_digital_illustrations_displays_a_futurist.png */; };
 		D28C4B3EC83AFAF61F3DAB3D /* hallelujah.json in Resources */ = {isa = PBXBuildFile; fileRef = A1736E4F9F66B6F9FF093D6D /* hallelujah.json */; };
+		D3439EFF4DDE3FB884372025 /* mgk_dont_let_me_go_medium.json in Resources */ = {isa = PBXBuildFile; fileRef = C16BB30CB66711B36B9475A6 /* mgk_dont_let_me_go_medium.json */; };
+		D543CFF5E154C0279885486C /* dragonforce_through_the_fire_and_flames_hard.json in Resources */ = {isa = PBXBuildFile; fileRef = AB4FC59631CD1D37916EBE70 /* dragonforce_through_the_fire_and_flames_hard.json */; };
+		D98CB2EDD5E9249BAC74BAD1 /* dragonforce_through_the_fire_and_flames_medium.json in Resources */ = {isa = PBXBuildFile; fileRef = 4BEBC2E2D2553982404ADFD9 /* dragonforce_through_the_fire_and_flames_medium.json */; };
+		DA223D22E9B148B5A7023884 /* GameCenter/ChallengeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF2D7468810E4E23960128EC /* GameCenter/ChallengeService.swift */; };
+		DF572FD505C54668AC5ED708 /* LevelingUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD88B0F9DF248DBBE452018 /* LevelingUI.swift */; };
+		DFFBE028EA26808540A9CA00 /* 21_guns_medium.json in Resources */ = {isa = PBXBuildFile; fileRef = 537B450C8BB7F77024503284 /* 21_guns_medium.json */; };
+		E1D8D088E04D634410288613 /* album.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 7315BF1A066543991B89712C /* album.jpg */; };
 		E35C110E678C506B7E01C0B2 /* gameplay_background_4lane.png in Resources */ = {isa = PBXBuildFile; fileRef = 5295C9A045A8C95DBB8A1E85 /* gameplay_background_4lane.png */; };
 		E4364E3E05E28E2FFBE34CAB /* remix_revision.wav in Resources */ = {isa = PBXBuildFile; fileRef = 7EA4F99F1AAC55F6A752DA03 /* remix_revision.wav */; };
 		E51FF5EA02BB136E2F9D3D20 /* crazy_train.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = D5E4F4E5E6B9298F3EF9C2E2 /* crazy_train.mp3 */; };
+		E6265B0597A3E230FA9D68F2 /* bizzy_banks_fonem_extreme.json in Resources */ = {isa = PBXBuildFile; fileRef = 8E9ED315E5B4D7D34AB6922D /* bizzy_banks_fonem_extreme.json */; };
+		E911D48E7453F411A093FFAC /* mgk_dont_let_me_go_easy.json in Resources */ = {isa = PBXBuildFile; fileRef = 6605F471880E7578EE7E1E82 /* mgk_dont_let_me_go_easy.json */; };
 		E9D578A739F6299A1E198B86 /* crazy_train.mboy in Resources */ = {isa = PBXBuildFile; fileRef = C2DE6306AEB491B30AF97118 /* crazy_train.mboy */; };
+		E9FDEBE7FEA4EA9D13F9B827 /* song.ogg in Resources */ = {isa = PBXBuildFile; fileRef = DCCE7C744B99B0E6BC77F714 /* song.ogg */; };
+		EB93525E52EE867F8CB90975 /* i_will_not_bow_hard.json in Resources */ = {isa = PBXBuildFile; fileRef = 271AFB36439EE0F5786948C5 /* i_will_not_bow_hard.json */; };
+		ED0E54A8224E7685DD0DB602 /* day_n_nite_easy.json in Resources */ = {isa = PBXBuildFile; fileRef = 14C8B10277EBE07559903F99 /* day_n_nite_easy.json */; };
 		EF74884F7D53D4EC7430A775 /* RhythmTapApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7207EA90E551C366B58211C /* RhythmTapApp.swift */; };
+		F01EB63C09F088E5D654DADE /* ExpertPlus.dat in Resources */ = {isa = PBXBuildFile; fileRef = B344B4D5FBF26A63F0747E3D /* ExpertPlus.dat */; };
 		F3F63C7A85DF8CC6B04C8DA3 /* MainMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD707CBCF260F01BABCC1B55 /* MainMenuView.swift */; };
-		F49C21420C2C21C098FFB9DB /* crazy_train_beatmap_138bpm.json in Resources */ = {isa = PBXBuildFile; fileRef = 5B14AB4B4016969D49671A46 /* crazy_train_beatmap_138bpm.json */; };
 		F669EBAE20C5CC1919FEA4F7 /* blink182_see_you.json in Resources */ = {isa = PBXBuildFile; fileRef = E82BA51FFCEA0C6A6D34491C /* blink182_see_you.json */; };
+		F829FC4816800080508208F4 /* hippie_sabotage_high_easy.json in Resources */ = {isa = PBXBuildFile; fileRef = C9CD9E07F087C8F21DB1AF3B /* hippie_sabotage_high_easy.json */; };
 		F83DE69F2B07703D3A33A7B4 /* test_song_medium.json in Resources */ = {isa = PBXBuildFile; fileRef = 999BD3454EFA7BAE328D7333 /* test_song_medium.json */; };
 		F9F3334BC5B76A8E6BE97D95 /* JonnysTapTap.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA1B4A0930C58B9D99276F74 /* JonnysTapTap.ttf */; };
+		FB1F10EC2F1974ED005E1E32 /* green_day_holiday_hard 2.json in Resources */ = {isa = PBXBuildFile; fileRef = FB1F10EA2F1974ED005E1E32 /* green_day_holiday_hard 2.json */; };
+		FB1F10ED2F1974ED005E1E32 /* green_day_holiday_medium 2.json in Resources */ = {isa = PBXBuildFile; fileRef = FB1F10EB2F1974ED005E1E32 /* green_day_holiday_medium 2.json */; };
+		FB1F10EE2F1974ED005E1E32 /* green_day_holiday_extreme 2.json in Resources */ = {isa = PBXBuildFile; fileRef = FB1F10E92F1974ED005E1E32 /* green_day_holiday_extreme 2.json */; };
+		FB1F10EF2F1974ED005E1E32 /* Green Day - Holiday [Official Music Video] 2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = FB1F10E72F1974ED005E1E32 /* Green Day - Holiday [Official Music Video] 2.mp3 */; };
+		FB1F10F02F1974ED005E1E32 /* green_day_holiday_easy 2.json in Resources */ = {isa = PBXBuildFile; fileRef = FB1F10E82F1974ED005E1E32 /* green_day_holiday_easy 2.json */; };
+		FBAF30F667B3B88ADFB1AC1F /* NoArrowsExpert.dat in Resources */ = {isa = PBXBuildFile; fileRef = 2315C99AD19CD3565F06EB92 /* NoArrowsExpert.dat */; };
+		FD01773A66AAC6E04E96000A /* cover.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 68FCEFA82D20A7A597EB716B /* cover.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -90,72 +168,151 @@
 		04EC3DFB6D3A784545ADB98A /* chart.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = chart.json; sourceTree = "<group>"; };
 		056286103340802687F024D7 /* hippie_sabotage_high.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = hippie_sabotage_high.json; sourceTree = "<group>"; };
 		064A3F3D40D5BEA0BE027C63 /* gameplay_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameplay_background.png; sourceTree = "<group>"; };
+		0AE010E4D8127CBC829A6982 /* blink182_see_you_hard.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = blink182_see_you_hard.json; sourceTree = "<group>"; };
+		0BB8DDE9376D43BCAB354BB2 /* green_day_holiday_medium.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = green_day_holiday_medium.json; sourceTree = "<group>"; };
+		0D3568055E875FC01A77B2C5 /* madchild_chainsaw_easy.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = madchild_chainsaw_easy.json; sourceTree = "<group>"; };
+		0DB710DD1F3042CF8367EB7C /* UserBeatmapPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBeatmapPickerView.swift; sourceTree = "<group>"; };
+		0E10BA372CDC3BDD6D9310EE /* crazy_train_hard.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = crazy_train_hard.json; sourceTree = "<group>"; };
+		13277A8AFA878A67472003B0 /* 21_guns_hard.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 21_guns_hard.json; sourceTree = "<group>"; };
+		14C8B10277EBE07559903F99 /* day_n_nite_easy.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = day_n_nite_easy.json; sourceTree = "<group>"; };
+		14F26EB866120E3E5F71C01D /* blink182_see_you_easy.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = blink182_see_you_easy.json; sourceTree = "<group>"; };
 		15DE58C16456163152E4D32B /* hallelujah_medium.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = hallelujah_medium.json; sourceTree = "<group>"; };
 		1A920100AC21F99742D1352E /* note_blue_4lane.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = note_blue_4lane.png; sourceTree = "<group>"; };
 		1C4997EFAA776D03A22E5AEE /* A_set_of_digital_illustrations_displays_a_futurist.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = A_set_of_digital_illustrations_displays_a_futurist.png; sourceTree = "<group>"; };
+		2315C99AD19CD3565F06EB92 /* NoArrowsExpert.dat */ = {isa = PBXFileReference; lastKnownFileType = text; path = NoArrowsExpert.dat; sourceTree = "<group>"; };
+		23A4E39105D8A188C025D63B /* mgk_dont_let_me_go_extreme.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mgk_dont_let_me_go_extreme.json; sourceTree = "<group>"; };
 		24AFB45CB1474BAF32470098 /* hallelujah_extreme.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = hallelujah_extreme.json; sourceTree = "<group>"; };
 		24FA0F722D1FC361F57B11D5 /* revenge_bg_1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = revenge_bg_1.png; sourceTree = "<group>"; };
-		26188F689FF15CE2C74C52BB /* RhythmTap.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = RhythmTap.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		26188F689FF15CE2C74C52BB /* RhythmTap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RhythmTap.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		271AFB36439EE0F5786948C5 /* i_will_not_bow_hard.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = i_will_not_bow_hard.json; sourceTree = "<group>"; };
 		27D57C68743AEC9A8821BB31 /* main_menu_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_menu_bg.png; sourceTree = "<group>"; };
+		28D1A77B376BF508652E3719 /* day_n_nite_extreme.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = day_n_nite_extreme.json; sourceTree = "<group>"; };
+		2AD88B0F9DF248DBBE452018 /* LevelingUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelingUI.swift; sourceTree = "<group>"; };
 		2D237091170528745B40675E /* SKTextureExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKTextureExtension.swift; sourceTree = "<group>"; };
+		2F7294892B72CD508DFD116B /* crazy_train_medium.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = crazy_train_medium.json; sourceTree = "<group>"; };
 		322BB6F25089CA4E49AAA482 /* SongLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongLibrary.swift; sourceTree = "<group>"; };
 		33A4632967903EB404E24ACC /* hallelujah_easy.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = hallelujah_easy.json; sourceTree = "<group>"; };
 		34CBB6FD14A113EFB43F4BF5 /* GameAudioEngine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameAudioEngine.swift; sourceTree = "<group>"; };
+		36223320897DFD6B682396F0 /* madchild_chainsaw_extreme.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = madchild_chainsaw_extreme.json; sourceTree = "<group>"; };
 		386A3EA32102EAAAFA4E3CDD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		399347950D444F2EBC831E5B /* GameCenter/LeaderboardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenter/LeaderboardService.swift; sourceTree = "<group>"; };
+		4162AAB5EED246B5AE3C1BB1 /* LevelingSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelingSystem.swift; sourceTree = "<group>"; };
 		41F99D160964546E146007CE /* revenge_bg_0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = revenge_bg_0.jpg; sourceTree = "<group>"; };
 		41FDB191A1802DAB48797ADC /* madchild_chainsaw.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = madchild_chainsaw.mp3; sourceTree = "<group>"; };
+		4388A998A5630056157ABC31 /* hippie_sabotage_high_hard.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = hippie_sabotage_high_hard.json; sourceTree = "<group>"; };
+		44CECBB121BE4F758655A904 /* BeatmapEditorScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeatmapEditorScene.swift; sourceTree = "<group>"; };
+		4734EEE991E64D69B2F98E58 /* GameCenter/GameCenterConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenter/GameCenterConfiguration.swift; sourceTree = "<group>"; };
+		48865600E3DD86620684CDDC /* hippie_sabotage_high_medium.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = hippie_sabotage_high_medium.json; sourceTree = "<group>"; };
+		48E10B1C17D0F5D47E99F320 /* day_n_nite_hard.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = day_n_nite_hard.json; sourceTree = "<group>"; };
+		49D042E853071348A95B6036 /* 21_guns_extreme.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 21_guns_extreme.json; sourceTree = "<group>"; };
 		4AF234ABC7872A5AFB695822 /* i_will_not_bow.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = i_will_not_bow.mp3; sourceTree = "<group>"; };
-		4D14DDEBA2B0FF4F2A6238CB /* hippie_sabotage_high.m4a */ = {isa = PBXFileReference; path = hippie_sabotage_high.m4a; sourceTree = "<group>"; };
+		4BEBC2E2D2553982404ADFD9 /* dragonforce_through_the_fire_and_flames_medium.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = dragonforce_through_the_fire_and_flames_medium.json; sourceTree = "<group>"; };
+		4D14DDEBA2B0FF4F2A6238CB /* hippie_sabotage_high.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = hippie_sabotage_high.m4a; sourceTree = "<group>"; };
 		4F611CFD5CD84A1D9689117D /* hallelujah_hard.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = hallelujah_hard.json; sourceTree = "<group>"; };
 		4FA740698E1E3E113F8C986D /* Chart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chart.swift; sourceTree = "<group>"; };
 		4FBADC0E0440603BE7FCDB9F /* note_orange_4lane.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = note_orange_4lane.png; sourceTree = "<group>"; };
+		5245B974B2C55FB1AC42BBB0 /* notes.chart */ = {isa = PBXFileReference; lastKnownFileType = text; path = notes.chart; sourceTree = "<group>"; };
 		5295C9A045A8C95DBB8A1E85 /* gameplay_background_4lane.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = gameplay_background_4lane.png; sourceTree = "<group>"; };
+		537B450C8BB7F77024503284 /* 21_guns_medium.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 21_guns_medium.json; sourceTree = "<group>"; };
+		54645E1A24DC46EFBEF01D62 /* i_will_not_bow_extreme.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = i_will_not_bow_extreme.json; sourceTree = "<group>"; };
 		55C9C9A69BBFBB9E2F7219F6 /* test_song_extreme.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = test_song_extreme.json; sourceTree = "<group>"; };
+		55E26E955350922F878D3AEB /* bizzy_banks_fonem_easy.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = bizzy_banks_fonem_easy.json; sourceTree = "<group>"; };
+		561A73AC81F3C4316442DD82 /* 21_guns_easy.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = 21_guns_easy.json; sourceTree = "<group>"; };
+		5741B8D036017AB64C6BBCD1 /* bizzy_banks_fonem_medium.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = bizzy_banks_fonem_medium.json; sourceTree = "<group>"; };
 		57810A436B140418B77D4E71 /* madchild_chainsaw.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = madchild_chainsaw.json; sourceTree = "<group>"; };
 		58431646C6004636DBFEF16B /* i_will_not_bow.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = i_will_not_bow.json; sourceTree = "<group>"; };
-		5B14AB4B4016969D49671A46 /* crazy_train_beatmap_138bpm.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = crazy_train_beatmap_138bpm.json; sourceTree = "<group>"; };
-		5FF461CF2BC503B1D284706A /* crazy_train.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = crazy_train.json; sourceTree = "<group>"; };
+		5990D7CDD4C6429E9F6D988D /* Green Day - Holiday [Official Music Video].mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Green Day - Holiday [Official Music Video].mp3"; sourceTree = "<group>"; };
 		62E78BBFEB31987286AC1F47 /* bizzy_banks_fonem.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = bizzy_banks_fonem.mp3; sourceTree = "<group>"; };
+		6605F471880E7578EE7E1E82 /* mgk_dont_let_me_go_easy.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mgk_dont_let_me_go_easy.json; sourceTree = "<group>"; };
+		68FCEFA82D20A7A597EB716B /* cover.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cover.jpg; sourceTree = "<group>"; };
 		6A35372FA812A9A272A295C3 /* blink182_see_you.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = blink182_see_you.mp3; sourceTree = "<group>"; };
 		70D513FBB96DCA5C40CEE8CC /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		7315BF1A066543991B89712C /* album.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = album.jpg; sourceTree = "<group>"; };
+		73952193D652F0E93942F188 /* NoArrowsHard.dat */ = {isa = PBXFileReference; lastKnownFileType = text; path = NoArrowsHard.dat; sourceTree = "<group>"; };
 		75AD54311DE8A03AF510AAD2 /* A_set_of_four_transparent_background_PNG_layers_is.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = A_set_of_four_transparent_background_PNG_layers_is.png; sourceTree = "<group>"; };
 		7EA4F99F1AAC55F6A752DA03 /* remix_revision.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = remix_revision.wav; sourceTree = "<group>"; };
+		7ECEDB7734423C34FA53F0DE /* NoArrowsExpertPlus.dat */ = {isa = PBXFileReference; lastKnownFileType = text; path = NoArrowsExpertPlus.dat; sourceTree = "<group>"; };
+		8510B256247A44C1957A9FA0 /* GameCenter/GameCenterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenter/GameCenterManager.swift; sourceTree = "<group>"; };
+		8AC12E1BED8F017C4E19CF2A /* bizzy_banks_fonem_hard.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = bizzy_banks_fonem_hard.json; sourceTree = "<group>"; };
 		8C18DCAC4D46C4F0A9755AC3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D7CBC578B72410793B46596 /* particles_layer.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = particles_layer.png; sourceTree = "<group>"; };
+		8E9ED315E5B4D7D34AB6922D /* bizzy_banks_fonem_extreme.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = bizzy_banks_fonem_extreme.json; sourceTree = "<group>"; };
+		8F42DD51E832431A87C43326 /* green_day_holiday_easy.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = green_day_holiday_easy.json; sourceTree = "<group>"; };
 		92AE99D0546BB2B7099006E3 /* track 3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = "track 3.wav"; sourceTree = "<group>"; };
 		94643C06E46468F138C0BF27 /* track.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = track.wav; sourceTree = "<group>"; };
+		9546994D7BD873EC54342947 /* crazy_train_extreme.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = crazy_train_extreme.json; sourceTree = "<group>"; };
 		999BD3454EFA7BAE328D7333 /* test_song_medium.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = test_song_medium.json; sourceTree = "<group>"; };
+		9BEA8617962B47E9A2D32CF4 /* BeatmapEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeatmapEditorView.swift; sourceTree = "<group>"; };
+		9DB91473A7354A28AFA2A543 /* green_day_holiday_hard.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = green_day_holiday_hard.json; sourceTree = "<group>"; };
+		9DF241D8122D69E1FEF7BFC8 /* dragonforce_through_the_fire_and_flames_extreme.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = dragonforce_through_the_fire_and_flames_extreme.json; sourceTree = "<group>"; };
+		A0CC2999930442ADAD9DDF62 /* LevelingStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelingStore.swift; sourceTree = "<group>"; };
 		A1736E4F9F66B6F9FF093D6D /* hallelujah.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = hallelujah.json; sourceTree = "<group>"; };
 		A304CDDEC39FF15CE06254E5 /* note_blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = note_blue.png; sourceTree = "<group>"; };
 		A417F03EC34963D514CEE2CA /* day_n_nite.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = day_n_nite.json; sourceTree = "<group>"; };
+		A54BC62704D9F35AB159C2E6 /* song.opus */ = {isa = PBXFileReference; lastKnownFileType = file; path = song.opus; sourceTree = "<group>"; };
+		A68EDAF252593841B135DD40 /* dragonforce_through_the_fire_and_flames.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dragonforce_through_the_fire_and_flames.mp3; sourceTree = "<group>"; };
 		A8E974EA181FB53534DB7CD9 /* lane_background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = lane_background.jpg; sourceTree = "<group>"; };
+		AB4FC59631CD1D37916EBE70 /* dragonforce_through_the_fire_and_flames_hard.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = dragonforce_through_the_fire_and_flames_hard.json; sourceTree = "<group>"; };
+		AEC76AE45FC859C5897B8B9C /* song.ini */ = {isa = PBXFileReference; lastKnownFileType = text; path = song.ini; sourceTree = "<group>"; };
+		B2E27EF4A5ABDF8629ED98E7 /* Expert.dat */ = {isa = PBXFileReference; lastKnownFileType = text; path = Expert.dat; sourceTree = "<group>"; };
 		B3357B35AB35E0133C1EBE16 /* note_green.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = note_green.png; sourceTree = "<group>"; };
+		B344B4D5FBF26A63F0747E3D /* ExpertPlus.dat */ = {isa = PBXFileReference; lastKnownFileType = text; path = ExpertPlus.dat; sourceTree = "<group>"; };
+		B445A79847DC44708A86EA91 /* GameCenter/GameCenterModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenter/GameCenterModels.swift; sourceTree = "<group>"; };
+		B57AF72D73DC7611AF4BD29E /* blink182_see_you_medium.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = blink182_see_you_medium.json; sourceTree = "<group>"; };
+		B60B0FD7F8324461BBC05B60 /* green_day_holiday_extreme.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = green_day_holiday_extreme.json; sourceTree = "<group>"; };
+		B75AC8DFE8A4EF8FC5671ED3 /* hippie_sabotage_high_extreme.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = hippie_sabotage_high_extreme.json; sourceTree = "<group>"; };
 		B884622D40D3289698D2F1C6 /* ShopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopView.swift; sourceTree = "<group>"; };
+		B9C7D301E8F7C223F91DB0A8 /* madchild_chainsaw_hard.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = madchild_chainsaw_hard.json; sourceTree = "<group>"; };
 		BA1C35E8EEAA8B99CCE4480A /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BB3E040B83C265F6F224CC51 /* remix_revision.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = remix_revision.json; sourceTree = "<group>"; };
+		BBE5210F370CFCD85EE25FF9 /* mgk_dont_let_me_go_hard.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mgk_dont_let_me_go_hard.json; sourceTree = "<group>"; };
 		BCC8BAE069C6D27AC09002B3 /* test_song_hard.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = test_song_hard.json; sourceTree = "<group>"; };
 		BD12DE6A69FD4863067748B5 /* note_green_4lane.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = note_green_4lane.png; sourceTree = "<group>"; };
+		BD3A3A51245BC748A1823A56 /* madchild_chainsaw_medium.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = madchild_chainsaw_medium.json; sourceTree = "<group>"; };
 		BD707CBCF260F01BABCC1B55 /* MainMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuView.swift; sourceTree = "<group>"; };
+		BECC61BEAC37C85E54024AA2 /* blink182_see_you_extreme.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = blink182_see_you_extreme.json; sourceTree = "<group>"; };
 		BFDDAE3C6185A30A45B906FF /* note_red_4lane.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = note_red_4lane.png; sourceTree = "<group>"; };
-		C2D1CD8CA7ECD7FE0966899E /* day_n_nite_beatmap.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = day_n_nite_beatmap.json; sourceTree = "<group>"; };
-		C2DE6306AEB491B30AF97118 /* crazy_train.mboy */ = {isa = PBXFileReference; path = crazy_train.mboy; sourceTree = "<group>"; };
+		BFE1ED6EB51E7AA3FBD87DB8 /* i_will_not_bow_easy.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = i_will_not_bow_easy.json; sourceTree = "<group>"; };
+		C16BB30CB66711B36B9475A6 /* mgk_dont_let_me_go_medium.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mgk_dont_let_me_go_medium.json; sourceTree = "<group>"; };
+		C2DE6306AEB491B30AF97118 /* crazy_train.mboy */ = {isa = PBXFileReference; lastKnownFileType = text; path = crazy_train.mboy; sourceTree = "<group>"; };
+		C3869067FC3348B28D4FB4D6 /* GameCenter/GameCenterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenter/GameCenterPresenter.swift; sourceTree = "<group>"; };
 		C3E92278B4959C4A77BEA979 /* mgk_dont_let_me_go.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = mgk_dont_let_me_go.json; sourceTree = "<group>"; };
 		C4FCDDECEF56383933BF6CF2 /* ProgressService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressService.swift; sourceTree = "<group>"; };
+		C977A157AB4FE12148C847AA /* dragonforce_through_the_fire_and_flames_easy.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = dragonforce_through_the_fire_and_flames_easy.json; sourceTree = "<group>"; };
+		C9CD9E07F087C8F21DB1AF3B /* hippie_sabotage_high_easy.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = hippie_sabotage_high_easy.json; sourceTree = "<group>"; };
+		CD923DA61BFC59786F49F801 /* day_n_nite_medium.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = day_n_nite_medium.json; sourceTree = "<group>"; };
+		CE27FA51CC37562A6412791F /* Green Day - 21 Guns Official Music Video.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Green Day - 21 Guns Official Music Video.mp3"; sourceTree = "<group>"; };
 		CFF407F6ECC4100D9E4698E7 /* 2d07ae7e-18bd-433e-a0a2-4aa97650d495.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "2d07ae7e-18bd-433e-a0a2-4aa97650d495.png"; sourceTree = "<group>"; };
+		D4DB67E762407DF01F898EF0 /* i_will_not_bow_medium.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = i_will_not_bow_medium.json; sourceTree = "<group>"; };
 		D5E4F4E5E6B9298F3EF9C2E2 /* crazy_train.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = crazy_train.mp3; sourceTree = "<group>"; };
+		D6C2083EC085DC26791A26A9 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		D6FCF33FF10851A87CBAC7B9 /* Hard.dat */ = {isa = PBXFileReference; lastKnownFileType = text; path = Hard.dat; sourceTree = "<group>"; };
 		D9EA850A3049C9E81402BA7A /* LaunchScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = LaunchScreen.png; sourceTree = "<group>"; };
 		DA9504C16A60399CF58242B8 /* 1d2d6c00-2eb7-46f1-b8bf-fa5495830709.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "1d2d6c00-2eb7-46f1-b8bf-fa5495830709.png"; sourceTree = "<group>"; };
+		DADBA37B0C066F84F895C8A2 /* crazy_train_easy.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = crazy_train_easy.json; sourceTree = "<group>"; };
+		DCCE7C744B99B0E6BC77F714 /* song.ogg */ = {isa = PBXFileReference; lastKnownFileType = file; path = song.ogg; sourceTree = "<group>"; };
 		DF69469B48C7C00E7697A043 /* curly_savv_hideout.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = curly_savv_hideout.mp3; sourceTree = "<group>"; };
+		E3D03181729F411FA55643EA /* BeatmapEditorCore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeatmapEditorCore.swift; sourceTree = "<group>"; };
+		E563BB16968741F1A27926DB /* GameCenter/GameCenterViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenter/GameCenterViews.swift; sourceTree = "<group>"; };
 		E7207EA90E551C366B58211C /* RhythmTapApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RhythmTapApp.swift; sourceTree = "<group>"; };
 		E82BA51FFCEA0C6A6D34491C /* blink182_see_you.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = blink182_see_you.json; sourceTree = "<group>"; };
+		E9F6E232541F43D7893F996A /* LevelingCurve.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelingCurve.swift; sourceTree = "<group>"; };
 		EA1B4A0930C58B9D99276F74 /* JonnysTapTap.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = JonnysTapTap.ttf; sourceTree = "<group>"; };
 		EDBC13975B65BF20A47600BD /* day_n_nite.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = day_n_nite.mp3; sourceTree = "<group>"; };
+		EF2D7468810E4E23960128EC /* GameCenter/ChallengeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameCenter/ChallengeService.swift; sourceTree = "<group>"; };
+		EFC71BCC46E0C339C5050F3E /* Info.dat */ = {isa = PBXFileReference; lastKnownFileType = text; path = Info.dat; sourceTree = "<group>"; };
 		F1456AC84979399DBF176304 /* mgk_dont_let_me_go.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = mgk_dont_let_me_go.mp3; sourceTree = "<group>"; };
 		F3BB8E1AB47C318A61DFFE28 /* revenge_bg_3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = revenge_bg_3.png; sourceTree = "<group>"; };
 		F86623312D3D236CA73594B6 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
 		F9876C8308B1B6A9BC3FE38F /* test_song_easy.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = test_song_easy.json; sourceTree = "<group>"; };
 		FA3771ED06E51AF1F8F9BBFD /* bizzy_banks_fonem.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = bizzy_banks_fonem.json; sourceTree = "<group>"; };
 		FAA29A8151AF7AEC55B78DF7 /* note_pink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = note_pink.png; sourceTree = "<group>"; };
+		FB1F10E72F1974ED005E1E32 /* Green Day - Holiday [Official Music Video] 2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Green Day - Holiday [Official Music Video] 2.mp3"; sourceTree = "<group>"; };
+		FB1F10E82F1974ED005E1E32 /* green_day_holiday_easy 2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "green_day_holiday_easy 2.json"; sourceTree = "<group>"; };
+		FB1F10E92F1974ED005E1E32 /* green_day_holiday_extreme 2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "green_day_holiday_extreme 2.json"; sourceTree = "<group>"; };
+		FB1F10EA2F1974ED005E1E32 /* green_day_holiday_hard 2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "green_day_holiday_hard 2.json"; sourceTree = "<group>"; };
+		FB1F10EB2F1974ED005E1E32 /* green_day_holiday_medium 2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "green_day_holiday_medium 2.json"; sourceTree = "<group>"; };
+		FB1F10F12F197905005E1E32 /* green_day_holiday_easy 2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; name = "green_day_holiday_easy 2.json"; path = "Resources/green_day_holiday_easy 2.json"; sourceTree = "<group>"; };
 		FB91CEEF620742CFA093CD3D /* FireRainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireRainView.swift; sourceTree = "<group>"; };
 		FBDCEFBEB641FEFF29C1D781 /* revenge_overlay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = revenge_overlay.png; sourceTree = "<group>"; };
 		FF827DB7E7A2436AD7E0B8EA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -180,6 +337,17 @@
 			path = Audio;
 			sourceTree = "<group>";
 		};
+		514E838F022E0503C46EBBD6 /* Dragonforce - Through The Fire and The Flames */ = {
+			isa = PBXGroup;
+			children = (
+				7315BF1A066543991B89712C /* album.jpg */,
+				5245B974B2C55FB1AC42BBB0 /* notes.chart */,
+				AEC76AE45FC859C5897B8B9C /* song.ini */,
+				A54BC62704D9F35AB159C2E6 /* song.opus */,
+			);
+			path = "Dragonforce - Through The Fire and The Flames";
+			sourceTree = "<group>";
+		};
 		5BE899787E3D124C573D7EB4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -202,6 +370,7 @@
 		6BD1D4BD2E440F58145A6B08 = {
 			isa = PBXGroup;
 			children = (
+				FB1F10F12F197905005E1E32 /* green_day_holiday_easy 2.json */,
 				86BE959D6C154CD98A9C8547 /* Resources */,
 				D04BFD11897409D5461C0999 /* Sources */,
 				2AAA42F4954AA0A4BEA0490B /* Products */,
@@ -213,41 +382,90 @@
 			children = (
 				DA9504C16A60399CF58242B8 /* 1d2d6c00-2eb7-46f1-b8bf-fa5495830709.png */,
 				CFF407F6ECC4100D9E4698E7 /* 2d07ae7e-18bd-433e-a0a2-4aa97650d495.png */,
+				561A73AC81F3C4316442DD82 /* 21_guns_easy.json */,
+				49D042E853071348A95B6036 /* 21_guns_extreme.json */,
+				13277A8AFA878A67472003B0 /* 21_guns_hard.json */,
+				537B450C8BB7F77024503284 /* 21_guns_medium.json */,
+				5990D7CDD4C6429E9F6D988D /* Green Day - Holiday [Official Music Video].mp3 */,
+				8F42DD51E832431A87C43326 /* green_day_holiday_easy.json */,
+				0BB8DDE9376D43BCAB354BB2 /* green_day_holiday_medium.json */,
+				9DB91473A7354A28AFA2A543 /* green_day_holiday_hard.json */,
+				B60B0FD7F8324461BBC05B60 /* green_day_holiday_extreme.json */,
+				FB1F10E72F1974ED005E1E32 /* Green Day - Holiday [Official Music Video] 2.mp3 */,
+				FB1F10E82F1974ED005E1E32 /* green_day_holiday_easy 2.json */,
+				FB1F10E92F1974ED005E1E32 /* green_day_holiday_extreme 2.json */,
+				FB1F10EA2F1974ED005E1E32 /* green_day_holiday_hard 2.json */,
+				FB1F10EB2F1974ED005E1E32 /* green_day_holiday_medium 2.json */,
 				1C4997EFAA776D03A22E5AEE /* A_set_of_digital_illustrations_displays_a_futurist.png */,
 				75AD54311DE8A03AF510AAD2 /* A_set_of_four_transparent_background_PNG_layers_is.png */,
 				FF827DB7E7A2436AD7E0B8EA /* Assets.xcassets */,
+				55E26E955350922F878D3AEB /* bizzy_banks_fonem_easy.json */,
+				8E9ED315E5B4D7D34AB6922D /* bizzy_banks_fonem_extreme.json */,
+				8AC12E1BED8F017C4E19CF2A /* bizzy_banks_fonem_hard.json */,
+				5741B8D036017AB64C6BBCD1 /* bizzy_banks_fonem_medium.json */,
 				FA3771ED06E51AF1F8F9BBFD /* bizzy_banks_fonem.json */,
 				62E78BBFEB31987286AC1F47 /* bizzy_banks_fonem.mp3 */,
+				14F26EB866120E3E5F71C01D /* blink182_see_you_easy.json */,
+				BECC61BEAC37C85E54024AA2 /* blink182_see_you_extreme.json */,
+				0AE010E4D8127CBC829A6982 /* blink182_see_you_hard.json */,
+				B57AF72D73DC7611AF4BD29E /* blink182_see_you_medium.json */,
 				E82BA51FFCEA0C6A6D34491C /* blink182_see_you.json */,
 				6A35372FA812A9A272A295C3 /* blink182_see_you.mp3 */,
 				04EC3DFB6D3A784545ADB98A /* chart.json */,
-				5B14AB4B4016969D49671A46 /* crazy_train_beatmap_138bpm.json */,
-				5FF461CF2BC503B1D284706A /* crazy_train.json */,
+				DADBA37B0C066F84F895C8A2 /* crazy_train_easy.json */,
+				9546994D7BD873EC54342947 /* crazy_train_extreme.json */,
+				0E10BA372CDC3BDD6D9310EE /* crazy_train_hard.json */,
+				2F7294892B72CD508DFD116B /* crazy_train_medium.json */,
 				C2DE6306AEB491B30AF97118 /* crazy_train.mboy */,
 				D5E4F4E5E6B9298F3EF9C2E2 /* crazy_train.mp3 */,
 				DF69469B48C7C00E7697A043 /* curly_savv_hideout.mp3 */,
-				C2D1CD8CA7ECD7FE0966899E /* day_n_nite_beatmap.json */,
+				14C8B10277EBE07559903F99 /* day_n_nite_easy.json */,
+				28D1A77B376BF508652E3719 /* day_n_nite_extreme.json */,
+				48E10B1C17D0F5D47E99F320 /* day_n_nite_hard.json */,
+				CD923DA61BFC59786F49F801 /* day_n_nite_medium.json */,
 				A417F03EC34963D514CEE2CA /* day_n_nite.json */,
 				EDBC13975B65BF20A47600BD /* day_n_nite.mp3 */,
+				C977A157AB4FE12148C847AA /* dragonforce_through_the_fire_and_flames_easy.json */,
+				9DF241D8122D69E1FEF7BFC8 /* dragonforce_through_the_fire_and_flames_extreme.json */,
+				AB4FC59631CD1D37916EBE70 /* dragonforce_through_the_fire_and_flames_hard.json */,
+				4BEBC2E2D2553982404ADFD9 /* dragonforce_through_the_fire_and_flames_medium.json */,
+				A68EDAF252593841B135DD40 /* dragonforce_through_the_fire_and_flames.mp3 */,
 				5295C9A045A8C95DBB8A1E85 /* gameplay_background_4lane.png */,
 				064A3F3D40D5BEA0BE027C63 /* gameplay_background.png */,
+				CE27FA51CC37562A6412791F /* Green Day - 21 Guns Official Music Video.mp3 */,
 				33A4632967903EB404E24ACC /* hallelujah_easy.json */,
 				24AFB45CB1474BAF32470098 /* hallelujah_extreme.json */,
 				4F611CFD5CD84A1D9689117D /* hallelujah_hard.json */,
 				15DE58C16456163152E4D32B /* hallelujah_medium.json */,
 				A1736E4F9F66B6F9FF093D6D /* hallelujah.json */,
 				03A97D2D12611EFE6B0092DA /* hallelujah.wav */,
+				C9CD9E07F087C8F21DB1AF3B /* hippie_sabotage_high_easy.json */,
+				B75AC8DFE8A4EF8FC5671ED3 /* hippie_sabotage_high_extreme.json */,
+				4388A998A5630056157ABC31 /* hippie_sabotage_high_hard.json */,
+				48865600E3DD86620684CDDC /* hippie_sabotage_high_medium.json */,
 				056286103340802687F024D7 /* hippie_sabotage_high.json */,
 				4D14DDEBA2B0FF4F2A6238CB /* hippie_sabotage_high.m4a */,
+				BFE1ED6EB51E7AA3FBD87DB8 /* i_will_not_bow_easy.json */,
+				54645E1A24DC46EFBEF01D62 /* i_will_not_bow_extreme.json */,
+				271AFB36439EE0F5786948C5 /* i_will_not_bow_hard.json */,
+				D4DB67E762407DF01F898EF0 /* i_will_not_bow_medium.json */,
 				58431646C6004636DBFEF16B /* i_will_not_bow.json */,
 				4AF234ABC7872A5AFB695822 /* i_will_not_bow.mp3 */,
 				8C18DCAC4D46C4F0A9755AC3 /* Info.plist */,
 				A8E974EA181FB53534DB7CD9 /* lane_background.jpg */,
 				D9EA850A3049C9E81402BA7A /* LaunchScreen.png */,
 				BA1C35E8EEAA8B99CCE4480A /* LaunchScreen.storyboard */,
+				0D3568055E875FC01A77B2C5 /* madchild_chainsaw_easy.json */,
+				36223320897DFD6B682396F0 /* madchild_chainsaw_extreme.json */,
+				B9C7D301E8F7C223F91DB0A8 /* madchild_chainsaw_hard.json */,
+				BD3A3A51245BC748A1823A56 /* madchild_chainsaw_medium.json */,
 				57810A436B140418B77D4E71 /* madchild_chainsaw.json */,
 				41FDB191A1802DAB48797ADC /* madchild_chainsaw.mp3 */,
 				27D57C68743AEC9A8821BB31 /* main_menu_bg.png */,
+				6605F471880E7578EE7E1E82 /* mgk_dont_let_me_go_easy.json */,
+				23A4E39105D8A188C025D63B /* mgk_dont_let_me_go_extreme.json */,
+				BBE5210F370CFCD85EE25FF9 /* mgk_dont_let_me_go_hard.json */,
+				C16BB30CB66711B36B9475A6 /* mgk_dont_let_me_go_medium.json */,
 				C3E92278B4959C4A77BEA979 /* mgk_dont_let_me_go.json */,
 				F1456AC84979399DBF176304 /* mgk_dont_let_me_go.mp3 */,
 				1A920100AC21F99742D1352E /* note_blue_4lane.png */,
@@ -270,6 +488,8 @@
 				BCC8BAE069C6D27AC09002B3 /* test_song_hard.json */,
 				999BD3454EFA7BAE328D7333 /* test_song_medium.json */,
 				94643C06E46468F138C0BF27 /* track.wav */,
+				E02B3035E3DC35608218572C /* Beat Sage_ 21 Guns - Green Day (v2 HEE+,SN,) */,
+				514E838F022E0503C46EBBD6 /* Dragonforce - Through The Fire and The Flames */,
 				6431447094E957529278EA5F /* Fonts */,
 			);
 			path = Resources;
@@ -278,6 +498,21 @@
 		D04BFD11897409D5461C0999 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				E3D03181729F411FA55643EA /* BeatmapEditorCore.swift */,
+				44CECBB121BE4F758655A904 /* BeatmapEditorScene.swift */,
+				9BEA8617962B47E9A2D32CF4 /* BeatmapEditorView.swift */,
+				0DB710DD1F3042CF8367EB7C /* UserBeatmapPickerView.swift */,
+				B445A79847DC44708A86EA91 /* GameCenter/GameCenterModels.swift */,
+				4734EEE991E64D69B2F98E58 /* GameCenter/GameCenterConfiguration.swift */,
+				C3869067FC3348B28D4FB4D6 /* GameCenter/GameCenterPresenter.swift */,
+				8510B256247A44C1957A9FA0 /* GameCenter/GameCenterManager.swift */,
+				399347950D444F2EBC831E5B /* GameCenter/LeaderboardService.swift */,
+				EF2D7468810E4E23960128EC /* GameCenter/ChallengeService.swift */,
+				E563BB16968741F1A27926DB /* GameCenter/GameCenterViews.swift */,
+				E9F6E232541F43D7893F996A /* LevelingCurve.swift */,
+				4162AAB5EED246B5AE3C1BB1 /* LevelingSystem.swift */,
+				A0CC2999930442ADAD9DDF62 /* LevelingStore.swift */,
+				2AD88B0F9DF248DBBE452018 /* LevelingUI.swift */,
 				FF85C9C8202E6A908A4F0BFE /* BloodRainView.swift */,
 				386A3EA32102EAAAFA4E3CDD /* ContentView.swift */,
 				FB91CEEF620742CFA093CD3D /* FireRainView.swift */,
@@ -285,12 +520,29 @@
 				70D513FBB96DCA5C40CEE8CC /* LoadingView.swift */,
 				BD707CBCF260F01BABCC1B55 /* MainMenuView.swift */,
 				E7207EA90E551C366B58211C /* RhythmTapApp.swift */,
+				D6C2083EC085DC26791A26A9 /* SettingsView.swift */,
 				B884622D40D3289698D2F1C6 /* ShopView.swift */,
 				2D237091170528745B40675E /* SKTextureExtension.swift */,
 				31DCA0F5652AA562C387FFE5 /* Audio */,
 				5BE899787E3D124C573D7EB4 /* Models */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		E02B3035E3DC35608218572C /* Beat Sage_ 21 Guns - Green Day (v2 HEE+,SN,) */ = {
+			isa = PBXGroup;
+			children = (
+				68FCEFA82D20A7A597EB716B /* cover.jpg */,
+				B2E27EF4A5ABDF8629ED98E7 /* Expert.dat */,
+				B344B4D5FBF26A63F0747E3D /* ExpertPlus.dat */,
+				D6FCF33FF10851A87CBAC7B9 /* Hard.dat */,
+				EFC71BCC46E0C339C5050F3E /* Info.dat */,
+				2315C99AD19CD3565F06EB92 /* NoArrowsExpert.dat */,
+				7ECEDB7734423C34FA53F0DE /* NoArrowsExpertPlus.dat */,
+				73952193D652F0E93942F188 /* NoArrowsHard.dat */,
+				DCCE7C744B99B0E6BC77F714 /* song.ogg */,
+			);
+			path = "Beat Sage_ 21 Guns - Green Day (v2 HEE+,SN,)";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -324,7 +576,6 @@
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					B21D82C70A167E1B22B97F93 = {
-						DevelopmentTeam = 8KG73NCNM2;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -339,7 +590,6 @@
 			);
 			mainGroup = 6BD1D4BD2E440F58145A6B08;
 			minimizedProjectReferenceProxies = 1;
-			preferredProjectObjectVersion = 77;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -353,27 +603,69 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FB1F10F02F1974ED005E1E32 /* green_day_holiday_easy 2.json in Resources */,
 				106972E65DD2ED5C7A4E5164 /* 1d2d6c00-2eb7-46f1-b8bf-fa5495830709.png in Resources */,
+				BC1F519540E9C4661F0B87A2 /* 21_guns_easy.json in Resources */,
+				CAB12608EB226F035E971255 /* 21_guns_extreme.json in Resources */,
+				245877AB12DDC664178BB140 /* 21_guns_hard.json in Resources */,
+				DFFBE028EA26808540A9CA00 /* 21_guns_medium.json in Resources */,
 				538DA6E6D099EC6BCA6040E0 /* 2d07ae7e-18bd-433e-a0a2-4aa97650d495.png in Resources */,
 				D0CF5265C8736DDBFD12917F /* A_set_of_digital_illustrations_displays_a_futurist.png in Resources */,
 				5B8F4E074C8E2B671DC5A653 /* A_set_of_four_transparent_background_PNG_layers_is.png in Resources */,
 				8E4710751BC68430AE59F87A /* Assets.xcassets in Resources */,
+				0B8D6813227F631290FDFCE3 /* Expert.dat in Resources */,
+				F01EB63C09F088E5D654DADE /* ExpertPlus.dat in Resources */,
+				B436873B17A45DFAC4E458B7 /* Green Day - 21 Guns Official Music Video.mp3 in Resources */,
+				8AB545853B534F9DB8739BDD /* Green Day - Holiday [Official Music Video].mp3 in Resources */,
+				22E820505C623B3CB937A03B /* Hard.dat in Resources */,
+				648720B1C2009127842BC7E2 /* Info.dat in Resources */,
 				F9F3334BC5B76A8E6BE97D95 /* JonnysTapTap.ttf in Resources */,
 				66F5DB3DFF6C202D16143871 /* LaunchScreen.png in Resources */,
 				9D4DA9EDF378EF406B7F5472 /* LaunchScreen.storyboard in Resources */,
+				FBAF30F667B3B88ADFB1AC1F /* NoArrowsExpert.dat in Resources */,
+				B4E5B2759725017F3301652C /* NoArrowsExpertPlus.dat in Resources */,
+				93A885BEBD7B48F5ADA86E20 /* green_day_holiday_easy.json in Resources */,
+				A4F05B59AB6C47559C0FA7DF /* green_day_holiday_medium.json in Resources */,
+				B3BC39F8C6134DA38697A905 /* green_day_holiday_hard.json in Resources */,
+				43C448B12025409BA697D0A4 /* green_day_holiday_extreme.json in Resources */,
+				FB1F10EC2F1974ED005E1E32 /* green_day_holiday_hard 2.json in Resources */,
+				FB1F10ED2F1974ED005E1E32 /* green_day_holiday_medium 2.json in Resources */,
+				FB1F10EE2F1974ED005E1E32 /* green_day_holiday_extreme 2.json in Resources */,
+				FB1F10EF2F1974ED005E1E32 /* Green Day - Holiday [Official Music Video] 2.mp3 in Resources */,
+				875C4C809F0AC77E349D073C /* NoArrowsHard.dat in Resources */,
+				E1D8D088E04D634410288613 /* album.jpg in Resources */,
 				30BC7EE438F6EDF082BAA437 /* bizzy_banks_fonem.json in Resources */,
 				891E1FDF330BF5F3A989FE0C /* bizzy_banks_fonem.mp3 in Resources */,
+				783A3A8F7D0402EAD1425119 /* bizzy_banks_fonem_easy.json in Resources */,
+				E6265B0597A3E230FA9D68F2 /* bizzy_banks_fonem_extreme.json in Resources */,
+				3F8BC8F1517DA86AB44CBEED /* bizzy_banks_fonem_hard.json in Resources */,
+				63889C7FA199934C44DBCE4E /* bizzy_banks_fonem_medium.json in Resources */,
 				F669EBAE20C5CC1919FEA4F7 /* blink182_see_you.json in Resources */,
 				3DD6A1AEFC5D7C68A44D4B37 /* blink182_see_you.mp3 in Resources */,
+				6DE08A0892041CF3B96BE7D6 /* blink182_see_you_easy.json in Resources */,
+				64BB9C0C800754EB80A9093C /* blink182_see_you_extreme.json in Resources */,
+				1C82B7C817827EE4181EFC94 /* blink182_see_you_hard.json in Resources */,
+				3BDF9DAEFA24CE67C638F562 /* blink182_see_you_medium.json in Resources */,
 				76806CD6BD3D1D7FDF65DB5A /* chart.json in Resources */,
-				04AA2FE5ADA04C96EAA9F329 /* crazy_train.json in Resources */,
+				FD01773A66AAC6E04E96000A /* cover.jpg in Resources */,
 				E9D578A739F6299A1E198B86 /* crazy_train.mboy in Resources */,
 				E51FF5EA02BB136E2F9D3D20 /* crazy_train.mp3 in Resources */,
-				F49C21420C2C21C098FFB9DB /* crazy_train_beatmap_138bpm.json in Resources */,
+				2B7573CF3FBC21CF34A75BAD /* crazy_train_easy.json in Resources */,
+				85C97AAC3E9123993BCD115D /* crazy_train_extreme.json in Resources */,
+				680B20DC1F8460D15A2D0005 /* crazy_train_hard.json in Resources */,
+				C1F6A5283A3DD96ED60E3FA3 /* crazy_train_medium.json in Resources */,
 				34240057165D14D5C2A98520 /* curly_savv_hideout.mp3 in Resources */,
 				6FDFE3E99DC362F5CE6970A8 /* day_n_nite.json in Resources */,
 				184BA592E2F03497C6DF25AD /* day_n_nite.mp3 in Resources */,
-				672164C60BA7DBF06D87FFE3 /* day_n_nite_beatmap.json in Resources */,
+				ED0E54A8224E7685DD0DB602 /* day_n_nite_easy.json in Resources */,
+				A338576206AF680936AE28FB /* day_n_nite_extreme.json in Resources */,
+				4455B6AB8043BEF59A7FA0C5 /* day_n_nite_hard.json in Resources */,
+				1F114417B09E1D6AB545F751 /* day_n_nite_medium.json in Resources */,
+				291A67B25F36705FE5F888D5 /* dragonforce_through_the_fire_and_flames.mp3 in Resources */,
+				BAB60E72BC3B80050B6062DF /* dragonforce_through_the_fire_and_flames_easy.json in Resources */,
+				C6F5056CB10C4792866CD0D9 /* dragonforce_through_the_fire_and_flames_extreme.json in Resources */,
+				D543CFF5E154C0279885486C /* dragonforce_through_the_fire_and_flames_hard.json in Resources */,
+				D98CB2EDD5E9249BAC74BAD1 /* dragonforce_through_the_fire_and_flames_medium.json in Resources */,
 				752BE0850FE6D110C7A13B71 /* gameplay_background.png in Resources */,
 				E35C110E678C506B7E01C0B2 /* gameplay_background_4lane.png in Resources */,
 				D28C4B3EC83AFAF61F3DAB3D /* hallelujah.json in Resources */,
@@ -384,14 +676,30 @@
 				0BB278E39DA85292918DFBC7 /* hallelujah_medium.json in Resources */,
 				CD1668D7457AD65421C3294F /* hippie_sabotage_high.json in Resources */,
 				87CDD642D5845A82A8DA660D /* hippie_sabotage_high.m4a in Resources */,
+				F829FC4816800080508208F4 /* hippie_sabotage_high_easy.json in Resources */,
+				930A58613884D80403ECEA37 /* hippie_sabotage_high_extreme.json in Resources */,
+				6CEBD9DE54628D7F446340F9 /* hippie_sabotage_high_hard.json in Resources */,
+				BA162A87B235F6F24D3BCB4D /* hippie_sabotage_high_medium.json in Resources */,
 				9995BB0950409A9D8EAF1B14 /* i_will_not_bow.json in Resources */,
 				2B045FA523D6788C17D3ED72 /* i_will_not_bow.mp3 in Resources */,
+				5AFE61D292969E2380871C8D /* i_will_not_bow_easy.json in Resources */,
+				64B4303015B96611CC39DB6B /* i_will_not_bow_extreme.json in Resources */,
+				EB93525E52EE867F8CB90975 /* i_will_not_bow_hard.json in Resources */,
+				9D5708ED71BE05DD1830DE40 /* i_will_not_bow_medium.json in Resources */,
 				8ABC26AE2C14DD523B2D0C65 /* lane_background.jpg in Resources */,
 				AD9393383D99C5CC59CF5145 /* madchild_chainsaw.json in Resources */,
 				714A023A3BF3BEE5A3F94419 /* madchild_chainsaw.mp3 in Resources */,
+				A8A33E6933DEF342919D5DF0 /* madchild_chainsaw_easy.json in Resources */,
+				6E56768179988F01043A9FCC /* madchild_chainsaw_extreme.json in Resources */,
+				B2950BFC0436B43922213CA1 /* madchild_chainsaw_hard.json in Resources */,
+				B0EB9B8CA596042B943B4157 /* madchild_chainsaw_medium.json in Resources */,
 				1DD726C7FFAF3EEF39F7FA5F /* main_menu_bg.png in Resources */,
 				A220A37E79667F24DB4CCA98 /* mgk_dont_let_me_go.json in Resources */,
 				51006251B6794E6B854D2C2C /* mgk_dont_let_me_go.mp3 in Resources */,
+				E911D48E7453F411A093FFAC /* mgk_dont_let_me_go_easy.json in Resources */,
+				BD80AB5A4BE91A28C760F9DA /* mgk_dont_let_me_go_extreme.json in Resources */,
+				5F279C2E1F19AE773E91A76A /* mgk_dont_let_me_go_hard.json in Resources */,
+				D3439EFF4DDE3FB884372025 /* mgk_dont_let_me_go_medium.json in Resources */,
 				1EB98525F0F41607B5491623 /* note_blue.png in Resources */,
 				3BAFACE64335A52E1B17CCA2 /* note_blue_4lane.png in Resources */,
 				98F43270F9AE6CC8435AC4AC /* note_green.png in Resources */,
@@ -399,6 +707,7 @@
 				18282492F42B2852767CA16C /* note_orange_4lane.png in Resources */,
 				73B763A1466EC1C7C99A3F88 /* note_pink.png in Resources */,
 				81344F8AD60B27013D6C1AC7 /* note_red_4lane.png in Resources */,
+				1A603002A796F30A6D569411 /* notes.chart in Resources */,
 				2D2BEC715ED4BEB1020027F8 /* particles_layer.png in Resources */,
 				93868D12860E2C626BD915CE /* remix_revision.json in Resources */,
 				E4364E3E05E28E2FFBE34CAB /* remix_revision.wav in Resources */,
@@ -407,6 +716,9 @@
 				16DF8FB457B4ED16C0383D8D /* revenge_bg_2.png in Resources */,
 				281614221F55F87CDF1F46C9 /* revenge_bg_3.png in Resources */,
 				73E95BD96B735EC592F262C5 /* revenge_overlay.png in Resources */,
+				4EE1608043C8EB47EA3960B3 /* song.ini in Resources */,
+				E9FDEBE7FEA4EA9D13F9B827 /* song.ogg in Resources */,
+				4481E19A714D5874AEFFC39D /* song.opus in Resources */,
 				A43562292B5A3E7E5B76C7B5 /* test_song_easy.json in Resources */,
 				412BE0A3B8E506193E9C30E7 /* test_song_extreme.json in Resources */,
 				545487861620EA689B5CE0B9 /* test_song_hard.json in Resources */,
@@ -424,6 +736,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				103138D179D4DF1F8196951C /* BloodRainView.swift in Sources */,
+				0288F594351244BCA7D0A6A7 /* GameCenter/GameCenterModels.swift in Sources */,
+				3398F26F69CB41E380D3BACE /* GameCenter/GameCenterConfiguration.swift in Sources */,
+				C994773B5D30487C8D65F987 /* GameCenter/GameCenterPresenter.swift in Sources */,
+				3042767C098E4F12A52848CD /* GameCenter/GameCenterManager.swift in Sources */,
+				198A7D9B4E2E4B7AA14796CA /* GameCenter/LeaderboardService.swift in Sources */,
+				DA223D22E9B148B5A7023884 /* GameCenter/ChallengeService.swift in Sources */,
+				5FBE328CC54F44F58D433E58 /* GameCenter/GameCenterViews.swift in Sources */,
+				7670E3B6FF4A4A0A94029E79 /* LevelingCurve.swift in Sources */,
+				2C9EE5638FBA490282BDDBD7 /* LevelingSystem.swift in Sources */,
+				33EE3DE11CEA4C709FFF6761 /* LevelingStore.swift in Sources */,
+				DF572FD505C54668AC5ED708 /* LevelingUI.swift in Sources */,
+				B3AF5BB952B8422FB81E1D0A /* BeatmapEditorCore.swift in Sources */,
+				59B1D8EA24E94AA5A36D9226 /* BeatmapEditorScene.swift in Sources */,
+				7790A01A98784001AB3D0C65 /* BeatmapEditorView.swift in Sources */,
+				8A6D5AABA4D74AF38B84ED84 /* UserBeatmapPickerView.swift in Sources */,
 				622E085CDF0783D715A32C64 /* Chart.swift in Sources */,
 				3B54BEEA4F250ECCF137516B /* ContentView.swift in Sources */,
 				35BC8412E681377B7065A34D /* FireRainView.swift in Sources */,
@@ -435,6 +762,7 @@
 				CCD1DC7B86C2CD43DBDFED0A /* ProgressService.swift in Sources */,
 				EF74884F7D53D4EC7430A775 /* RhythmTapApp.swift in Sources */,
 				28221AA73047E14F81D5F814 /* SKTextureExtension.swift in Sources */,
+				46622E020D8A3D1A07BC3C61 /* SettingsView.swift in Sources */,
 				74DD050B5E79684104802B73 /* ShopView.swift in Sources */,
 				126F34FBF58BABF641EEB7B0 /* SongLibrary.swift in Sources */,
 			);
@@ -447,16 +775,23 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = RhythmTap.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8KG73NCNM2;
+				CURRENT_PROJECT_VERSION = 2.0;
+				DEVELOPMENT_TEAM = J9C5T6SL6B;
 				INFOPLIST_FILE = Resources/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Rhythm Tap";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music-games";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourname.rhythmtap;
+				MARKETING_VERSION = 2.0;
+				"MARKETING_VERSION[sdk=iphoneos*]" = 2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jonnystaptap.rhythmtap;
+				PRODUCT_NAME = RhythmTap;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -530,16 +865,22 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = RhythmTap.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8KG73NCNM2;
+				CURRENT_PROJECT_VERSION = "";
+				DEVELOPMENT_TEAM = J9C5T6SL6B;
 				INFOPLIST_FILE = Resources/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Rhythm Tap";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music-games";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.yourname.rhythmtap;
+				MARKETING_VERSION = 2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jonnystaptap.rhythmtap;
+				PRODUCT_NAME = RhythmTap;
 				SDKROOT = iphoneos;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
