@@ -34,9 +34,9 @@ final class LeaderboardService {
             leaderboardIDs: [leaderboardID]
         ) { error in
             if let error {
-                print("GC submit failed \(leaderboardID): \(error.localizedDescription)")
+                debugLog("GC submit failed \(leaderboardID): \(error.localizedDescription)")
             } else {
-                print("GC submitted \(leaderboardID): \(value)")
+                debugLog("GC submitted \(leaderboardID): \(value)")
             }
         }
     }

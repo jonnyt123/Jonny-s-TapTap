@@ -15,6 +15,8 @@ final class ProgressService {
     private let defaultUnlocked: Set<String> = ["hallelujah"]
     
     func fetch() async -> ProgressData? {
+        let cloudEnabled = await MainActor.run { SettingsManager.shared.cloudSyncEnabled }
+        guard cloudEnabled else { return nil }
         do {
             let record = try await database.record(for: recordID)
             let coins = record["tapCoins"] as? Int ?? 0
@@ -28,6 +30,8 @@ final class ProgressService {
     }
     
     func save(tapCoins: Int, unlockedSongIDs: Set<String>) async {
+        let cloudEnabled = await MainActor.run { SettingsManager.shared.cloudSyncEnabled }
+        guard cloudEnabled else { return }
         do {
             let record: CKRecord
             do {
@@ -41,11 +45,13 @@ final class ProgressService {
             _ = try await database.save(record)
         } catch {
             // Silently ignore for now; app remains functional offline
-            print("Cloud save failed: \(error)")
+            debugLog("Cloud save failed: \(error)")
         }
     }
     
     func loadAndMerge(into gameState: GameState) async {
+        let cloudEnabled = await MainActor.run { SettingsManager.shared.cloudSyncEnabled }
+        guard cloudEnabled else { return }
         guard let cloud = await fetch() else { return }
         await MainActor.run {
             gameState.tapCoins = cloud.tapCoins
@@ -54,3 +60,4 @@ final class ProgressService {
         }
     }
 }
+

@@ -3,6 +3,7 @@ import SwiftUI
 struct ShopItem: Identifiable {
     let id: String
     let title: String
+    let artist: String
     let price: Int
 }
 
@@ -11,16 +12,15 @@ struct ShopView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var justPurchased: String? = nil
     @State private var showCoinAnim = false
-    
-    // Dynamically generate catalog from SongMetadata.library (except default song)
+    /// Prevents double-tap / race: disable all Buy buttons while a purchase is in progress.
+    @State private var isPurchasing = false
+
+    /// Catalog: all purchasable songs with prices from EconomyConfig (excludes free default track).
     private var catalog: [ShopItem] {
-        // Assign prices based on order or custom logic
-        let prices = [50, 120, 100, 110, 90, 80, 95, 105, 85, 130, 140, 150, 160, 170, 180, 190, 200, 210, 220, 230]
-        return SongMetadata.library.enumerated().compactMap { (idx, song) in
-            // Don't sell the default song (usually hallelujah)
-            if song.id == "hallelujah" { return nil }
-            let price = idx < prices.count ? prices[idx] : 100 + idx * 10
-            return ShopItem(id: song.id, title: song.title, price: price)
+        SongMetadata.library.compactMap { song in
+            guard EconomyConfig.isPurchasable(songId: song.id) else { return nil }
+            let price = EconomyConfig.price(forSongId: song.id)
+            return ShopItem(id: song.id, title: song.title, artist: song.artist, price: price)
         }
     }
     
@@ -30,77 +30,113 @@ struct ShopView: View {
                 Section {
                     HStack {
                         Image(systemName: "bitcoinsign.circle.fill")
-                            .foregroundStyle(.yellow)
+                            .foregroundStyle(RTTheme.Colors.accentOrange)
                         Text("Tap Coins: \(gameState.tapCoins)")
-                            .font(.system(size: 14, weight: .bold, design: .rounded))
+                            .font(RTTheme.Fonts.callout(14))
+                            .foregroundStyle(RTTheme.Colors.textPrimary)
+                        Text("(earned by playing)")
+                            .font(RTTheme.Fonts.caption(12))
+                            .foregroundStyle(RTTheme.Colors.textMuted)
                         Spacer()
-                        Button("Close") { dismiss() }
-                            .buttonStyle(.bordered)
+                        Button("Close") { RTHaptics.impact(); dismiss() }
+                            .font(RTTheme.Fonts.callout(14))
+                            .foregroundStyle(RTTheme.Colors.textPrimary)
+                            .padding(.horizontal, RTTheme.Spacing.lg)
+                            .padding(.vertical, RTTheme.Spacing.sm)
+                            .background(RTTheme.Colors.surfaceMuted)
+                            .clipShape(RoundedRectangle(cornerRadius: RTTheme.Radius.card))
+                            .overlay(RoundedRectangle(cornerRadius: RTTheme.Radius.card).stroke(RTTheme.Colors.surfaceStrokeStrong, lineWidth: 1))
                     }
+                    .listRowBackground(RTListRowHeaderBackground())
                 }
                 
                 Section(header: Text("Song Catalog")) {
                     ForEach(catalog) { item in
                         let owned = gameState.unlockedSongIDs.contains(item.id)
                         HStack {
-                            VStack(alignment: .leading, spacing: 4) {
+                            VStack(alignment: .leading, spacing: RTTheme.Spacing.xs) {
                                 Text(item.title)
-                                    .font(.system(size: 16, weight: .bold, design: .rounded))
-                                    .foregroundStyle( owned ? .white : .white.opacity(0.6) )
-                                Text(owned ? "Owned" : "Price: \(item.price)")
-                                    .font(.system(size: 12, weight: .semibold, design: .rounded))
-                                    .foregroundStyle( owned ? .green : .white.opacity(0.7) )
+                                    .font(shopFont(18, weight: .heavy))
+                                    .foregroundStyle(owned ? RTTheme.Colors.textPrimary : RTTheme.Colors.textMuted)
+                                Text(item.artist)
+                                    .font(shopFont(12, weight: .bold))
+                                    .foregroundStyle(RTTheme.Colors.textMuted)
+                                Text(owned ? "Owned" : "\(item.price) Tap Coins")
+                                    .font(shopFont(12, weight: .semibold))
+                                    .foregroundStyle(owned ? RTTheme.Colors.ownedGreen : RTTheme.Colors.textMuted)
                             }
                             Spacer()
                             if owned {
                                 Image(systemName: "checkmark.seal.fill")
-                                    .foregroundStyle(.green)
+                                    .foregroundStyle(RTTheme.Colors.ownedGreen)
                                     .font(.system(size: 18))
                             } else {
                                 Button(action: { purchase(item) }) {
-                                    Text("Buy")
-                                        .font(.system(size: 14, weight: .semibold, design: .rounded))
+                                    Text("Unlock")
+                                        .font(shopFont(14, weight: .semibold))
                                 }
                                 .buttonStyle(.borderedProminent)
-                                .disabled(gameState.tapCoins < item.price)
+                                .disabled(isPurchasing || gameState.tapCoins < item.price)
                                 .overlay {
                                     if justPurchased == item.id && showCoinAnim {
-                                        HStack(spacing: 4) {
+                                        HStack(spacing: RTTheme.Spacing.xs) {
                                             Image(systemName: "bitcoinsign.circle.fill")
-                                                .foregroundStyle(.yellow)
+                                                .foregroundStyle(RTTheme.Colors.accentOrange)
                                             Text("✓ Unlocked")
-                                                .font(.system(size: 12, weight: .bold, design: .rounded))
-                                                .foregroundStyle(.yellow)
+                                                .font(shopFont(12, weight: .bold))
+                                                .foregroundStyle(RTTheme.Colors.accentAmber)
                                         }
-                                        .padding(.horizontal, 8)
-                                        .padding(.vertical, 4)
-                                        .background(Color.yellow.opacity(0.2))
-                                        .cornerRadius(6)
+                                        .padding(.horizontal, RTTheme.Spacing.md)
+                                        .padding(.vertical, RTTheme.Spacing.xs)
+                                        .background(RTTheme.Colors.cardUserBeatmap)
+                                        .cornerRadius(RTTheme.Radius.small)
                                         .transition(.scale.combined(with: .opacity))
                                     }
                                 }
                             }
                         }
                         .contentShape(Rectangle())
+                        .listRowBackground(RTListRowBackground())
                     }
                 }
             }
             .navigationTitle("Shop")
+            .scrollContentBackground(.hidden)
             .background(
-                LinearGradient(colors: [.black, Color(red: 0.08, green: 0.05, blue: 0.15)], startPoint: .top, endPoint: .bottom)
+                ZStack {
+                    Image("death_metal_texture")
+                        .resizable()
+                        .scaledToFill()
+                        .opacity(0.8)
+                        .ignoresSafeArea()
+                    LinearGradient(
+                        colors: [Color.black.opacity(0.85), RTTheme.Colors.backgroundShopRowEnd.opacity(0.95)],
+                        startPoint: .top,
+                        endPoint: .bottom
+                    )
                     .ignoresSafeArea()
+                }
             )
         }
     }
+
+    private func shopFont(_ size: CGFloat, weight: Font.Weight) -> Font {
+        if UIFont(name: "JonnysTapTap", size: size) != nil {
+            return .custom("JonnysTapTap", size: size).weight(weight)
+        }
+        return .system(size: size, weight: weight, design: .rounded)
+    }
     
     private func purchase(_ item: ShopItem) {
-        guard !gameState.unlockedSongIDs.contains(item.id) else { return }
-        guard gameState.tapCoins >= item.price else { return }
-        gameState.tapCoins -= item.price
-        gameState.unlockedSongIDs.insert(item.id)
+        guard !isPurchasing else { return }
+        guard item.price > 0 else { return }
+        isPurchasing = true
+        defer { isPurchasing = false }
+        guard gameState.purchaseSong(songId: item.id, price: item.price) else { return }
         gameState.saveProgress()
+        RTHaptics.success()
         justPurchased = item.id
-        withAnimation(.spring(response: 0.4, dampingFraction: 0.7)) {
+        withAnimation(RTTheme.Animation.springTight) {
             showCoinAnim = true
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {

@@ -6,12 +6,13 @@ enum SongDifficulty: String, Codable {
     case hard
     case expert
 
+    /// Base XP before modifiers (difficulty scaling).
     var baseXP: Int64 {
         switch self {
-        case .easy: return 140
-        case .normal: return 200
-        case .hard: return 280
-        case .expert: return 380
+        case .easy: return 120
+        case .normal: return 180
+        case .hard: return 260
+        case .expert: return 360
         }
     }
 }
@@ -24,6 +25,29 @@ struct SongResult {
     let misses: Int
     let grade: String
     let difficulty: SongDifficulty
+    /// Note count for length factor (longer charts = more XP potential). Default 100 for backward compat.
+    let totalNotes: Int
+
+    init(score: Int, maxScore: Int, accuracyPercent: Double, maxCombo: Int, misses: Int, grade: String, difficulty: SongDifficulty, totalNotes: Int = 100) {
+        self.score = score
+        self.maxScore = maxScore
+        self.accuracyPercent = accuracyPercent
+        self.maxCombo = maxCombo
+        self.misses = misses
+        self.grade = grade
+        self.difficulty = difficulty
+        self.totalNotes = totalNotes
+    }
+}
+
+/// Per-component XP breakdown for post-song UI.
+struct XPBreakdown {
+    let base: Int64
+    let accuracyBonus: Int64
+    let comboBonus: Int64
+    let lengthBonus: Int64
+    let gradeBonus: Int64
+    let total: Int64
 }
 
 struct LevelUpResult {
@@ -35,26 +59,65 @@ struct LevelUpResult {
     let prevThreshold: Int64
     let nextThreshold: Int64
     let progressToNext: Double
+    let breakdown: XPBreakdown?
+    let rankName: String
+}
+
+/// Tiered ranks (original naming) for level bands. Purely cosmetic.
+enum ProgressionTier {
+    case rookie    // 1–12
+    case striker   // 13–26
+    case virtuoso // 27–42
+    case ace       // 43–62
+    case master    // 63–80
+    case legend    // 81–99
+
+    static func tier(for level: Int) -> ProgressionTier {
+        switch level {
+        case 1...12: return .rookie
+        case 13...26: return .striker
+        case 27...42: return .virtuoso
+        case 43...62: return .ace
+        case 63...80: return .master
+        default: return .legend
+        }
+    }
+
+    static func rankName(for level: Int) -> String {
+        tier(for: level).displayName
+    }
+
+    var displayName: String {
+        switch self {
+        case .rookie: return "Rookie"
+        case .striker: return "Striker"
+        case .virtuoso: return "Virtuoso"
+        case .ace: return "Ace"
+        case .master: return "Master"
+        case .legend: return "Legend"
+        }
+    }
 }
 
 struct XPConfig {
-    let minXP: Int64 = 40
-    let maxXP: Int64 = 1200
-    let accuracyFloor: Double = 0.6
-    let accuracyScale: Double = 0.9
-    let comboDivisor: Double = 220.0
-    let comboCap: Double = 0.5
-    let missPenaltyDivisor: Double = 45.0
-    let missPenaltyFloor: Double = 0.4
+    let minXP: Int64 = 30
+    let maxXP: Int64 = 800
+    let accuracyFloor: Double = 0.5
+    let accuracyScale: Double = 0.5
+    let comboDivisor: Double = 200.0
+    let comboCap: Double = 0.6
+    let lengthNotesDivisor: Double = 400.0
+    let lengthCap: Double = 0.8
+    let lengthFloor: Double = 0.7
 
-    func gradeBonus(_ grade: String) -> Double {
+    func gradeMultiplier(_ grade: String) -> Double {
         switch grade.uppercased() {
-        case "S": return 0.20
-        case "A": return 0.10
-        case "B": return 0.05
-        case "C": return 0.0
-        case "D": return -0.10
-        default: return 0.0
+        case "S": return 1.18
+        case "A": return 1.10
+        case "B": return 1.05
+        case "C": return 1.0
+        case "D": return 0.92
+        default: return 0.85
         }
     }
 }
@@ -67,7 +130,7 @@ enum LevelingSystem {
         totalXP: Int64,
         thresholds: [Int64]
     ) -> LevelUpResult {
-        let gained = xpForResult(result)
+        let (gained, breakdown) = xpForResultWithBreakdown(result)
         let newTotal = min(LevelingCurve.maxXP, max(0, totalXP + gained))
         let oldLevel = level(for: totalXP, thresholds: thresholds)
         let newLevel = level(for: newTotal, thresholds: thresholds)
@@ -89,24 +152,47 @@ enum LevelingSystem {
             totalXP: newTotal,
             prevThreshold: prev,
             nextThreshold: next,
-            progressToNext: min(max(progress, 0), 1)
+            progressToNext: min(max(progress, 0), 1),
+            breakdown: breakdown,
+            rankName: ProgressionTier.rankName(for: newLevel)
         )
     }
 
-    static func xpForResult(_ result: SongResult) -> Int64 {
-        let base = Double(result.difficulty.baseXP)
-        let accuracy = max(0.0, min(result.accuracyPercent, 100.0)) / 100.0
-        let scoreRatio = result.maxScore > 0 ? Double(result.score) / Double(result.maxScore) : accuracy
+    /// Returns (total XP, breakdown). Use for display and tests.
+    static func xpForResultWithBreakdown(_ result: SongResult) -> (Int64, XPBreakdown) {
+        let base = Int64(result.difficulty.baseXP)
+        let accuracyNorm = max(0.0, min(result.accuracyPercent, 100.0)) / 100.0
+        let accuracyFactor = config.accuracyFloor + accuracyNorm * config.accuracyScale
+        let accuracyXP = Int64((Double(base) * (accuracyFactor - 1.0)).rounded())
+        let baseAfterAccuracy = Int64((Double(base) * accuracyFactor).rounded())
 
-        let accuracyFactor = config.accuracyFloor + accuracy * config.accuracyScale
-        let gradeFactor = 1.0 + config.gradeBonus(result.grade)
         let comboFactor = 1.0 + min(Double(result.maxCombo) / config.comboDivisor, config.comboCap)
-        let missPenalty = max(config.missPenaltyFloor, 1.0 - Double(result.misses) / config.missPenaltyDivisor)
-        let scoreFactor = 0.85 + 0.3 * scoreRatio
+        let comboXP = Int64((Double(baseAfterAccuracy) * (comboFactor - 1.0)).rounded())
+        let afterCombo = Int64((Double(baseAfterAccuracy) * comboFactor).rounded())
 
-        let raw = base * accuracyFactor * gradeFactor * comboFactor * missPenalty * scoreFactor
-        let clamped = min(Double(config.maxXP), max(Double(config.minXP), raw))
-        return Int64(clamped.rounded())
+        let notes = max(0, result.totalNotes)
+        let lengthFactor = config.lengthFloor + min(Double(notes) / config.lengthNotesDivisor, config.lengthCap)
+        let lengthXP = Int64((Double(afterCombo) * (lengthFactor - 1.0)).rounded())
+        let afterLength = Int64((Double(afterCombo) * lengthFactor).rounded())
+
+        let gradeMult = config.gradeMultiplier(result.grade)
+        let gradeXP = Int64((Double(afterLength) * (gradeMult - 1.0)).rounded())
+        let rawTotal = Int64((Double(afterLength) * gradeMult).rounded())
+        let clamped = min(config.maxXP, max(config.minXP, rawTotal))
+
+        let breakdown = XPBreakdown(
+            base: base,
+            accuracyBonus: accuracyXP,
+            comboBonus: comboXP,
+            lengthBonus: lengthXP,
+            gradeBonus: gradeXP,
+            total: clamped
+        )
+        return (clamped, breakdown)
+    }
+
+    static func xpForResult(_ result: SongResult) -> Int64 {
+        xpForResultWithBreakdown(result).0
     }
 
     static func level(for totalXP: Int64, thresholds: [Int64]) -> Int {

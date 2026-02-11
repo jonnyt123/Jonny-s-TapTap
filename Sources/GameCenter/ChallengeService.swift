@@ -11,6 +11,6 @@ final class ChallengeService {
 
         // Challenges are now handled by the Game Center UI.
         // Present the leaderboard so players can issue challenges from there.
-        GameCenterManager.shared.presentLeaderboards(leaderboardID: leaderboardID)
+        Task { await MainActor.run { GameCenterManager.shared.presentLeaderboards(leaderboardID: leaderboardID) } }
     }
 }

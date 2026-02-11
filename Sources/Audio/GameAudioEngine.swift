@@ -7,6 +7,10 @@ final class GameAudioEngine {
     private var currentTapPlayerIndex = 0
     private(set) var isReady: Bool = false
     private var song: SongMetadata
+    private var musicVolume: Float = 0.9
+    private var sfxVolume: Float = 0.6
+    private var hitSoundEnabled: Bool = true
+    private var lowLatencyMode: Bool = false
 
     init(song: SongMetadata) {
         self.song = song
@@ -25,23 +29,26 @@ final class GameAudioEngine {
     private func configureAudioSession() {
         let session = AVAudioSession.sharedInstance()
         do {
-            try session.setCategory(.playback, mode: .default, options: [.duckOthers, .defaultToSpeaker])
+            try session.setCategory(.playback, mode: .default, options: [.duckOthers])
+            if lowLatencyMode {
+                try session.setPreferredIOBufferDuration(0.005)
+            }
             try session.setActive(true, options: .notifyOthersOnDeactivation)
-            print("✓ Audio session configured for playback")
+            debugLog("✓ Audio session configured for playback")
         } catch {
-            print("✗ Audio session setup failed: \(error)")
+            debugLog("✗ Audio session setup failed: \(error)")
         }
     }
     
     private func prepare(for song: SongMetadata) {
         isReady = false
-        print("DEBUG: Preparing audio for \(song.title) ...")
+        debugLog("DEBUG: Preparing audio for \(song.title) ...")
         var url: URL?
 
         // Always prefer the app bundle’s shipped audio first (ensures correct asset like Resources/hallelujah.wav).
         if let bundleURL = Bundle.main.url(forResource: song.audioName, withExtension: song.audioExtension) {
             url = bundleURL
-            print("✓ Using bundled audio: \(bundleURL.lastPathComponent)")
+            debugLog("✓ Using bundled audio: \(bundleURL.lastPathComponent)")
         }
 
         // Next, check the Resources.bundle inside the app bundle.
@@ -51,7 +58,7 @@ final class GameAudioEngine {
                 let bundleTrackURL = resourcesBundle.appendingPathComponent(song.audioName).appendingPathExtension(song.audioExtension)
                 if fileManager.fileExists(atPath: bundleTrackURL.path) {
                     url = bundleTrackURL
-                    print("✓ Using Resources.bundle audio: \(bundleTrackURL.lastPathComponent)")
+                    debugLog("✓ Using Resources.bundle audio: \(bundleTrackURL.lastPathComponent)")
                 }
             }
         }
@@ -63,12 +70,20 @@ final class GameAudioEngine {
             let docPath = docDir.appendingPathComponent(song.audioName).appendingPathExtension(song.audioExtension)
             if fileManager.fileExists(atPath: docPath.path) {
                 url = docPath
-                print("✓ Using Documents audio override: \(docPath.lastPathComponent)")
+                debugLog("✓ Using Documents audio override: \(docPath.lastPathComponent)")
             }
         }
 
         guard let audioURL = url else {
-            print("✗ ERROR: Could not find audio for \(song.title)")
+            debugLog("✗ ERROR: Could not find audio for \(song.title)")
+            isReady = false
+            return
+        }
+
+        // Crash-safe: avoid loading excessively large files (e.g. 200 MB cap)
+        let maxAudioBytes = 200 * 1024 * 1024
+        if let size = (try? FileManager.default.attributesOfItem(atPath: audioURL.path))?[.size] as? Int, size > maxAudioBytes {
+            debugLog("✗ Audio file too large: \(song.title)")
             isReady = false
             return
         }
@@ -76,12 +91,12 @@ final class GameAudioEngine {
         do {
             player = try AVAudioPlayer(contentsOf: audioURL)
             player?.numberOfLoops = 0
-            player?.volume = 0.9
+            player?.volume = musicVolume
             player?.prepareToPlay()
             isReady = true
-            print("✓ Audio player ready with file: \(audioURL.lastPathComponent)")
+            debugLog("✓ Audio player ready with file: \(audioURL.lastPathComponent)")
         } catch {
-            print("✗ Failed to initialize audio player: \(error)")
+            debugLog("✗ Failed to initialize audio player: \(error)")
             isReady = false
         }
     }
@@ -162,7 +177,7 @@ final class GameAudioEngine {
         do {
             let player = try AVAudioPlayer(data: wavData)
             player.prepareToPlay()
-            player.volume = 0.6
+            player.volume = sfxVolume
             return player
         } catch {
             return nil
@@ -172,7 +187,7 @@ final class GameAudioEngine {
     func play(after delay: TimeInterval) {
         guard let player else { return }
         player.currentTime = 0
-        player.volume = 0.7
+        player.volume = musicVolume
         if delay > 0 {
             let startTime = player.deviceCurrentTime + delay
             player.play(atTime: startTime)
@@ -194,11 +209,29 @@ final class GameAudioEngine {
     }
     
     func playTapSound() {
+        guard hitSoundEnabled else { return }
         guard !tapPlayers.isEmpty else { return }
         let player = tapPlayers[currentTapPlayerIndex]
         player.currentTime = 0
         player.play()
         currentTapPlayerIndex = (currentTapPlayerIndex + 1) % tapPlayers.count
+    }
+
+    @MainActor
+    func applySettings(_ settings: SettingsManager) {
+        musicVolume = Float(settings.musicVolume)
+        sfxVolume = Float(settings.sfxVolume)
+        hitSoundEnabled = settings.hitSoundEnabled
+
+        if lowLatencyMode != settings.lowLatencyMode {
+            lowLatencyMode = settings.lowLatencyMode
+            configureAudioSession()
+        }
+
+        player?.volume = musicVolume
+        for tapPlayer in tapPlayers {
+            tapPlayer.volume = sfxVolume
+        }
     }
 
     var currentTime: TimeInterval {

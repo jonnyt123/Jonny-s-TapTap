@@ -27,7 +27,7 @@ enum GameCenterPresenter {
     static func present(_ vc: UIViewController) {
         DispatchQueue.main.async {
             guard let top = topMostViewController() else {
-                print("GC Presenter: no top view controller")
+                debugLog("GC Presenter: no top view controller")
                 return
             }
             top.present(vc, animated: true)

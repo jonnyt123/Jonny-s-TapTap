@@ -6,51 +6,47 @@ struct LoadingView: View {
     @Binding var isComplete: Bool
     
     var body: some View {
-        ZStack {
-            // Background image
-            if let image = UIImage(named: "LaunchScreen.png") {
-                Image(uiImage: image)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-                    .background(Color.black)
-                    .ignoresSafeArea()
-            } else {
-                Color.black.edgesIgnoringSafeArea(.all)
-            }
-            
-            // Loading bar at bottom
-            VStack {
-                Spacer()
-                
-                VStack(spacing: 8) {
-                    ZStack(alignment: .leading) {
-                        // Background bar
-                        RoundedRectangle(cornerRadius: 3)
-                            .fill(Color(white: 0.2))
-                            .frame(width: 300, height: 6)
-                        
-                        // Progress bar
-                        RoundedRectangle(cornerRadius: 3)
-                            .fill(
-                                LinearGradient(
-                                    colors: [Color(red: 1.0, green: 0.4, blue: 0.0), Color(red: 1.0, green: 0.6, blue: 0.2)],
-                                    startPoint: .leading,
-                                    endPoint: .trailing
-                                )
-                            )
-                            .frame(width: 300 * loadingProgress, height: 6)
-                            .animation(.easeInOut(duration: 0.3), value: loadingProgress)
-                    }
-                    
-                    // Percentage text
-                    Text("\(Int(loadingProgress * 100))%")
-                        .font(.system(size: 14, weight: .medium))
-                        .foregroundColor(.white.opacity(0.7))
+        GeometryReader { geo in
+            ZStack {
+                if let image = UIImage(named: "LaunchScreen.png") {
+                    Image(uiImage: image)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+                        .background(Color.black)
+                        .ignoresSafeArea()
+                } else {
+                    Color.black
+                        .ignoresSafeArea()
                 }
-                .padding(.bottom, 50)
+                VStack {
+                    Spacer()
+                    VStack(spacing: 8) {
+                        ZStack(alignment: .leading) {
+                            RoundedRectangle(cornerRadius: 3)
+                                .fill(Color(white: 0.2))
+                            RoundedRectangle(cornerRadius: 3)
+                                .fill(
+                                    LinearGradient(
+                                        colors: [Color(red: 1.0, green: 0.4, blue: 0.0), Color(red: 1.0, green: 0.6, blue: 0.2)],
+                                        startPoint: .leading,
+                                        endPoint: .trailing
+                                    )
+                                )
+                                .frame(width: max(0, min((geo.size.width - 48).safeFinite, 320)) * loadingProgress)
+                                .animation(.easeInOut(duration: 0.3), value: loadingProgress)
+                        }
+                        .frame(width: max(0, min((geo.size.width - 48).safeFinite, 320)), height: 6)
+                        Text("\(Int(loadingProgress * 100))%")
+                            .font(.subheadline.weight(.medium))
+                            .foregroundColor(.white.opacity(0.7))
+                    }
+                    .padding(.horizontal, 24)
+                    .padding(.bottom, geo.safeAreaInsets.bottom + 50)
+                }
             }
         }
+        .ignoresSafeArea()
         .onAppear {
             loadResources()
         }

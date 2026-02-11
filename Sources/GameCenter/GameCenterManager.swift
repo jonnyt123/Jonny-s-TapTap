@@ -1,6 +1,7 @@
 import Foundation
 import GameKit
 
+@MainActor
 final class GameCenterManager: NSObject, ObservableObject {
     static let shared = GameCenterManager()
 
@@ -11,9 +12,10 @@ final class GameCenterManager: NSObject, ObservableObject {
         super.init()
     }
 
-    func authenticateIfNeeded() {
+    func authenticateIfNeeded(completion: ((Bool) -> Void)? = nil) {
         if GKLocalPlayer.local.isAuthenticated {
             authState = .authenticated(displayName: GKLocalPlayer.local.displayName)
+            completion?(true)
             return
         }
         authState = .authenticating
@@ -25,15 +27,23 @@ final class GameCenterManager: NSObject, ObservableObject {
             if let error {
                 self.authState = .notAuthenticated(reason: error.localizedDescription)
                 self.lastError = error.localizedDescription
+                completion?(false)
                 return
             }
             if GKLocalPlayer.local.isAuthenticated {
                 let name = GKLocalPlayer.local.displayName
                 self.authState = .authenticated(displayName: name)
+                // Suppress GameKit monogram caching by preloading photo
+                if #available(iOS 18.0, *) {
+                    GKLocalPlayer.local.loadPhoto(for: .normal) { _, _ in }
+                }
+                completion?(true)
             } else if GKLocalPlayer.local.isMultiplayerGamingRestricted || GKLocalPlayer.local.isPersonalizedCommunicationRestricted {
                 self.authState = .notAuthenticated(reason: "Restricted by parental controls.")
+                completion?(false)
             } else {
                 self.authState = .notAuthenticated(reason: "Not signed in.")
+                completion?(false)
             }
         }
     }
@@ -74,6 +84,7 @@ final class GameCenterManager: NSObject, ObservableObject {
     }
 }
 
+@MainActor
 extension GameCenterManager: GKGameCenterControllerDelegate {
     func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
         gameCenterViewController.dismiss(animated: true)

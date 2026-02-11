@@ -79,7 +79,7 @@ enum SongImport {
 
 // MARK: - Sample-accurate Editor Audio Engine (ms Int64)
 
-final class EditorAudioEngine {
+actor EditorAudioEngine {
     private let engine = AVAudioEngine()
     private let player = AVAudioPlayerNode()
 

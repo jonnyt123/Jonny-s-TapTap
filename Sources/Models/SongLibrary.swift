@@ -286,6 +286,23 @@ extension SongMetadata {
             accent: .cyan
         ),
         SongMetadata(
+            id: "coldplay_viva_la_vida",
+            title: "Viva La Vida",
+            artist: "Coldplay",
+            audioName: "Coldplay - Viva La Vida Official Video",
+            audioExtension: "mp3",
+            chartFiles: ChartFiles(
+                easy: "Coldplay - Viva La Vida Official Video_easy",
+                medium: "Coldplay - Viva La Vida Official Video_medium",
+                hard: "Coldplay - Viva La Vida Official Video_hard",
+                extreme: "Coldplay - Viva La Vida Official Video_extreme"
+            ),
+            lanes: 4,
+            bpm: 138,
+            primaryColors: [.purple, .blue],
+            accent: .cyan
+        ),
+        SongMetadata(
             id: "bizzy_banks_fonem",
             title: "On Fonem Grave",
             artist: "Bizzy Banks",

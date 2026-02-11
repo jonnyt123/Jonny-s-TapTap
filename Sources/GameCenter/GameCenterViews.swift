@@ -1,9 +1,14 @@
 import SwiftUI
 
+@MainActor
 struct GameCenterStatusView: View {
     @ObservedObject var manager: GameCenterManager
 
-    init(manager: GameCenterManager = .shared) {
+    init() {
+        self.manager = GameCenterManager.shared
+    }
+
+    init(manager: GameCenterManager) {
         self.manager = manager
     }
 
@@ -11,7 +16,7 @@ struct GameCenterStatusView: View {
         HStack(spacing: 10) {
             statusLabel
             Spacer()
-            Button(action: { manager.authenticateIfNeeded() }) {
+            Button(action: { Task { await MainActor.run { manager.authenticateIfNeeded() } } }) {
                 Text(buttonTitle)
                     .font(.system(size: 11, weight: .bold, design: .rounded))
             }
@@ -22,12 +27,10 @@ struct GameCenterStatusView: View {
         .background(Color.black.opacity(0.2))
         .cornerRadius(10)
         .onAppear {
-            DispatchQueue.main.async {
-                manager.authenticateIfNeeded()
-            }
+            Task { await MainActor.run { manager.authenticateIfNeeded() } }
         }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
-            manager.authenticateIfNeeded()
+            Task { await MainActor.run { manager.authenticateIfNeeded() } }
         }
     }
 
@@ -66,10 +69,11 @@ struct GameCenterStatusView: View {
     }
 }
 
+@MainActor
 struct LeaderboardsButton: View {
     var body: some View {
         Button(action: {
-            GameCenterManager.shared.presentLeaderboards()
+            Task { await MainActor.run { GameCenterManager.shared.presentLeaderboards() } }
         }) {
             HStack(spacing: 8) {
                 Image(systemName: "list.number")
@@ -94,7 +98,7 @@ struct ChallengeFriendsSheet: View {
                 TextField("Optional message", text: $message)
                     .textFieldStyle(.roundedBorder)
                 Button("Send Challenge") {
-                    GameCenterManager.shared.challengeFriends(result: result, message: message)
+                    Task { await MainActor.run { GameCenterManager.shared.challengeFriends(result: result, message: message) } }
                     dismiss()
                 }
                 .buttonStyle(.borderedProminent)
@@ -111,6 +115,7 @@ struct ChallengeFriendsSheet: View {
     }
 }
 
+@MainActor
 struct GameCenterDebugView: View {
     @ObservedObject private var manager = GameCenterManager.shared
     @State private var lastSubmitted: String = "None"
@@ -131,13 +136,13 @@ struct GameCenterDebugView: View {
                     didFC: false,
                     timestamp: Date()
                 )
-                GameCenterManager.shared.submitResult(dummy)
+                Task { await MainActor.run { GameCenterManager.shared.submitResult(dummy) } }
                 lastSubmitted = "Score 12345 @ \(Date())"
             }
             .buttonStyle(.bordered)
             LeaderboardsButton()
             Button("Open Game Center") {
-                GameCenterManager.shared.presentDashboard()
+                Task { await MainActor.run { GameCenterManager.shared.presentDashboard() } }
             }
             .buttonStyle(.bordered)
             Spacer()

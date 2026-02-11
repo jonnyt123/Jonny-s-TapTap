@@ -14,12 +14,16 @@ final class BeatmapEditorScene: SKScene {
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let engine = editorAudioEngine else { return }
-        let tMs = engine.currentRawSongMs()
-        for touch in touches {
-            let loc = touch.location(in: self)
-            let lane = laneIndex(forX: loc.x)
-            recorder?.recordTap(tMs: tMs, lane: lane)
-            flashLane(lane)
+        let lanesToRecord = touches.map { laneIndex(forX: $0.location(in: self).x) }
+        Task {
+            let tMs = await engine.currentRawSongMs()
+            await MainActor.run { [weak self] in
+                guard let self else { return }
+                for lane in lanesToRecord {
+                    self.recorder?.recordTap(tMs: tMs, lane: lane)
+                    self.flashLane(lane)
+                }
+            }
         }
     }
 

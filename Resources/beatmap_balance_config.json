@@ -1,0 +1,960 @@
+{
+  "_comment": "Optional per-song per-difficulty overrides. App applies these on top of user settings. Never overwrites beatmaps.",
+  "version": 1,
+  "before_after_summary": {
+    "21_guns": {
+      "easy": {
+        "before": {
+          "difficulty_score": 1.75,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 1.75,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "strict"
+        }
+      },
+      "medium": {
+        "before": {
+          "difficulty_score": 1.1,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 1.1,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "strict"
+        }
+      },
+      "hard": {
+        "before": {
+          "difficulty_score": 2.81,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 2.81,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "strict"
+        }
+      },
+      "extreme": {
+        "before": {
+          "difficulty_score": 3.69,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 3.69,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "lenient"
+        }
+      }
+    },
+    "Coldplay - Viva La Vida Official Video": {
+      "easy": {
+        "before": {
+          "difficulty_score": 1.0,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 1.0,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "strict"
+        }
+      },
+      "medium": {
+        "before": {
+          "difficulty_score": 1.0,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 1.0,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "strict"
+        }
+      },
+      "hard": {
+        "before": {
+          "difficulty_score": 1.0,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 1.0,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "strict"
+        }
+      },
+      "extreme": {
+        "before": {
+          "difficulty_score": 1.0,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 1.0,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "strict"
+        }
+      }
+    },
+    "bizzy_banks_fonem": {
+      "easy": {
+        "before": {
+          "difficulty_score": 1.1,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 1.1,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "strict"
+        }
+      },
+      "medium": {
+        "before": {
+          "difficulty_score": 1.49,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 1.49,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "strict"
+        }
+      },
+      "hard": {
+        "before": {
+          "difficulty_score": 3.79,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 3.79,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "strict"
+        }
+      },
+      "extreme": {
+        "before": {
+          "difficulty_score": 3.89,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 3.89,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "strict"
+        }
+      }
+    },
+    "blink182_see_you": {
+      "easy": {
+        "before": {
+          "difficulty_score": 1.0,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 1.0,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "strict"
+        }
+      },
+      "medium": {
+        "before": {
+          "difficulty_score": 1.0,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 1.0,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "strict"
+        }
+      },
+      "hard": {
+        "before": {
+          "difficulty_score": 1.9,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 1.9,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "strict"
+        }
+      },
+      "extreme": {
+        "before": {
+          "difficulty_score": 2.28,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 2.28,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "strict"
+        }
+      }
+    },
+    "crazy_train": {
+      "easy": {
+        "before": {
+          "difficulty_score": 1.0,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 1.0,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "strict"
+        }
+      },
+      "medium": {
+        "before": {
+          "difficulty_score": 1.0,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 1.0,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "strict"
+        }
+      },
+      "hard": {
+        "before": {
+          "difficulty_score": 1.94,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 1.94,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "strict"
+        }
+      },
+      "extreme": {
+        "before": {
+          "difficulty_score": 2.92,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 2.92,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "strict"
+        }
+      }
+    },
+    "day_n_nite": {
+      "easy": {
+        "before": {
+          "difficulty_score": 1.09,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 1.09,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "strict"
+        }
+      },
+      "medium": {
+        "before": {
+          "difficulty_score": 1.41,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 1.41,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "strict"
+        }
+      },
+      "hard": {
+        "before": {
+          "difficulty_score": 3.59,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 3.59,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "strict"
+        }
+      },
+      "extreme": {
+        "before": {
+          "difficulty_score": 3.37,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 3.37,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "strict"
+        }
+      }
+    },
+    "dragonforce_through_the_fire_and_flames": {
+      "easy": {
+        "before": {
+          "difficulty_score": 2.56,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 2.56,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "strict"
+        }
+      },
+      "medium": {
+        "before": {
+          "difficulty_score": 3.9,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 3.9,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "lenient"
+        }
+      },
+      "hard": {
+        "before": {
+          "difficulty_score": 4.89,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 4.89,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "lenient"
+        }
+      },
+      "extreme": {
+        "before": {
+          "difficulty_score": 5.02,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 5.02,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "lenient"
+        }
+      }
+    },
+    "green_day_holiday": {
+      "easy": {
+        "before": {
+          "difficulty_score": 2.28,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 2.28,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "strict"
+        }
+      },
+      "medium": {
+        "before": {
+          "difficulty_score": 3.81,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 3.81,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "lenient"
+        }
+      },
+      "hard": {
+        "before": {
+          "difficulty_score": 5.13,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 5.13,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "lenient"
+        }
+      },
+      "extreme": {
+        "before": {
+          "difficulty_score": 5.59,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 5.59,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "lenient"
+        }
+      }
+    },
+    "hallelujah": {
+      "easy": {
+        "before": {
+          "difficulty_score": 1.0,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 1.0,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "strict"
+        }
+      },
+      "medium": {
+        "before": {
+          "difficulty_score": 1.13,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 1.13,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "strict"
+        }
+      },
+      "hard": {
+        "before": {
+          "difficulty_score": 1.82,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 1.82,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "strict"
+        }
+      },
+      "extreme": {
+        "before": {
+          "difficulty_score": 3.18,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 3.18,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "strict"
+        }
+      }
+    },
+    "hippie_sabotage_high": {
+      "easy": {
+        "before": {
+          "difficulty_score": 1.28,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 1.28,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "strict"
+        }
+      },
+      "medium": {
+        "before": {
+          "difficulty_score": 2.25,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 2.25,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "strict"
+        }
+      },
+      "hard": {
+        "before": {
+          "difficulty_score": 3.7,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 3.7,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "lenient"
+        }
+      },
+      "extreme": {
+        "before": {
+          "difficulty_score": 3.84,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 3.84,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "lenient"
+        }
+      }
+    },
+    "i_will_not_bow": {
+      "easy": {
+        "before": {
+          "difficulty_score": 1.1,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 1.1,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "strict"
+        }
+      },
+      "medium": {
+        "before": {
+          "difficulty_score": 1.55,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 1.55,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "strict"
+        }
+      },
+      "hard": {
+        "before": {
+          "difficulty_score": 3.69,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 3.69,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "strict"
+        }
+      },
+      "extreme": {
+        "before": {
+          "difficulty_score": 3.89,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 3.89,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "strict"
+        }
+      }
+    },
+    "madchild_chainsaw": {
+      "easy": {
+        "before": {
+          "difficulty_score": 1.11,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 1.11,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "strict"
+        }
+      },
+      "medium": {
+        "before": {
+          "difficulty_score": 1.52,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 1.52,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "strict"
+        }
+      },
+      "hard": {
+        "before": {
+          "difficulty_score": 3.41,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 3.41,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "strict"
+        }
+      },
+      "extreme": {
+        "before": {
+          "difficulty_score": 3.65,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 3.65,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "strict"
+        }
+      }
+    },
+    "mgk_dont_let_me_go": {
+      "easy": {
+        "before": {
+          "difficulty_score": 1.13,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 1.13,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "strict"
+        }
+      },
+      "medium": {
+        "before": {
+          "difficulty_score": 2.02,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 2.02,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "strict"
+        }
+      },
+      "hard": {
+        "before": {
+          "difficulty_score": 2.93,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 2.93,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "lenient"
+        }
+      },
+      "extreme": {
+        "before": {
+          "difficulty_score": 3.01,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 3.01,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "lenient"
+        }
+      }
+    },
+    "test_song": {
+      "easy": {
+        "before": {
+          "difficulty_score": 1.0,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 1.0,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "strict"
+        }
+      },
+      "medium": {
+        "before": {
+          "difficulty_score": 1.12,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 1.12,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "strict"
+        }
+      },
+      "hard": {
+        "before": {
+          "difficulty_score": 1.55,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 1.55,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "strict"
+        }
+      },
+      "extreme": {
+        "before": {
+          "difficulty_score": 1.88,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "standard"
+        },
+        "after": {
+          "difficulty_score": 1.88,
+          "scroll_multiplier": 1.0,
+          "hit_window_preset": "strict"
+        }
+      }
+    }
+  },
+  "overrides": {
+    "21_guns": {
+      "easy": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "strict"
+      },
+      "medium": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "strict"
+      },
+      "hard": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "strict"
+      },
+      "extreme": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "lenient"
+      }
+    },
+    "Coldplay - Viva La Vida Official Video": {
+      "easy": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "strict"
+      },
+      "medium": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "strict"
+      },
+      "hard": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "strict"
+      },
+      "extreme": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "strict"
+      }
+    },
+    "bizzy_banks_fonem": {
+      "easy": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "strict"
+      },
+      "medium": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "strict"
+      },
+      "hard": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "strict"
+      },
+      "extreme": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "strict"
+      }
+    },
+    "blink182_see_you": {
+      "easy": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "strict"
+      },
+      "medium": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "strict"
+      },
+      "hard": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "strict"
+      },
+      "extreme": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "strict"
+      }
+    },
+    "crazy_train": {
+      "easy": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "strict"
+      },
+      "medium": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "strict"
+      },
+      "hard": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "strict"
+      },
+      "extreme": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "strict"
+      }
+    },
+    "day_n_nite": {
+      "easy": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "strict"
+      },
+      "medium": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "strict"
+      },
+      "hard": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "strict"
+      },
+      "extreme": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "strict"
+      }
+    },
+    "dragonforce_through_the_fire_and_flames": {
+      "easy": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "strict"
+      },
+      "medium": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "lenient"
+      },
+      "hard": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "lenient"
+      },
+      "extreme": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "lenient"
+      }
+    },
+    "green_day_holiday": {
+      "easy": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "strict"
+      },
+      "medium": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "lenient"
+      },
+      "hard": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "lenient"
+      },
+      "extreme": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "lenient"
+      }
+    },
+    "hallelujah": {
+      "easy": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "strict"
+      },
+      "medium": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "strict"
+      },
+      "hard": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "strict"
+      },
+      "extreme": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "strict"
+      }
+    },
+    "hippie_sabotage_high": {
+      "easy": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "strict"
+      },
+      "medium": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "strict"
+      },
+      "hard": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "lenient"
+      },
+      "extreme": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "lenient"
+      }
+    },
+    "i_will_not_bow": {
+      "easy": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "strict"
+      },
+      "medium": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "strict"
+      },
+      "hard": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "strict"
+      },
+      "extreme": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "strict"
+      }
+    },
+    "madchild_chainsaw": {
+      "easy": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "strict"
+      },
+      "medium": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "strict"
+      },
+      "hard": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "strict"
+      },
+      "extreme": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "strict"
+      }
+    },
+    "mgk_dont_let_me_go": {
+      "easy": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "strict"
+      },
+      "medium": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "strict"
+      },
+      "hard": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "lenient"
+      },
+      "extreme": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "lenient"
+      }
+    },
+    "test_song": {
+      "easy": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "strict"
+      },
+      "medium": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "strict"
+      },
+      "hard": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "strict"
+      },
+      "extreme": {
+        "scroll_speed_multiplier": 1.0,
+        "hit_window_preset": "strict"
+      }
+    }
+  }
+}

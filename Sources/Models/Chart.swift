@@ -60,6 +60,17 @@ struct Chart: Codable {
     let offset: Double
     let lanes: Int
     let notes: [Note]
+
+    /// Empty chart for scene init; must be replaced via configure() before presentation.
+    static let empty = Chart(
+        version: 1,
+        difficulty: nil,
+        songName: "",
+        bpm: 120,
+        offset: 0,
+        lanes: 4,
+        notes: []
+    )
 }
 
 enum ChartLoader {
@@ -95,13 +106,75 @@ enum ChartLoader {
         return available
     }
 
+    /// Max chart file size (bytes) to avoid memory exhaustion from malformed or huge files.
+    private static let maxChartFileSize = 5 * 1024 * 1024 // 5 MB
+
     private static func decodeChart(fileName: String) -> Chart? {
-        guard let url = resolveChartURL(fileName: fileName),
-              let data = try? Data(contentsOf: url) else {
+        guard let url = resolveChartURL(fileName: fileName) else { return nil }
+        let data: Data
+        do {
+            let attributes = try FileManager.default.attributesOfItem(atPath: url.path)
+            let size = (attributes[.size] as? Int) ?? 0
+            guard size > 0, size <= maxChartFileSize else { return nil }
+            data = try Data(contentsOf: url)
+        } catch {
             return nil
         }
         let decoder = JSONDecoder()
-        return try? decoder.decode(Chart.self, from: data)
+        if let chart = try? decoder.decode(Chart.self, from: data) {
+            return chart
+        }
+        if let procedural = try? decoder.decode(ProceduralBeatmap.self, from: data) {
+            debugLog("ℹ️ Decoded procedural chart format: \(fileName)")
+            return procedural.toChart(songName: fileName)
+        }
+        return nil
+    }
+
+    private struct ProceduralBeatmap: Decodable {
+        struct ProceduralNote: Decodable {
+            let t: Double
+            let lane: Int
+            let type: String
+        }
+
+        let version: Int?
+        let bpm: Double
+        let durationSec: Double?
+        let offsetSec: Double?
+        let difficulty: String?
+        let notes: [ProceduralNote]
+
+        func toChart(songName: String) -> Chart {
+            let convertedNotes = notes.map { note in
+                Note(time: note.t, lane: note.lane, type: noteType(from: note.type))
+            }
+            let maxLane = convertedNotes.map { $0.lane }.max() ?? 3
+            return Chart(
+                version: version ?? 1,
+                difficulty: parseDifficulty(difficulty),
+                songName: songName,
+                bpm: bpm,
+                offset: offsetSec ?? 0,
+                lanes: max(maxLane + 1, 1),
+                notes: convertedNotes
+            )
+        }
+
+        private func noteType(from raw: String) -> NoteType {
+            NoteType(rawValue: raw) ?? .tap
+        }
+
+        private func parseDifficulty(_ raw: String?) -> Difficulty? {
+            guard let raw else { return nil }
+            switch raw.lowercased() {
+            case "easy": return .easy
+            case "medium": return .medium
+            case "hard": return .hard
+            case "extreme": return .extreme
+            default: return nil
+            }
+        }
     }
 
     private static func resolveChartURL(fileName: String) -> URL? {
