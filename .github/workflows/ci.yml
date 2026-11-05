@@ -7,6 +7,11 @@ on:
   pull_request:
     branches: [main, master]
 
+# Outdated runs for the same PR/branch are superseded by newer commits.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build-and-test:
     runs-on: macos-14
